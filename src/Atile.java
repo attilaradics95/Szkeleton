@@ -1,4 +1,4 @@
-public class Atile {
+public abstract class Atile {
     public virtual Tile getNeighbor(Direction d);
     public virtual void setNeighbor(Tile t, Direction d);
     public virtual void Visitor getVisitor();
