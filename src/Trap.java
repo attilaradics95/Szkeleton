@@ -4,6 +4,6 @@ public class Trap extends ATile {
     }
 
     public void setOpened(Boolean bool) {
-        system.out.println("setOpened(" + bool + ")");
+        System.out.println("setOpened(" + bool + ")");
     }
 }

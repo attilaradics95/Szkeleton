@@ -1,5 +1,5 @@
 public class Wall extends ATile {
     public void accept(Visitor v, Directions d) {
-        system.out.println("accept(" + v + "," + d + ")");
+        System.out.println("accept(" + v + "," + d + ")");
     }
 }
