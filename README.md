@@ -1,0 +1,3 @@
+# Szkeleton
+
+Leírás :)
