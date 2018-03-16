@@ -1,4 +1,9 @@
 public class Box extends Visitor {
+    Game game = null;
+
+    public Box(){
+        game = Game.getInstance();
+    }
 
     public void pushTo(Tile next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
@@ -30,6 +35,7 @@ public class Box extends Visitor {
 
     public void setUnmovable() {
         System.out.println("setUnmovable()");
+        movable = false;
     }
 
     public void checkMovable() {
