@@ -5,7 +5,6 @@ public class Worker extends Visitor{
         controller = Controller.getInstance();
     }
 
-    @Override
     public void move(Directions d) {
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d);
