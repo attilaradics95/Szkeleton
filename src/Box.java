@@ -40,8 +40,4 @@ public class Box extends Visitor {
         System.out.println("die()");
     }
 
-    public void move(Directions d) {
-        System.out.println("move(" + d + ")");
-    }
-
 }

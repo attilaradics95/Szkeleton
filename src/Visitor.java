@@ -1,4 +1,7 @@
 public abstract class Visitor {
+    protected ATile currentTile;
+    protected boolean movable;
+
     public void pushTo(Tile next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
     }
@@ -29,9 +32,5 @@ public abstract class Visitor {
 
     public void die() {
         System.out.println("die()");
-    }
-
-    public void move(Directions d) {
-        System.out.println("move(" + d + ")");
     }
 }
