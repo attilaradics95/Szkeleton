@@ -147,4 +147,6 @@ public class Worker extends Visitor{
         currentTile = null;
         controller.eliminateWorker(this);
     }
+
+
 }
