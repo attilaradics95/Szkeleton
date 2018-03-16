@@ -1,5 +1,5 @@
 public class MLMMF {
-    public static void main(String[] args) {
+    public static void startTest() {
 
         Directions dir = Directions.EAST;
 

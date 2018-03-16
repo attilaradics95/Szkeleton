@@ -1,6 +1,6 @@
 public class WorkerOnHole {
 
-    public static void main(String[] args) {
+    public static void startTest() {
         Worker worker1 = new Worker();
         Hole next = new Hole();
         Tile current = new Tile();
