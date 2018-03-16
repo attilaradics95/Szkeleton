@@ -1,4 +1,8 @@
 public class Box extends Visitor {
+    //Attribútumok
+    private Game game;
+
+    //Függvény
     public void pushTo(Tile next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
     }

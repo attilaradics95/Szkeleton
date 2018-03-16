@@ -1,4 +1,8 @@
 public abstract class Visitor {
+    //Attribútumok
+    private Tile currentTile;
+    private Boolean movable;
+
     public void pushTo(Tile next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
     }

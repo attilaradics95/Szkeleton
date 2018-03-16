@@ -1,4 +1,10 @@
+import java.util.List;
+
 public abstract class ATile {
+    //Attribútumok
+    private List<ATile> neighbors;
+    private Visitor visitor;
+    //Függvények
     public virtual Tile
 
     getNeighbor(Directions d);

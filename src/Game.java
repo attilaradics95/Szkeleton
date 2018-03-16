@@ -1,6 +1,16 @@
+import java.util.List;
+
 public class Game {
     /**Singleton metódusok és attributumok*/
+    //Attribútumok
     private static Game instance = null;
+    public static int number = 0;
+    private Controller controller;
+    private List<Tile> tiles;
+    private List<Integer> points;
+    private int activePlayer;
+    private int movableBoxes;
+    private Boolean roundOver;
     private Game(){}
     public static Game getInstance() {
         if(instance == null) {
