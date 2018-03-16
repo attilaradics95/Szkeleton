@@ -26,12 +26,20 @@ public class Game {
 
 
     /**Privat Metódusok*/
-    private void loadMap(){}
+    private void loadMap(int i){
+        switch (i){
+            case 1:
+                break;
+            case 2:
+                break;
 
-    private void startRound(){
+        }
+    }
+
+    private void startRound(int i){
         System.out.println("startRound()");
         //MAP betöltese
-        this.loadMap();
+        this.loadMap(i);
 
         //Loop az inputok kezelesere
         while(!roundover){
@@ -113,6 +121,19 @@ public class Game {
     public static void main(String[] args) {
         Game game = getInstance();
 
-        game.startRound();
+        System.out.println("Teszt kiválasztása(1,2,...):");
+        /**Teszt template */
+        System.out.println("n. Teszt: Teszt leírása");
+
+
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input = "";
+        try {
+            input = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        game.startRound(Integer.parseInt(input));
     }
 }
