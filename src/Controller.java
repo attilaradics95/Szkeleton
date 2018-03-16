@@ -1,57 +1,64 @@
 import java.util.ArrayList;
 
 public class Controller {
-    /**Singleton metódusok és attributumok*/
+    /**
+     * Singleton metódusok és attributumok
+     */
     private static Controller instance = null;
-    private Controller(){
+
+    private Controller() {
         workers = new ArrayList<>();
         game = Game.getInstance();
     }
+
     public static Controller getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new Controller();
         }
         return instance;
     }
 
-    /**Attribútumok*/
+    /**
+     * Attribútumok
+     */
     private Game game = null;
     private ArrayList<Worker> workers;
     private Worker selectedworker = null;
 
-    /**Metódusok*/
-    public void addWorker(Worker w){
+    /**
+     * Metódusok
+     */
+    public void addWorker(Worker w) {
         workers.add(w);
     }
 
-    public Worker getSelectedworker(){
+    public Worker getSelectedworker() {
         return selectedworker;
     }
 
-    public void eliminateWorker(Worker w){
+    public void eliminateWorker(Worker w) {
         System.out.println("eliminateWorker()");
         //Ha több munkas van mint egy akkor kivesszük a Listabol és szukseg eseten csereljuk a kivalasztottat
         //Ha mar csak az utolso munkas van benne akkor kivesszuk és befejezzuk a kort
-        if (workers.size() > 1){
-            if (w == selectedworker){
+        if (workers.size() > 1) {
+            if (w == selectedworker) {
                 workers.remove(w);
                 selectedworker = workers.get(0);
-            }
-            else{
+            } else {
                 workers.remove(w);
             }
-        }
-        else {
+        } else {
             workers.remove(w);
             game.endRound();
         }
     }
 
-    public void selectWorker(int i){
+    public void selectWorker(int i) {
         System.out.println("selectWorker");
         selectedworker = workers.get(i);
     }
-    public void moveWorker(Directions direction){
+
+    public void moveWorker(Directions direction) {
         System.out.println("selectWorker");
         selectedworker.move(direction);
     }
