@@ -1,4 +1,5 @@
 public class Box extends Visitor {
+
     public void pushTo(Tile next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
     }
@@ -19,7 +20,11 @@ public class Box extends Visitor {
         System.out.println("pushTo(" + next + "," + d + ")");
     }
 
-    public void pushTo(Obstacle next, Directions d) {
+    public void pushTo(Wall next, Directions d) {
+        System.out.println("pushTo(" + next + "," + d + ")");
+    }
+
+    public void pushTo(Column next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
     }
 

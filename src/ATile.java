@@ -1,22 +1,11 @@
 public abstract class ATile {
-    public virtual Tile
+    abstract public Tile getNeighbor(Directions d);
 
-    getNeighbor(Directions d);
+    abstract public void setNeighbor(Tile t, Directions d);
 
-    public virtual
+    //abstract public void Visitor getVisitor();
 
-    void setNeighbor(Tile t, Directions d);
+    abstract public void setVisitor(Visitor v);
 
-    public virtual
-    void Visitor
-
-    getVisitor();
-
-    public virtual
-
-    void setVisitor(Visitor v);
-
-    public virtual Boolean
-
-    accept(Visitor v, Directions d);
+    abstract public void accept(Visitor v, Directions d);
 }
