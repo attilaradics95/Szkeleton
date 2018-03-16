@@ -37,4 +37,9 @@ public class Worker extends Visitor{
     public void pushTo(Column next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
     }
+
+    @Override
+    public void die() {
+        System.out.println("die()");
+    }
 }

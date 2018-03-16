@@ -20,6 +20,18 @@ public class Controller {
     private Worker selectedworker = null;
 
     /**Metódusok*/
+    public void addWorker(Worker w){
+        workers.add(w);
+    }
+
+    public Worker getSelectedworker(){
+        return selectedworker;
+    }
+
+    public void eliminateWorker(Worker w){
+        //TODO
+    }
+
     public void selectWorker(int i){
         System.out.println("selectWorker");
         //TODO
