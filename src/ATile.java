@@ -1,11 +1,29 @@
+import java.util.HashMap;
+
 public abstract class ATile {
-    abstract public Tile getNeighbor(Directions d);
+    private HashMap<Directions, ATile> neighbors;
+    private Visitor visitor;
 
-    abstract public void setNeighbor(Tile t, Directions d);
+    public ATile(){
+        neighbors = new HashMap<>();
+        visitor = null;
+    }
 
-    //abstract public void Visitor getVisitor();
+    public ATile getNeighbor(Directions d){
+        return neighbors.get(d);
+    }
 
-    abstract public void setVisitor(Visitor v);
+    public void setNeighbor(ATile t, Directions d){
+        neighbors.put(d, t);
+    }
+
+    public Visitor getVisitor(){
+        return visitor;
+    }
+
+    public void setVisitor(Visitor v){
+        visitor = v;
+    }
 
     abstract public void accept(Visitor v, Directions d);
 }
