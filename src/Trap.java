@@ -1,6 +1,6 @@
 public class Trap extends ATile {
     //Attribútumok
-    private Boolean opened
+    private Boolean opened;
 
     //Függvények
     public void accept(Visitor v, Directions d) {
