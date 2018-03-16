@@ -8,5 +8,9 @@ public class Switch extends ATile {
     public void switchIt(Box b){
         System.out.println("switch(" + b + ")");
     }
+
+    public void switchIt(Worker w){
+        System.out.println("switch(" + w + ")");
+    }
 }
 
