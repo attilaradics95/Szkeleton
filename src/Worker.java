@@ -1,7 +1,9 @@
-public class Worker extends Visitor{
+public class Worker extends Visitor {
+    //Attribútumok
     private Controller controller = null;
 
-    public Worker(){
+    //Metódusok
+    public Worker() {
         controller = Controller.getInstance();
     }
 

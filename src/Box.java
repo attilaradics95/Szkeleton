@@ -1,7 +1,9 @@
 public class Box extends Visitor {
+    //Attribútumok
     Game game = null;
+    //Függvények
 
-    public Box(){
+    public Box() {
         game = Game.getInstance();
     }
 
