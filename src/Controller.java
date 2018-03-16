@@ -29,15 +29,30 @@ public class Controller {
     }
 
     public void eliminateWorker(Worker w){
-        //TODO
+        System.out.println("eliminateWorker()");
+        //Ha több munkas van mint egy akkor kivesszük a Listabol és szukseg eseten csereljuk a kivalasztottat
+        //Ha mar csak az utolso munkas van benne akkor kivesszuk és befejezzuk a kort
+        if (workers.size() > 1){
+            if (w == selectedworker){
+                workers.remove(w);
+                selectedworker = workers.get(0);
+            }
+            else{
+                workers.remove(w);
+            }
+        }
+        else {
+            workers.remove(w);
+            game.endRound();
+        }
     }
 
     public void selectWorker(int i){
         System.out.println("selectWorker");
-        //TODO
+        selectedworker = workers.get(i);
     }
     public void moveWorker(Directions direction){
         System.out.println("selectWorker");
-        //TODO
+        selectedworker.move(direction);
     }
 }
