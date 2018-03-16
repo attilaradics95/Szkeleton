@@ -1,4 +1,5 @@
 public class WorkerOnHole {
+
     public static void main(String[] args) {
         Worker worker1 = new Worker();
         Hole next = new Hole();
