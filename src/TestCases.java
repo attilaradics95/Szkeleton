@@ -273,6 +273,31 @@ public class TestCases {
         controller.moveWorker(dir);
         controller.moveWorker(dir);
     }
+
+    // @author Bálint
+    public void WorkerStepsOnTarget() {
+        Directions dir = Directions.EAST;
+
+        Controller controller = Controller.getInstance();
+
+        //Elemek létrehozása
+        Worker worker = new Worker();
+        Tile current = new Tile();
+        Target targetTile = new Target();
+
+        current.setVisitor(worker);
+        targetTile.setVisitor(null);
+        worker.setCurrentTile(current);
+
+        //pálya beállítása
+        current.setNeighbors(null, targetTile, null, null);
+        targetTile.setNeighbors(null, null, null, current);
+
+        //munkás mozgatása
+        controller.addWorker(worker);
+        controller.moveWorker(dir);
+    }
+
     // @author Rozi
     public void WorkerPushesBoxToTarget() {
         Controller controller = Controller.getInstance();
