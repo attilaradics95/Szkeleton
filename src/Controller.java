@@ -56,7 +56,12 @@ public class Controller {
 
     public void selectWorker(int i) {
         System.out.println("selectWorker");
-        selectedworker = workers.get(i);
+        if(!(workers.isEmpty())){
+            selectedworker = workers.get(i);
+        }
+        else{
+            System.out.println("Nincs raktáros!");
+        }
     }
 
     public void moveWorker(Directions direction) {
