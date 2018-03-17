@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9b0cd293-7921-47ce-9618-007e74a54a98" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Switch.java" afterPath="$PROJECT_DIR$/src/Switch.java" />
+      <change beforePath="$PROJECT_DIR$/src/TestCases.java" afterPath="$PROJECT_DIR$/src/TestCases.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/workspace.xml" />
@@ -16,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TestCases.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestCases.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestCases.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="349" column="0" lean-forward="false" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
+            <state relative-caret-position="473">
+              <caret line="356" column="37" lean-forward="false" selection-start-line="356" selection-start-column="37" selection-end-line="356" selection-end-column="37" />
               <folding>
                 <element signature="method#MLL#0;class#TestCases#0" expanded="false" />
                 <element signature="method#MLMMF#0;class#TestCases#0" expanded="false" />
@@ -34,7 +34,6 @@
                 <element signature="method#WorkerPushesBoxToTarget#0;class#TestCases#0" expanded="false" />
                 <element signature="method#WorkerPushesBoxToColumn#0;class#TestCases#0" expanded="false" />
                 <element signature="method#SelectWorkerInAction#0;class#TestCases#0" expanded="false" />
-                <element signature="method#trapOpensWithABoxOnIt#0;class#TestCases#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -50,11 +49,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Switch.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Switch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Switch.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
               <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,8 +101,8 @@
         <option value="$PROJECT_DIR$/src/Wall.java" />
         <option value="$PROJECT_DIR$/src/Column.java" />
         <option value="$PROJECT_DIR$/src/ATile.java" />
-        <option value="$PROJECT_DIR$/src/TestCases.java" />
         <option value="$PROJECT_DIR$/src/Switch.java" />
+        <option value="$PROJECT_DIR$/src/TestCases.java" />
       </list>
     </option>
   </component>
@@ -296,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521299518815</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="workspace ignore">
+      <created>1521300061895</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1521300061895</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -310,7 +326,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -320,8 +335,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.32790446" sideWeight="0.50319827" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2844734" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2844734" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -404,7 +419,8 @@
     <MESSAGE value="trapOpensWithABoxOnIt" />
     <MESSAGE value="box.pushTo(Trap)ellenőrzi az állapotot&#10;trap.setOpened()megöli a visitort ha kell&#10;ATile.setNeighbors()implementálva minden leszármazottban" />
     <MESSAGE value="switch setNeghbor() 2x volt overridolva" />
-    <option name="LAST_COMMIT_MESSAGE" value="switch setNeghbor() 2x volt overridolva" />
+    <MESSAGE value="workspace ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace ignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -415,7 +431,7 @@
           <properties />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -437,7 +453,6 @@
             <element signature="method#WorkerPushesBoxToTarget#0;class#TestCases#0" expanded="false" />
             <element signature="method#WorkerPushesBoxToColumn#0;class#TestCases#0" expanded="false" />
             <element signature="method#SelectWorkerInAction#0;class#TestCases#0" expanded="false" />
-            <element signature="method#trapOpensWithABoxOnIt#0;class#TestCases#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -483,7 +498,6 @@
             <element signature="method#WorkerPushesBoxToTarget#0;class#TestCases#0" expanded="false" />
             <element signature="method#WorkerPushesBoxToColumn#0;class#TestCases#0" expanded="false" />
             <element signature="method#SelectWorkerInAction#0;class#TestCases#0" expanded="false" />
-            <element signature="method#trapOpensWithABoxOnIt#0;class#TestCases#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -670,14 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Visitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
@@ -694,28 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestCases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="349" column="0" lean-forward="false" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
-          <folding>
-            <element signature="method#MLL#0;class#TestCases#0" expanded="false" />
-            <element signature="method#MLMMF#0;class#TestCases#0" expanded="false" />
-            <element signature="method#WorkerOnColumn#0;class#TestCases#0" expanded="false" />
-            <element signature="method#WorkerOnHole#0;class#TestCases#0" expanded="false" />
-            <element signature="method#WorkerOnWall#0;class#TestCases#0" expanded="false" />
-            <element signature="method#WorkerPushesBox#0;class#TestCases#0" expanded="false" />
-            <element signature="method#WorkerStandsOnTrap#0;class#TestCases#0" expanded="false" />
-            <element signature="method#WorkerStepsOnActiveTrap#0;class#TestCases#0" expanded="false" />
-            <element signature="method#WorkerStepsOnInactiveTrap#0;class#TestCases#0" expanded="false" />
-            <element signature="method#WorkerPushesBoxToTarget#0;class#TestCases#0" expanded="false" />
-            <element signature="method#WorkerPushesBoxToColumn#0;class#TestCases#0" expanded="false" />
-            <element signature="method#SelectWorkerInAction#0;class#TestCases#0" expanded="false" />
-            <element signature="method#trapOpensWithABoxOnIt#0;class#TestCases#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Box.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -729,6 +713,35 @@
         <state relative-caret-position="525">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestCases.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="356" column="37" lean-forward="false" selection-start-line="356" selection-start-column="37" selection-end-line="356" selection-end-column="37" />
+          <folding>
+            <element signature="method#MLL#0;class#TestCases#0" expanded="false" />
+            <element signature="method#MLMMF#0;class#TestCases#0" expanded="false" />
+            <element signature="method#WorkerOnColumn#0;class#TestCases#0" expanded="false" />
+            <element signature="method#WorkerOnHole#0;class#TestCases#0" expanded="false" />
+            <element signature="method#WorkerOnWall#0;class#TestCases#0" expanded="false" />
+            <element signature="method#WorkerPushesBox#0;class#TestCases#0" expanded="false" />
+            <element signature="method#WorkerStandsOnTrap#0;class#TestCases#0" expanded="false" />
+            <element signature="method#WorkerStepsOnActiveTrap#0;class#TestCases#0" expanded="false" />
+            <element signature="method#WorkerStepsOnInactiveTrap#0;class#TestCases#0" expanded="false" />
+            <element signature="method#WorkerPushesBoxToTarget#0;class#TestCases#0" expanded="false" />
+            <element signature="method#WorkerPushesBoxToColumn#0;class#TestCases#0" expanded="false" />
+            <element signature="method#SelectWorkerInAction#0;class#TestCases#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

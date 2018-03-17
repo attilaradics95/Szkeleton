@@ -255,6 +255,10 @@ public class TestCases {
         tile1.setVisitor(visitor1);
         tile2.setVisitor(visitor2);
 
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+
         //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
         controller.addWorker(visitor1);
 
@@ -280,6 +284,10 @@ public class TestCases {
         tile1.setVisitor(visitor1);
         tile2.setVisitor(visitor2);
 
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+
         //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
         controller.addWorker(visitor1);
 
@@ -304,6 +312,10 @@ public class TestCases {
         // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
         tile1.setVisitor(visitor1);
         tile2.setVisitor(visitor2);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
 
         //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
         controller.addWorker(visitor1);
@@ -338,6 +350,11 @@ public class TestCases {
         tile1.setVisitor(visitor1);
         tile2.setVisitor(visitor2);
         tile4.setVisitor(visitor3);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+        visitor3.setCurrentTile(tile3);
 
         //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
         controller.addWorker(visitor1);
