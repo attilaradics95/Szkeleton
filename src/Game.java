@@ -1,5 +1,3 @@
-import com.sun.deploy.util.StringUtils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,22 +22,15 @@ public class Game {
     boolean roundover = false;
 
 
-
     /**Privat Metódusok*/
-    private void loadMap(int i){
-        switch (i){
-            case 1:
-                break;
-            case 2:
-                break;
+    private void loadMap(){
 
-        }
     }
 
-    private void startRound(int i){
+    private void startRound(){
         System.out.println("startRound()");
         //MAP betöltese
-        this.loadMap(i);
+        this.loadMap();
 
         //Loop az inputok kezelesere
         while(!roundover){
@@ -134,6 +125,7 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        game.startRound(Integer.parseInt(input));
+
+        game.startRound();
     }
 }
