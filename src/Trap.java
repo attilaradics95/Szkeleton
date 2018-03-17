@@ -8,6 +8,11 @@ public class Trap extends ATile {
         v.pushTo(this, d);
     }
 
+    @Override
+    public void setNeighbors(ATile north, ATile east, ATile south, ATile west) {
+
+    }
+
     public void setOpened(Boolean bool) {
         System.out.println("setOpened(" + bool + ")");
     }

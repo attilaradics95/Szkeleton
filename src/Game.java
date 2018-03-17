@@ -120,11 +120,20 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = getInstance();
+        TestCases tests = new TestCases();
 
         System.out.println("Teszt kiválasztása(1,2,...):");
         /**Teszt template */
         System.out.println("n. Teszt: Teszt leírása");
-
+        System.out.println("1. Teszt: Worker pushes Box to Target");
+        /**
+         *
+         *  /\
+         *  |
+         *  |
+         *  |
+         * IDE PRINTELJETEK KI LEGYSZI A TESZTEKET AMIKET MEGIRTATOK EGY SZAMMAL AZ ELEJEN ÉS RAKJATOK BE A SWITCHBE PLS
+         */
 
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -135,6 +144,10 @@ public class Game {
             e.printStackTrace();
         }
 
-        game.startRound();
+        switch (Integer.parseInt(input)){
+            case 1:
+                tests.WorkerPushesBoxToTarget();
+                break;
+        }
     }
 }
