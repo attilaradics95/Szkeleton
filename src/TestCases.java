@@ -97,44 +97,54 @@ public class TestCases {
     }
 
     public void WorkerOnHole() {
+        Directions dir = Directions.EAST;
+
+        Controller controller = Controller.getInstance();
+
+        //Elemek létrehozása
         Worker worker1 = new Worker();
         Hole next = new Hole();
         Tile current = new Tile();
 
-        next.setNeighbor(current, Directions.EAST);
+        current.setVisitor(worker1);
+        worker1.setCurrentTile(current);
 
-        next.accept(worker1, Directions.EAST);
-        worker1.pushTo(next, Directions.EAST);
-        current.setVisitor(null);
-        worker1.die();
+        //pálya beállítása
+        current.setNeighbors(null, next, null, null);
+        next.setNeighbors(null, null, null, current);
+
+        //munkás mozgatása
+        controller.addWorker(worker1);
+        controller.moveWorker(dir);
     }
 
     public void WorkerOnWall() {
         Directions dir = Directions.EAST;
 
-        Controller controller = null;
+        Controller controller = Controller.getInstance();
+
+        //elemek létrehozása
         Worker worker = new Worker();
-        Worker selectedWorker = new Worker();
         Wall next = new Wall();
         Tile tile = new Tile();
 
         tile.setVisitor(worker);
-        tile.setNeighbor(next, dir);
+        worker.setCurrentTile(tile);
 
-        next.accept(worker, dir);
-        worker.pushTo(next, dir);
-        selectedWorker = controller.getSelectedworker();
-        if(worker == selectedWorker) {
-            worker.die();
-            controller.eliminateWorker(worker);
-        }
+        tile.setNeighbors(null, next, null, null);
+        next.setNeighbors(null, null, null, tile);
+
+        //munkás mozgatása
+        controller.addWorker(worker);
+        controller.moveWorker(dir);
     }
 
     public void WorkerPushesBox() {
         Directions dir = Directions.EAST;
 
-        Controller controller = null;
+        Controller controller = Controller.getInstance();
 
+        //Elemek létrehozása
         Worker worker = new Worker();
         Tile current = new Tile();
         Tile next = new Tile();
@@ -144,37 +154,60 @@ public class TestCases {
         current.setVisitor(worker);
         next.setVisitor(box);
         next1.setVisitor(null);
-        current.setNeighbor(next, dir);
-        next.setNeighbor(next1, dir);
 
+        worker.setCurrentTile(current);
+        box.setCurrentTile(next);
+
+        //pálya beállítása
+        current.setNeighbors(null, next, null, null);
+        next.setNeighbors(null, next1, null, current);
+        next1.setNeighbors(null, null, null, next);
+
+        //munkás mozgatása
+        controller.addWorker(worker);
         controller.moveWorker(dir);
-        worker.move(dir);
-        //next = current.getNeighbor(dir);
-        next.accept(worker, dir);
-        worker.pushTo(next, dir);
-
-        Visitor visitorOnNext = next.getVisitor();
-        if(visitorOnNext != null) {
-            //next1 = next.getNeighbor(dir);
-            next1.accept(visitorOnNext, dir);
-            box.pushTo(next1, dir);
-            next1.setVisitor(visitorOnNext);
-            next.setVisitor(worker);
-            current.setVisitor(null);
-        } else {
-            next.setVisitor(worker);
-            current.setVisitor(null);
-        }
     }
 
     public void WorkerStandsOnTrap() {
         Directions dir = Directions.EAST;
 
-        Worker worker = new Worker();
-        Trap trap = new Trap();
+        Controller controller = Controller.getInstance();
 
-        trap.setOpened(true);
-        worker.die();
+        //Elemek létrehozása
+        Tile tile1 = new Tile();
+        Tile tile2 = new Tile();
+        Switch tile3 = new Switch();
+        Trap tile4 = new Trap();
+        Tile tile5 = new Tile();
+        Worker visitor1 = new Worker();
+        Box visitor2 = new Box();
+        Worker visitor3 = new Worker();
+
+        //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
+        tile1.setNeighbors(null, tile2,tile4,null);
+        tile2.setNeighbors(null, tile3,null,tile1);
+        tile3.setNeighbors(null, null,null,tile2);
+        tile4.setNeighbors(tile1, null,null,null);
+
+
+        //beállítjuk a csapdát, hogy inaktív állapotban kezdődjön a teszt
+        tile4.setOpened(false);
+
+        // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
+        tile1.setVisitor(visitor1);
+        tile2.setVisitor(visitor2);
+        tile4.setVisitor(visitor3);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+        visitor3.setCurrentTile(tile3);
+
+        //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
+        controller.addWorker(visitor1);
+
+        // a teszteset szerint a munkás keletre tolja a ládát eggyel
+        controller.moveWorker(dir);
     }
 
     public void WorkerStepsOnActiveTrap() {
