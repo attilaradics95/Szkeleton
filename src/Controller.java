@@ -30,6 +30,7 @@ public class Controller {
      */
     public void addWorker(Worker w) {
         workers.add(w);
+        selectedworker = workers.get(0);
     }
 
     public Worker getSelectedworker() {
