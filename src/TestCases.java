@@ -81,22 +81,19 @@ public class TestCases {
     public void WorkerOnColumn() {
         Directions dir = Directions.EAST;
 
-        Controller controller = null;
+        Controller controller = Controller.getInstance();
         Worker worker = new Worker();
-        Worker selectedWorker = new Worker();
         Column next = new Column();
         Tile tile = new Tile();
 
         tile.setVisitor(worker);
-        tile.setNeighbor(next, dir);
+        worker.setCurrentTile(tile);
 
-        next.accept(worker, dir);
-        worker.pushTo(next, dir);
-        selectedWorker = controller.getSelectedworker();
-        if(worker == selectedWorker) {
-            worker.die();
-            controller.eliminateWorker(worker);
-        }
+        tile.setNeighbors(null, next, null, null);
+        next.setNeighbors(null, null, null, tile);
+
+        controller.addWorker(worker);
+        controller.moveWorker(dir);
     }
 
     public void WorkerOnHole() {
