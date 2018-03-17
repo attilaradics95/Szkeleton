@@ -9,7 +9,6 @@ public class Game {
     /**Singleton metódusok és attributumok*/
     private static Game instance = null;
     private Game(){
-        controller = Controller.getInstance();
         boxes = new ArrayList<>();
     }
     public static Game getInstance() {
@@ -120,6 +119,7 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = getInstance();
+        game.controller = Controller.getInstance();
         TestCases tests = new TestCases();
 
         System.out.println("Teszt kiválasztása(1,2,...):");
