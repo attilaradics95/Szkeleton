@@ -56,11 +56,11 @@ public class Controller {
 
     public void selectWorker(int i) {
         if(!(workers.isEmpty())){
-            if(i >= workers.size()){
+            if(i-1 >= workers.size()){
                 System.out.println("Nincs ilyen sorszámú raktáros. Legnagyobb sorszámú:" + (workers.size() - 1));
             }
             else{
-                selectedworker = workers.get(i);
+                selectedworker = workers.get(i-1);
                 System.out.println("selectWorker(" + i + ")");
             }
         }

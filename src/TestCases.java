@@ -322,7 +322,7 @@ public class TestCases {
         controller.addWorker(visitor2);
 
         // alapból a visitor1 lenne a kiválasztott munkás, de mi kiválasztjuk a 2-est
-        controller.selectWorker(1);
+        controller.selectWorker(2);
     }
     // @author Rozi
     public void trapOpensWithABoxOnIt() {
