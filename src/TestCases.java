@@ -3,36 +3,39 @@ public class TestCases {
     public void MLL() {
         Directions dir = Directions.EAST;
 
+        Controller controller = Controller.getInstance();
+
+        //elemek létrehozása
         Worker worker = new Worker();
         Box box1 = new Box();
         Box box2 = new Box();
-
         Tile tile1 = new Tile();
         Tile tile2 = new Tile();
         Tile tile3 = new Tile();
         Tile tile4 = new Tile();
 
+        //beállítjuk a visitorokat a mezőkre
         tile1.setVisitor(worker);
         tile2.setVisitor(box1);
         tile3.setVisitor(box2);
-        tile3.setVisitor(null);
+        tile4.setVisitor(null);
 
-        tile1.setNeighbor(tile2, dir);
-        tile2.setNeighbor(tile3, dir);
-        tile3.setNeighbor(tile4, dir);
+        //beállítjuk a mezőket a visitorokra
+        worker.setCurrentTile(tile1);
+        box1.setCurrentTile(tile2);
+        box2.setCurrentTile(tile3);
 
-        worker.move(dir);
-        tile2.accept(worker, dir);
-        worker.pushTo(tile2, dir);
-        tile3.accept(box1, dir);
-        box1.pushTo(tile3, dir);
-        tile4.accept(box2, dir);
-        box2.pushTo(tile4, dir);
+        //tesztnek megfelelő pálya beállítása
+        tile1.setNeighbors(null, tile2, null, null);
+        tile2.setNeighbors(null, tile3, null, tile2);
+        tile3.setNeighbors(null, tile4, null, tile2);
+        tile4.setNeighbors(null, null, null, tile3);
 
-        tile4.setVisitor(box2);
-        tile3.setVisitor(box1);
-        tile2.setVisitor(worker);
-        tile1.setVisitor(null);
+        //munkás hozzáadása a conotrollerhez
+        controller.addWorker(worker);
+
+        //controller segítségével a munkás mozgatása
+        controller.moveWorker(dir);
     }
 
     public void MLMMF() {
