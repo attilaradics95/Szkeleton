@@ -61,6 +61,11 @@ public class Controller {
 
     public void moveWorker(Directions direction) {
         System.out.println("selectWorker");
-        selectedworker.move(direction);
+        if (selectedworker != null){
+            selectedworker.move(direction);
+        }
+        else{
+            System.out.println("Nincs kiválasztott raktáros");
+        }
     }
 }
