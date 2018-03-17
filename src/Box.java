@@ -122,8 +122,9 @@ public class Box extends Visitor {
 
     public void die() {
         System.out.println("die()");
-
-
+        currentTile.setVisitor(null);
+        currentTile = null;
+        game.decreaseBoxes(this);
     }
 
 }
