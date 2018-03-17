@@ -38,7 +38,7 @@ public class Controller {
     }
 
     public void eliminateWorker(Worker w) {
-        System.out.println("eliminateWorker()");
+        System.out.println("eliminateWorker(" + w + ")");
         //Ha több munkas van mint egy akkor kivesszük a Listabol és szukseg eseten csereljuk a kivalasztottat
         //Ha mar csak az utolso munkas van benne akkor kivesszuk és befejezzuk a kort
         if (workers.size() > 1) {
@@ -55,9 +55,14 @@ public class Controller {
     }
 
     public void selectWorker(int i) {
-        System.out.println("selectWorker");
         if(!(workers.isEmpty())){
-            selectedworker = workers.get(i);
+            if(i >= workers.size()){
+                System.out.println("Nincs ilyen sorszámú raktáros. Legnagyobb sorszámú:" + (workers.size() - 1));
+            }
+            else{
+                selectedworker = workers.get(i);
+                System.out.println("selectWorker(" + i + ")");
+            }
         }
         else{
             System.out.println("Nincs raktáros!");
@@ -65,7 +70,7 @@ public class Controller {
     }
 
     public void moveWorker(Directions direction) {
-        System.out.println("selectWorker");
+        System.out.println("moveWorker(" + direction + ")");
         if (selectedworker != null){
             selectedworker.move(direction);
         }
