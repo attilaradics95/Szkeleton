@@ -1,5 +1,6 @@
 public class TestCases {
 
+    // @author Bálint
     public void MLL() {
         Directions dir = Directions.EAST;
 
@@ -38,6 +39,7 @@ public class TestCases {
         controller.moveWorker(dir);
     }
 
+    // @author Bálint
     public void MLMMF() {
         Directions dir = Directions.EAST;
 
@@ -78,6 +80,7 @@ public class TestCases {
         controller.moveWorker(dir);
     }
 
+    // @author Bálint
     public void WorkerOnColumn() {
         Directions dir = Directions.EAST;
 
@@ -96,6 +99,7 @@ public class TestCases {
         controller.moveWorker(dir);
     }
 
+    // @author Bálint
     public void WorkerOnHole() {
         Directions dir = Directions.EAST;
 
@@ -118,6 +122,7 @@ public class TestCases {
         controller.moveWorker(dir);
     }
 
+    // @author Bálint
     public void WorkerOnWall() {
         Directions dir = Directions.EAST;
 
@@ -139,6 +144,7 @@ public class TestCases {
         controller.moveWorker(dir);
     }
 
+    // @author Bálint
     public void WorkerPushesBox() {
         Directions dir = Directions.EAST;
 
@@ -168,6 +174,7 @@ public class TestCases {
         controller.moveWorker(dir);
     }
 
+    // @author Bálint
     public void WorkerStandsOnTrap() {
         Directions dir = Directions.EAST;
 
@@ -210,26 +217,40 @@ public class TestCases {
         controller.moveWorker(dir);
     }
 
+    // @author Bálint
     public void WorkerStepsOnActiveTrap() {
         Directions dir = Directions.EAST;
 
+        Controller controller = Controller.getInstance();
+
+        //Elemek létrehozása
         Worker worker = new Worker();
         Trap next = new Trap();
         Tile current = new Tile();
 
         current.setVisitor(worker);
         next.setVisitor(null);
-        current.setNeighbor(next, dir);
+        worker.setCurrentTile(current);
 
-        next.accept(worker, dir);
-        worker.pushTo(next, dir);
-        current.setVisitor(null);
-        worker.die();
+        //pálya beállítása
+        current.setNeighbors(null, next, null, null);
+        next.setNeighbors(null, null, null, current);
+
+        //csapda aktiválása
+        next.setOpened(true);
+
+        //munkás mozgatása
+        controller.addWorker(worker);
+        controller.moveWorker(dir);
     }
 
+    // @author Bálint
     public void WorkerStepsOnInactiveTrap() {
         Directions dir = Directions.EAST;
 
+        Controller controller = Controller.getInstance();
+
+        //Elemek létrehozása
         Worker worker = new Worker();
         Trap next = new Trap();
         Tile current = new Tile();
@@ -237,22 +258,20 @@ public class TestCases {
 
         current.setVisitor(worker);
         next.setVisitor(null);
-        current.setNeighbor(next, dir);
+        worker.setCurrentTile(current);
 
-        next.accept(worker, dir);
-        worker.pushTo(next, dir);
+        //pálya beállítása
+        current.setNeighbors(null, next, null, null);
+        next.setNeighbors(null, next1, null, current);
+        next1.setNeighbors(null, null, null, next);
 
-        Visitor visitorOnNext = next.getVisitor();
-        if(visitorOnNext != null) {
-            //next1 = next.getNeighbor(dir);
-            next1.accept(visitorOnNext, dir);
-            next1.setVisitor(visitorOnNext);
-            next.setVisitor(worker);
-            current.setVisitor(null);
-        } else {
-            current.setVisitor(null);
-            next.setVisitor(worker);
-        }
+        //csapda inaktív
+        next.setOpened(false);
+
+        //munkás mozgatása (kétszer lép, egyszer az inaktív csapdára, majd egy sima mezőre
+        controller.addWorker(worker);
+        controller.moveWorker(dir);
+        controller.moveWorker(dir);
     }
     // @author Rozi
     public void WorkerPushesBoxToTarget() {
