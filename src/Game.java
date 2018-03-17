@@ -124,7 +124,7 @@ public class Game {
 
         System.out.println("Teszt kiválasztása(1,2,...):");
         /**Teszt template */
-        System.out.println("n. Teszt: Teszt leírása");
+        //System.out.println("n. Teszt: Teszt leírása");
         System.out.println("1. Teszt: Worker pushes Box to Target");
         System.out.println("2. Teszt: Worker pushes Box to Column");
         System.out.println("3. Teszt: Select Worker In Action");
@@ -138,7 +138,14 @@ public class Game {
         System.out.println("11. Teszt: Worker stands on a Trap");
         System.out.println("12. Teszt: Worker steps on active Trap");
         System.out.println("13. Teszt: Worker steps on inactive Trap");
-        System.out.println("14. Teszt: Worker steps onTarget");
+        System.out.println("14. Teszt: Worker steps on Target");
+        System.out.println("15. Teszt: Worker steps on Switch");
+        System.out.println("16. Teszt: Worker pushes Box to Switch");
+        System.out.println("17. Teszt: Worker pushes Box from Switch");
+        System.out.println("18. Teszt: Worker pushes Box to Hole");
+        System.out.println("19. Teszt: Worker pushes Box to Wall");
+        System.out.println("20. Teszt: Worker pushes another Worker to Tile");
+        System.out.println("21. Teszt: Worker pushes another Worker to Hole");
 
         /**
          *
@@ -200,6 +207,27 @@ public class Game {
                 break;
             case 14:
                 tests.WorkerStepsOnTarget();
+                break;
+            case 15:
+                tests.WorkerStepsOnSwitch();
+                break;
+            case 16:
+                tests.WorkerPushesBoxToSwitch();
+                break;
+            case 17:
+                tests.WorkerPushesBoxFromSwitch();
+                break;
+            case 18:
+                tests.WorkerPushesBoxToHole();
+                break;
+            case 19:
+                tests.WorkerPushesBoxToWall();
+                break;
+            case 20:
+                tests.WorkerPushesAnotherWorkerToTile();
+                break;
+            case 21:
+                tests.WorkerPushesAnotherWorkerToHole();
                 break;
         }
     }
