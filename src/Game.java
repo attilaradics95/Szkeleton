@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,6 +10,7 @@ public class Game {
     private static Game instance = null;
     private Game(){
         controller = Controller.getInstance();
+        boxes = new ArrayList<>();
     }
     public static Game getInstance() {
         if(instance == null) {
@@ -18,13 +20,20 @@ public class Game {
     }
 
     /**Attributumok*/
-    Controller controller = null;
-    boolean roundover = false;
+    private Controller controller = null;
+    private boolean roundover = false;
+    private ArrayList<Box> boxes;
 
-
-    /**Privat Metódusok*/
+    /**Metódusok*/
     private void loadMap(){
 
+    }
+
+    public void decreaseBoxes(Box box){
+        boxes.remove(box);
+        if (boxes.isEmpty()){
+            this.endRound();
+        }
     }
 
     private void startRound(){
