@@ -126,6 +126,10 @@ public class Game {
         /**Teszt template */
         System.out.println("n. Teszt: Teszt leírása");
         System.out.println("1. Teszt: Worker pushes Box to Target");
+        System.out.println("2. Teszt: Worker pushes Box to Column");
+        System.out.println("3. Teszt: Select Worker In Action");
+        System.out.println("4. Teszt: Trap Opens With A Box On It ");
+
         /**
          *
          *  /\
@@ -147,6 +151,15 @@ public class Game {
         switch (Integer.parseInt(input)){
             case 1:
                 tests.WorkerPushesBoxToTarget();
+                break;
+            case 2:
+                tests.WorkerPushesBoxToColumn();
+                break;
+            case 3:
+                tests.SelectWorkerInAction();
+                break;
+            case 4:
+                tests.trapOpensWithABoxOnIt();
                 break;
         }
     }
