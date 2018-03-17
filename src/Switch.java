@@ -10,7 +10,10 @@ public class Switch extends ATile {
 
     @Override
     public void setNeighbors(ATile north, ATile east, ATile south, ATile west) {
-
+        neighbors.put(Directions.NORTH, north);
+        neighbors.put(Directions.EAST, east);
+        neighbors.put(Directions.SOUTH, south);
+        neighbors.put(Directions.WEST, west);
     }
 
     public void switchIt(Box b) {
@@ -21,12 +24,5 @@ public class Switch extends ATile {
         System.out.println("switch(" + w + ")");
     }
 
-    @Override
-    public void setNeighbors(ATile north, ATile east, ATile south, ATile west) {
-        neighbors.put(Directions.NORTH, north);
-        neighbors.put(Directions.EAST, east);
-        neighbors.put(Directions.SOUTH, south);
-        neighbors.put(Directions.WEST, west);
-    }
 }
 
