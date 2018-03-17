@@ -237,6 +237,7 @@ public class TestCases {
             next.setVisitor(worker);
         }
     }
+    // @author Rozi
     public void WorkerPushesBoxToTarget() {
         Controller controller = Controller.getInstance();
         Tile tile1 = new Tile();
@@ -261,7 +262,7 @@ public class TestCases {
         controller.moveWorker(Directions.EAST);
 
     }
-
+    // @author Rozi
     public void WorkerPushesBoxToColumn() {
         Controller controller = Controller.getInstance();
         Tile tile1 = new Tile();
@@ -286,7 +287,7 @@ public class TestCases {
         controller.moveWorker(Directions.EAST);
 
     }
-
+    // @author Rozi
     public void SelectWorkerInAction() {
         Controller controller = Controller.getInstance();
         Tile tile1 = new Tile();
@@ -311,7 +312,7 @@ public class TestCases {
         // alapból a visitor1 lenne a kiválasztott munkás, de mi kiválasztjuk a 2-est
         controller.selectWorker(2);
     }
-
+    // @author Rozi
     public void trapOpensWithABoxOnIt() {
         Controller controller = Controller.getInstance();
         Tile tile1 = new Tile();
@@ -330,6 +331,9 @@ public class TestCases {
         tile4.setNeighbors(tile1, null,null,null);
 
 
+        //beállítjuk a csapdát, hogy inaktív állapotban kezdődjön a teszt
+        tile4.setOpened(false);
+
         // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
         tile1.setVisitor(visitor1);
         tile2.setVisitor(visitor2);
@@ -342,5 +346,4 @@ public class TestCases {
         controller.moveWorker(Directions.EAST);
 
     }
-
 }

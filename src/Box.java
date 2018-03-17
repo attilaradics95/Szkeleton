@@ -20,6 +20,7 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Trap next, Directions d) {
+
         System.out.println("pushTo(" + next + "," + d + ")");
     }
 

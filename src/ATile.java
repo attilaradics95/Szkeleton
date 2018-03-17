@@ -27,6 +27,6 @@ public abstract class ATile {
 
     abstract public void accept(Visitor v, Directions d);
 
-     abstract public void setNeighbors(ATile north,ATile east, ATile south, ATile west);
+    abstract public void setNeighbors(ATile north,ATile east, ATile south, ATile west);
 
 }
