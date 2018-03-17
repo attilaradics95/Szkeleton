@@ -6,7 +6,6 @@ public class WorkerOnHole {
         Tile current = new Tile();
 
         next.setNeighbor(current, Directions.EAST);
-
         next.accept(worker1, Directions.EAST);
         worker1.pushTo(next, Directions.EAST);
         current.setVisitor(null);
