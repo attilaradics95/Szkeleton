@@ -9,5 +9,6 @@ public abstract class Visitor {
     abstract public void pushTo(Target next, Directions d);
     abstract public void pushTo(Wall next, Directions d);
     abstract public void pushTo(Column next, Directions d);
+
     abstract public void die();
 }

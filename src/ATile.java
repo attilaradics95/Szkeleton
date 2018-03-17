@@ -1,8 +1,8 @@
 import java.util.HashMap;
 
 public abstract class ATile {
-    private HashMap<Directions, ATile> neighbors;
-    private Visitor visitor;
+    protected HashMap<Directions, ATile> neighbors;
+    protected Visitor visitor;
 
     public ATile(){
         neighbors = new HashMap<>();
@@ -26,4 +26,7 @@ public abstract class ATile {
     }
 
     abstract public void accept(Visitor v, Directions d);
+
+     abstract public void setNeighbors(ATile north,ATile east, ATile south, ATile west);
+
 }
