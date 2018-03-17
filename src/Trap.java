@@ -10,18 +10,10 @@ public class Trap extends ATile {
 
     @Override
     public void setNeighbors(ATile north, ATile east, ATile south, ATile west) {
-        neighbors.put(Directions.NORTH, north);
-        neighbors.put(Directions.EAST, east);
-        neighbors.put(Directions.SOUTH, south);
-        neighbors.put(Directions.WEST, west);
+
     }
 
-    public void setOpened(Boolean opened) {
-        System.out.println("setOpened(" + opened + ")");
-        this.opened = opened;
-        if (opened && (visitor != null))
-        {
-            visitor.die();
-        }
+    public void setOpened(Boolean bool) {
+        System.out.println("setOpened(" + bool + ")");
     }
 }

@@ -8,6 +8,11 @@ public class Switch extends ATile {
         v.pushTo(this, d);
     }
 
+    @Override
+    public void setNeighbors(ATile north, ATile east, ATile south, ATile west) {
+
+    }
+
     public void switchIt(Box b) {
         System.out.println("switch(" + b + ")");
     }

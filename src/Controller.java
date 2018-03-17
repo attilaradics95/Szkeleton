@@ -30,6 +30,7 @@ public class Controller {
      */
     public void addWorker(Worker w) {
         workers.add(w);
+        selectedworker = workers.get(0);
     }
 
     public Worker getSelectedworker() {
@@ -55,11 +56,21 @@ public class Controller {
 
     public void selectWorker(int i) {
         System.out.println("selectWorker");
-        selectedworker = workers.get(i);
+        if(!(workers.isEmpty())){
+            selectedworker = workers.get(i);
+        }
+        else{
+            System.out.println("Nincs raktáros!");
+        }
     }
 
     public void moveWorker(Directions direction) {
         System.out.println("selectWorker");
-        selectedworker.move(direction);
+        if (selectedworker != null){
+            selectedworker.move(direction);
+        }
+        else{
+            System.out.println("Nincs kiválasztott raktáros");
+        }
     }
 }

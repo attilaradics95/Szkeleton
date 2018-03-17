@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,7 +9,7 @@ public class Game {
     /**Singleton metódusok és attributumok*/
     private static Game instance = null;
     private Game(){
-        controller = Controller.getInstance();
+        boxes = new ArrayList<>();
     }
     public static Game getInstance() {
         if(instance == null) {
@@ -18,13 +19,20 @@ public class Game {
     }
 
     /**Attributumok*/
-    Controller controller = null;
-    boolean roundover = false;
+    private Controller controller = null;
+    private boolean roundover = false;
+    private ArrayList<Box> boxes;
 
-
-    /**Privat Metódusok*/
+    /**Metódusok*/
     private void loadMap(){
 
+    }
+
+    public void decreaseBoxes(Box box){
+        boxes.remove(box);
+        if (boxes.isEmpty()){
+            this.endRound();
+        }
     }
 
     private void startRound(){
@@ -111,11 +119,21 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = getInstance();
+        game.controller = Controller.getInstance();
+        TestCases tests = new TestCases();
 
         System.out.println("Teszt kiválasztása(1,2,...):");
         /**Teszt template */
         System.out.println("n. Teszt: Teszt leírása");
-
+        System.out.println("1. Teszt: Worker pushes Box to Target");
+        /**
+         *
+         *  /\
+         *  |
+         *  |
+         *  |
+         * IDE PRINTELJETEK KI LEGYSZI A TESZTEKET AMIKET MEGIRTATOK EGY SZAMMAL AZ ELEJEN ÉS RAKJATOK BE A SWITCHBE PLS
+         */
 
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -126,6 +144,10 @@ public class Game {
             e.printStackTrace();
         }
 
-        game.startRound();
+        switch (Integer.parseInt(input)){
+            case 1:
+                tests.WorkerPushesBoxToTarget();
+                break;
+        }
     }
 }
