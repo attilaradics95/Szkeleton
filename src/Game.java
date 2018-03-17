@@ -129,6 +129,16 @@ public class Game {
         System.out.println("2. Teszt: Worker pushes Box to Column");
         System.out.println("3. Teszt: Select Worker In Action");
         System.out.println("4. Teszt: Trap Opens With A Box On It ");
+        System.out.println("5. Teszt: Worker -> Box -> Box");
+        System.out.println("6. Teszt: Worker -> Box -> Worker -> Worker -> Wall");
+        System.out.println("7. Teszt: Worker on Column");
+        System.out.println("8. Teszt: Worker on Hole");
+        System.out.println("9. Teszt: Worker on Wall");
+        System.out.println("10. Teszt: Worker pushes Box");
+        System.out.println("11. Teszt: Worker stands on a Trap");
+        System.out.println("12. Teszt: Worker steps on active Trap");
+        System.out.println("13. Teszt: Worker steps on inactive Trap");
+        System.out.println("14. Teszt: Worker steps onTarget");
 
         /**
          *
@@ -160,6 +170,36 @@ public class Game {
                 break;
             case 4:
                 tests.trapOpensWithABoxOnIt();
+                break;
+            case 5:
+                tests.MLL();
+                break;
+            case 6:
+                tests.MLMMF();
+                break;
+            case 7:
+                tests.WorkerOnColumn();
+                break;
+            case 8:
+                tests.WorkerOnHole();
+                break;
+            case 9:
+                tests.WorkerOnWall();
+                break;
+            case 10:
+                tests.WorkerPushesBox();
+                break;
+            case 11:
+                tests.WorkerStandsOnTrap();
+                break;
+            case 12:
+                tests.WorkerStepsOnActiveTrap();
+                break;
+            case 13:
+                tests.WorkerStepsOnInactiveTrap();
+                break;
+            case 14:
+                tests.WorkerStepsOnTarget();
                 break;
         }
     }
