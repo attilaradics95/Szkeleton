@@ -25,7 +25,11 @@ public class Switch extends ATile {
         tabulate.in();
 
         System.out.println(this.toString() + ".switch(" + b + ")");
-        trap.setOpened(true);
+        if (trap != null){
+            trap.setOpened(true);
+        } else {
+            System.out.println("Nem tartozik csapda a kapcsolohoz.");
+        }
 
         tabulate.out();
     }

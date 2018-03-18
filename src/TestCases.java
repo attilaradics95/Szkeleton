@@ -399,7 +399,6 @@ public class TestCases {
         Tile tile2 = new Tile();
         Switch tile3 = new Switch();
         Trap tile4 = new Trap();
-        Tile tile5 = new Tile();
         Worker visitor1 = new Worker();
         Box visitor2 = new Box();
         Box visitor3 = new Box();
@@ -422,7 +421,7 @@ public class TestCases {
         //beállítjuk a látogatók aktuális mezőit
         visitor1.setCurrentTile(tile1);
         visitor2.setCurrentTile(tile2);
-        visitor3.setCurrentTile(tile3);
+        visitor3.setCurrentTile(tile4);
 
         //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
         controller.addWorker(visitor1);
@@ -618,6 +617,8 @@ public class TestCases {
         //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
         tile1.setNeighbors(null, tile2, null, null);
         tile2.setNeighbors(null, null, null, tile1);
+
+
 
         // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
         tile1.setVisitor(visitor1);
