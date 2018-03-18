@@ -79,6 +79,8 @@ public class TestCases {
 
         //Első munkás mozgatása
         controller.addWorker(visitor1);
+        controller.addWorker(visitor3);
+        controller.addWorker(visitor4);
         controller.moveWorker(dir);
     }
 
@@ -215,6 +217,7 @@ public class TestCases {
 
         //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
         controller.addWorker(visitor1);
+        controller.addWorker(visitor3);
 
         // a teszteset szerint a munkás keletre tolja a ládát eggyel
         controller.moveWorker(dir);
