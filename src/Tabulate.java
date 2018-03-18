@@ -15,8 +15,6 @@ public class Tabulate {
     public void out() {
         //System.out.println("Fuggveny visszatert.");
         tabNum--;
-        tabulate();
-
     }
 
     //a függvény neve előtt kiírja a megfelelő számú tabulátort
