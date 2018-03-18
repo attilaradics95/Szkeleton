@@ -23,9 +23,10 @@ public abstract class ATile {
     }
 
     public void setVisitor(Visitor v){
-
+        tabulate.in();
         System.out.println(this.toString() + ".setVisitor(" + v + ")");
         visitor = v;
+        tabulate.out();
 
     }
 
