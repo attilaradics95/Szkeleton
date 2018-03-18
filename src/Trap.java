@@ -1,6 +1,10 @@
 public class Trap extends ATile {
     //Attribútumok
-    private Boolean opened;
+    private boolean opened;
+
+    public Trap(){
+        opened = false;
+    }
 
     //Függvények
     public void accept(Visitor v, Directions d) {
@@ -10,5 +14,8 @@ public class Trap extends ATile {
 
     public void setOpened(Boolean bool) {
         System.out.println("setOpened(" + bool + ")");
+        if(opened && visitor != null){
+            visitor.die();
+        }
     }
 }
