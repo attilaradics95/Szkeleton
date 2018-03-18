@@ -7,13 +7,16 @@ public class Tabulate {
     //minden kiírandó függvénynél meghívjuk a legelején
     public void in() {
         tabNum++;
+        System.out.print(">");
         tabulate();
     }
 
     //csökkenti a tabulátorok számát
     //minden kiírandó függvénynél meghívjuk a legvégén
     public void out() {
-        //System.out.println("Fuggveny visszatert.");
+        System.out.print("<");
+        tabulate();
+        System.out.println("return");
         tabNum--;
     }
 
