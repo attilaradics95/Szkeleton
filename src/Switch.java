@@ -16,6 +16,7 @@ public class Switch extends ATile {
     public void accept(Visitor v, Directions d) {
         tabulate.in();
 
+        //mint minden accept meghívja a visitor pushTo metódusát önmagával
         System.out.println(this.toString() + ".accept(" + v + "," + d + ")");
         v.pushTo(this, d);
 
@@ -29,7 +30,8 @@ public class Switch extends ATile {
     public void switchIt(Box b) {
         tabulate.in();
 
-        System.out.println(this.toString() + ".switch(" + b + ")");
+        //ha box kerül a kapcsolóra vált - a trap kinyílik
+        System.out.println(this.toString() + ".switchIt(" + b + ")");
         if (trap != null){
             trap.setOpened(true);
         } else {
@@ -42,8 +44,13 @@ public class Switch extends ATile {
     public void switchIt(Worker w){
         tabulate.in();
 
-        System.out.println(this.toString() + ".switch(" + w + ")");
-        trap.setOpened(false);
+        //ha worker kerül a kapcsolóra - a trap inaktív lesz
+        System.out.println(this.toString() + ".switchIt(" + w + ")");
+        if (trap != null){
+            trap.setOpened(false);
+        } else {
+            System.out.println("Nem tartozik csapda a kapcsolohoz.");
+        }
 
         tabulate.out();
     }
