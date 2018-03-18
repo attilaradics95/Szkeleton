@@ -409,6 +409,8 @@ public class TestCases {
         tile3.setNeighbors(null, null,null,tile2);
         tile4.setNeighbors(tile1, null,null,null);
 
+        //beállítjuk a kapcsolóhoz a csapdát
+        tile3.setTrap(tile4);
 
         //beállítjuk a csapdát, hogy inaktív állapotban kezdődjön a teszt
         tile4.setOpened(false);
@@ -617,8 +619,6 @@ public class TestCases {
         //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
         tile1.setNeighbors(null, tile2, null, null);
         tile2.setNeighbors(null, null, null, tile1);
-
-
 
         // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
         tile1.setVisitor(visitor1);
