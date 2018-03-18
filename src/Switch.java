@@ -21,6 +21,10 @@ public class Switch extends ATile {
         tabulate.out();
     }
 
+    public void setTrap(Trap t){
+        trap = t;
+    }
+
     public void switchIt(Box b) {
         tabulate.in();
 
