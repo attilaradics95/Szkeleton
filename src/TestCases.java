@@ -1,7 +1,11 @@
 public class TestCases {
 
+    public static int counter;
+
     // @author Bálint
     public void MLL() {
+        counter = 0;
+
         Directions dir = Directions.EAST;
 
         Controller controller = Controller.getInstance();
@@ -327,6 +331,7 @@ public class TestCases {
         controller.moveWorker(Directions.EAST);
 
     }
+
     // @author Rozi
     public void WorkerPushesBoxToColumn() {
         Controller controller = Controller.getInstance();
@@ -356,6 +361,7 @@ public class TestCases {
         controller.moveWorker(Directions.EAST);
 
     }
+
     // @author Rozi
     public void SelectWorkerInAction() {
         Controller controller = Controller.getInstance();
@@ -385,6 +391,7 @@ public class TestCases {
         // alapból a visitor1 lenne a kiválasztott munkás, de mi kiválasztjuk a 2-est
         controller.selectWorker(2);
     }
+
     // @author Rozi
     public void trapOpensWithABoxOnIt() {
         Controller controller = Controller.getInstance();

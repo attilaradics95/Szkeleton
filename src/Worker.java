@@ -5,18 +5,28 @@ import java.io.InputStreamReader;
 public class Worker extends Visitor{
     private Controller controller = null;
 
+    public int counter = TestCases.counter;
+
+    //számláló attribútum a rendes kiíráshoz
+    public static int numberOfWorkers = 0;
+
     public Worker(){
         controller = Controller.getInstance();
+        numberOfWorkers++;
     }
 
+
+
     public void move(Directions d) {
-        System.out.println(this + ".move("+ d +")");
+        counter++;
+        System.out.println(counter + ". " + this.toString() + ".move("+ d +")");
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d);
     }
 
     public void pushTo(Tile next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        counter++;
+        System.out.println(counter + ". " + this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
@@ -37,7 +47,8 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Switch next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        counter++;
+        System.out.println(counter + ". " + this.toString() + ".pushTo(" + next + "," + d + ")");
 
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
@@ -60,12 +71,14 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Hole next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        counter++;
+        System.out.println(counter + ". " + this.toString() + ".pushTo(" + next + "," + d + ")");
         this.die();
     }
 
     public void pushTo(Trap next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        counter++;
+        System.out.println(counter + ". " + this.toString() + ".pushTo(" + next + "," + d + ")");
         //Input beolvasása a konzolról
         while (true) {
             System.out.println("Nyitva van a csapda? (Y/N)");
@@ -104,7 +117,8 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Target next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        counter++;
+        System.out.println(counter + ". " + this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
@@ -125,7 +139,8 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Wall next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        counter++;
+        System.out.println(counter + ". " + this.toString() + ".pushTo(" + next + "," + d + ")");
 
         Worker sw = controller.getSelectedworker();
         if(this != sw){
@@ -134,7 +149,8 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Column next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        counter++;
+        System.out.println(counter + ". " + this.toString() + ".pushTo(" + next + "," + d + ")");
 
         Worker sw = controller.getSelectedworker();
         if(this != sw){
@@ -143,11 +159,14 @@ public class Worker extends Visitor{
     }
 
     public void die() {
-        System.out.println(this + ".die()");
+        counter++;
+        System.out.println(counter + ". " + this.toString() + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         controller.eliminateWorker(this);
     }
 
-
+    public String toString() {
+        return "worker" + numberOfWorkers;
+    }
 }
