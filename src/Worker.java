@@ -10,12 +10,13 @@ public class Worker extends Visitor{
     }
 
     public void move(Directions d) {
+        System.out.println(this + ".move("+ d +")");
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d);
     }
 
     public void pushTo(Tile next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
@@ -36,7 +37,7 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Switch next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
 
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
@@ -59,12 +60,12 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Hole next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
         this.die();
     }
 
     public void pushTo(Trap next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
         //Input beolvasása a konzolról
         while (true) {
             System.out.println("Nyitva van a csapda? (Y/N)");
@@ -103,7 +104,7 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Target next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
@@ -124,7 +125,7 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Wall next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
 
         Worker sw = controller.getSelectedworker();
         if(this != sw){
@@ -133,7 +134,7 @@ public class Worker extends Visitor{
     }
 
     public void pushTo(Column next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
 
         Worker sw = controller.getSelectedworker();
         if(this != sw){
@@ -142,7 +143,7 @@ public class Worker extends Visitor{
     }
 
     public void die() {
-        System.out.println("die()");
+        System.out.println(this + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         controller.eliminateWorker(this);
