@@ -5,14 +5,19 @@ import java.io.InputStreamReader;
 public class Box extends Visitor {
     //Attribútumok
     Game game = null;
+    //név kiírására szolgáló számlálók
+    static int instanceCounter = 0;
+    int counter = 0;
 
     //Függvények
     public Box() {
         game = Game.getInstance();
+        instanceCounter++;
+        counter = instanceCounter;
     }
 
     public void pushTo(Tile next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -42,7 +47,7 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Switch next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
@@ -75,7 +80,7 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Hole next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
@@ -98,7 +103,7 @@ public class Box extends Visitor {
 
     public void pushTo(Trap next, Directions d) {
 
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
@@ -146,7 +151,7 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Target next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
@@ -178,22 +183,26 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Wall next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
     }
 
     public void pushTo(Column next, Directions d) {
-        System.out.println(this + ".pushTo(" + next + "," + d + ")");
+        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
     }
 
     public void setUnmovable() {
-        System.out.println(this + ".setUnmovable()");
+        System.out.println(this.toString() + ".setUnmovable()");
     }
 
     public void die() {
-        System.out.println(this + ".die()");
+        System.out.println(this.toString() + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         game.decreaseBoxes(this);
+    }
+
+    public String toString() {
+        return "box" + counter;
     }
 
 }
