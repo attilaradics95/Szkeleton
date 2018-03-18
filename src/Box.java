@@ -8,6 +8,7 @@ public class Box extends Visitor {
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
     int counter = 0;
+    Tabulate tabulate = new Tabulate();
 
     //Függvények
     public Box() {
@@ -17,6 +18,8 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Tile next, Directions d) {
+        tabulate.in();
+
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
@@ -38,15 +41,23 @@ public class Box extends Visitor {
                     currentTile.setVisitor(null);
                     next.setVisitor(this);
                 }
+
+                tabulate.out();
+
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
+
+                tabulate.out();
+
                 return;
             }
         }
     }
 
     public void pushTo(Switch next, Directions d) {
+        tabulate.in();
+
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
@@ -71,15 +82,23 @@ public class Box extends Visitor {
                     next.setVisitor(this);
                     next.switchIt(this);
                 }
+
+                tabulate.out();
+
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
+
+                tabulate.out();
+
                 return;
             }
         }
     }
 
     public void pushTo(Hole next, Directions d) {
+        tabulate.in();
+
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
@@ -93,15 +112,22 @@ public class Box extends Visitor {
             }
             if (input.equals("Y") || input.equals("y")) {
                 this.die();
+
+                tabulate.out();
+
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
+
+                tabulate.out();
+
                 return;
             }
         }
     }
 
     public void pushTo(Trap next, Directions d) {
+        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
@@ -126,6 +152,7 @@ public class Box extends Visitor {
                     }
                     if (input1.equals("Y") || input1.equals("y")) {
                         this.die();
+                        tabulate.out();
                         return;
                     }
                     if (input1.equals("N") || input1.equals("n")) {
@@ -140,17 +167,20 @@ public class Box extends Visitor {
                             currentTile.setVisitor(null);
                             next.setVisitor(this);
                         }
+                        tabulate.out();
                         return;
                     }
                 }
             }
             if (input.equals("N") || input.equals("n")) {
+                tabulate.out();
                 return;
             }
         }
     }
 
     public void pushTo(Target next, Directions d) {
+        tabulate.in();
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
@@ -174,31 +204,41 @@ public class Box extends Visitor {
                     next.setVisitor(this);
                     this.setUnmovable();
                 }
+                tabulate.out();
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
+                tabulate.out();
                 return;
             }
         }
     }
 
     public void pushTo(Wall next, Directions d) {
+        tabulate.in();
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
+        tabulate.out();
     }
 
     public void pushTo(Column next, Directions d) {
+        tabulate.in();
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
+        tabulate.out();
     }
 
     public void setUnmovable() {
+        tabulate.in();
         System.out.println(this.toString() + ".setUnmovable()");
+        tabulate.out();
     }
 
     public void die() {
+        tabulate.in();
         System.out.println(this.toString() + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         game.decreaseBoxes(this);
+        tabulate.out();
     }
 
     public String toString() {

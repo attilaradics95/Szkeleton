@@ -23,6 +23,9 @@ public class Game {
     private boolean roundover = false;
     private ArrayList<Box> boxes;
 
+    /**Tabulator*/
+    Tabulate tabulate = new Tabulate();
+
     /**Metódusok*/
     private void loadMap(){
 
@@ -95,6 +98,8 @@ public class Game {
     }
 
     public void endRound(){
+        tabulate.in();
+
         System.out.println("endRound()");
         //Akkor lep ki a loopbol ha megkapja a megfelelo inputot
         while (true) {
@@ -108,10 +113,16 @@ public class Game {
             }
             if (input.equals("Y") || input.equals("y")) {
                 roundover = true;
+
+                tabulate.out();
+
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
                 roundover = false;
+
+                tabulate.out();
+
                 return;
             }
         }

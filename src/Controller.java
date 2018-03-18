@@ -6,6 +6,8 @@ public class Controller {
      */
     private static Controller instance = null;
 
+    Tabulate tabulate = new Tabulate();
+
     private Controller() {
         workers = new ArrayList<>();
         game = Game.getInstance();
@@ -38,6 +40,8 @@ public class Controller {
     }
 
     public void eliminateWorker(Worker w) {
+        tabulate.in();
+
         System.out.println("eliminateWorker(" + w + ")");
         //Ha több munkas van mint egy akkor kivesszük a Listabol és szukseg eseten csereljuk a kivalasztottat
         //Ha mar csak az utolso munkas van benne akkor kivesszuk és befejezzuk a kort
@@ -48,9 +52,14 @@ public class Controller {
             } else {
                 workers.remove(w);
             }
+
+            tabulate.out();
+
         } else {
             workers.remove(w);
             game.endRound();
+
+            tabulate.out();
         }
     }
 

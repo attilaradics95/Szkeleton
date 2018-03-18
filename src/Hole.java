@@ -3,6 +3,7 @@ public class Hole extends ATile {
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
     int counter = 0;
+    Tabulate tabulate = new Tabulate();
 
     public Hole() {
         instanceCounter++;
@@ -10,8 +11,12 @@ public class Hole extends ATile {
     }
 
     public void accept(Visitor v, Directions d) {
+        tabulate.in();
+
         System.out.println(this.toString() + ".accept(" + v + "," + d + ")");
         v.pushTo(this, d);
+
+        tabulate.out();
     }
 
     public String toString() {

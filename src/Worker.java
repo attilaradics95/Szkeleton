@@ -10,6 +10,7 @@ public class Worker extends Visitor{
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
     int counter = 0;
+    Tabulate tabulate = new Tabulate();
 
     public Worker(){
         controller = Controller.getInstance();
@@ -20,13 +21,15 @@ public class Worker extends Visitor{
 
 
     public void move(Directions d) {
-
+        tabulate.in();
         System.out.println(this.toString() + ".move("+ d +")");
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d);
+        tabulate.out();
     }
 
     public void pushTo(Tile next, Directions d) {
+        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
@@ -46,9 +49,12 @@ public class Worker extends Visitor{
                 this.die();
             }
         }
+
+        tabulate.out();
     }
 
     public void pushTo(Switch next, Directions d) {
+        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
@@ -70,15 +76,21 @@ public class Worker extends Visitor{
                 this.die();
             }
         }
+
+        tabulate.out();
     }
 
     public void pushTo(Hole next, Directions d) {
+        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         this.die();
+
+        tabulate.out();
     }
 
     public void pushTo(Trap next, Directions d) {
+        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         //Input beolvasása a konzolról
@@ -93,6 +105,9 @@ public class Worker extends Visitor{
             }
             if (input.equals("Y") || input.equals("y")) {
                 this.die();
+
+                tabulate.out();
+
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
@@ -113,12 +128,16 @@ public class Worker extends Visitor{
                         this.die();
                     }
                 }
+
+                tabulate.out();
+
                 return;
             }
         }
     }
 
     public void pushTo(Target next, Directions d) {
+        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
@@ -138,9 +157,12 @@ public class Worker extends Visitor{
                 this.die();
             }
         }
+
+        tabulate.out();
     }
 
     public void pushTo(Wall next, Directions d) {
+        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
@@ -148,9 +170,12 @@ public class Worker extends Visitor{
         if(this != sw){
             this.die();
         }
+
+        tabulate.out();
     }
 
     public void pushTo(Column next, Directions d) {
+        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
@@ -158,14 +183,19 @@ public class Worker extends Visitor{
         if(this != sw){
             this.die();
         }
+
+        tabulate.out();
     }
 
     public void die() {
+        tabulate.in();
 
         System.out.println(this.toString() + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         controller.eliminateWorker(this);
+
+        tabulate.out();
     }
 
     public String toString() {
