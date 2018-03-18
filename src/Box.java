@@ -12,7 +12,7 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Tile next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -42,7 +42,7 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Switch next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
@@ -75,7 +75,7 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Hole next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
@@ -98,7 +98,7 @@ public class Box extends Visitor {
 
     public void pushTo(Trap next, Directions d) {
 
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
@@ -146,7 +146,7 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Target next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
             System.out.println("Mozgathato a doboz? (Y/N)");
@@ -178,19 +178,19 @@ public class Box extends Visitor {
     }
 
     public void pushTo(Wall next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
     }
 
     public void pushTo(Column next, Directions d) {
-        System.out.println("pushTo(" + next + "," + d + ")");
+        System.out.println(this + ".pushTo(" + next + "," + d + ")");
     }
 
     public void setUnmovable() {
-        System.out.println("setUnmovable()");
+        System.out.println(this + ".setUnmovable()");
     }
 
     public void die() {
-        System.out.println("die()");
+        System.out.println(this + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         game.decreaseBoxes(this);
