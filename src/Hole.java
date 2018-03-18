@@ -13,12 +13,14 @@ public class Hole extends ATile {
     public void accept(Visitor v, Directions d) {
         tabulate.in();
 
+        //mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
         System.out.println(this.toString() + ".accept(" + v + "," + d + ")");
         v.pushTo(this, d);
 
         tabulate.out();
     }
 
+    //objektum kiíráshoz
     public String toString() {
         return "hole" + counter;
     }
