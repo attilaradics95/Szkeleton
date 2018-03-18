@@ -189,7 +189,6 @@ public class TestCases {
         Tile tile2 = new Tile();
         Switch tile3 = new Switch();
         Trap tile4 = new Trap();
-        Tile tile5 = new Tile();
         Worker visitor1 = new Worker();
         Box visitor2 = new Box();
         Worker visitor3 = new Worker();
@@ -200,6 +199,8 @@ public class TestCases {
         tile3.setNeighbors(null, null,null,tile2);
         tile4.setNeighbors(tile1, null,null,null);
 
+        //beállítjuk, a trapet a switch-hez
+        tile3.setTrap(tile4);
 
         //beállítjuk a csapdát, hogy inaktív állapotban kezdődjön a teszt
         tile4.setOpened(false);
@@ -245,36 +246,6 @@ public class TestCases {
 
         //munkás mozgatása
         controller.addWorker(worker);
-        controller.moveWorker(dir);
-    }
-
-    // @author Bálint
-    public void WorkerStepsOnInactiveTrap() {
-        Directions dir = Directions.EAST;
-
-        Controller controller = Controller.getInstance();
-
-        //Elemek létrehozása
-        Worker worker = new Worker();
-        Trap next = new Trap();
-        Tile current = new Tile();
-        Tile next1 = new Tile();
-
-        current.setVisitor(worker);
-        next.setVisitor(null);
-        worker.setCurrentTile(current);
-
-        //pálya beállítása
-        current.setNeighbors(null, next, null, null);
-        next.setNeighbors(null, next1, null, current);
-        next1.setNeighbors(null, null, null, next);
-
-        //csapda inaktív
-        next.setOpened(false);
-
-        //munkás mozgatása (kétszer lép, egyszer az inaktív csapdára, majd egy sima mezőre
-        controller.addWorker(worker);
-        controller.moveWorker(dir);
         controller.moveWorker(dir);
     }
 

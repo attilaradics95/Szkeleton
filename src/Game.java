@@ -135,9 +135,9 @@ public class Game {
         game.controller = Controller.getInstance();
         TestCases tests = new TestCases();
 
-        System.out.println("Teszt kiválasztása(1,2,...):");
+
         /**Teszt template */
-        //System.out.println("n. Teszt: Teszt leírása");
+        System.out.println("Választható tesztesetek:");
         System.out.println("1. Teszt: Worker pushes Box");
         System.out.println("2. Teszt: Worker pushes Box to Target");
         System.out.println("3. Teszt: Worker pushes Box to Column");
@@ -152,14 +152,13 @@ public class Game {
         System.out.println("12. Teszt: Worker steps on Wall");
         System.out.println("13. Teszt: Worker steps on Target");
         System.out.println("14. Teszt: Worker steps on Switch");
-        System.out.println("15. Teszt: Worker steps on active Trap");
-        System.out.println("16. Teszt: Worker steps on inactive Trap");
-        System.out.println("17. Teszt: Worker stands on a Trap");
-        System.out.println("18. Teszt: Select Worker In Action");
-        System.out.println("19. Teszt: Trap Opens With A Box On It ");
-        System.out.println("20. Teszt: Worker -> Box -> Box");
-        System.out.println("21. Teszt: Worker -> Box -> Worker -> Worker -> Wall");
-
+        System.out.println("15. Teszt: Worker steps on Trap");
+        System.out.println("16. Teszt: Worker stands on a Trap");
+        System.out.println("17. Teszt: Select Worker In Action");
+        System.out.println("18. Teszt: Trap Opens With A Box On It ");
+        System.out.println("19. Teszt: Worker -> Box -> Box");
+        System.out.println("20. Teszt: Worker -> Box -> Worker -> Worker -> Wall");
+        System.out.println("Teszt kiválasztása(1,2,...):");
 
 
 
@@ -228,21 +227,18 @@ public class Game {
                 tests.WorkerStepsOnActiveTrap();
                 break;
             case 16:
-                tests.WorkerStepsOnInactiveTrap();
-                break;
-            case 17:
                 tests.WorkerStandsOnTrap();
                 break;
-            case 18:
+            case 17:
                 tests.SelectWorkerInAction();
                 break;
-            case 19:
+            case 18:
                 tests.trapOpensWithABoxOnIt();
                 break;
-            case 20:
+            case 19:
                 tests.MLL();
                 break;
-            case 21:
+            case 20:
                 tests.MLMMF();
                 break;
         }
