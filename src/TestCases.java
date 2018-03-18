@@ -517,6 +517,7 @@ public class TestCases {
 
         //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
         controller.addWorker(visitor1);
+        controller.addWorker(visitor2);
 
         // a teszteset szerint a munkás keletre tolja a ládát eggyel
         controller.moveWorker(Directions.EAST);
@@ -546,6 +547,7 @@ public class TestCases {
 
         //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
         controller.addWorker(visitor1);
+        controller.addWorker(visitor2);
 
         // a teszteset szerint a munkás keletre tolja a ládát eggyel
         controller.moveWorker(Directions.EAST);
