@@ -17,6 +17,13 @@ public class Box extends Visitor {
         counter = instanceCounter;
     }
 
+    //Wall és Column kivételével - mivel ide úgyse tud menni -  minden pushTo-nál megkérdezzük, hogy mozgatható-e a doboz
+    //ha nem, akkor nem mozdul el -- ki hitte volna? -- egyébként a mezőtől függ, mi történik
+    //ha van visitor a mezőn, amire lépne, akkor meghívja az azután következő mező accept függvényét a szomszédos visitorral
+    // ha átkerül a következő mezőre beállítja magát a visitorának, annak a mezőnek, ahonnan ellépett nullra állítja
+
+    //Tile
+    // semmi extra nem történik
     public void pushTo(Tile next, Directions d) {
         tabulate.in();
 
@@ -55,6 +62,8 @@ public class Box extends Visitor {
         }
     }
 
+    //Switch
+    // amikor átlép meghívja önmagát átadva paraméterként a switch switchIt metódusát
     public void pushTo(Switch next, Directions d) {
         tabulate.in();
 
@@ -96,6 +105,8 @@ public class Box extends Visitor {
         }
     }
 
+    //Hole
+    //beleesik és meghal
     public void pushTo(Hole next, Directions d) {
         tabulate.in();
 
@@ -126,6 +137,10 @@ public class Box extends Visitor {
         }
     }
 
+    //Trap
+    // megkérdezzük, hogy nyitva van-e
+    // ha igen beleesik és meghal
+    // ha nem, megpróbál odalépni - úgy viselkedik a Trap csukva, mint egy egyszerű Tile
     public void pushTo(Trap next, Directions d) {
         tabulate.in();
 
@@ -179,6 +194,8 @@ public class Box extends Visitor {
         }
     }
 
+    //Target
+    // ha odalép a doboz, mozgathatatlanná válik
     public void pushTo(Target next, Directions d) {
         tabulate.in();
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
@@ -214,6 +231,9 @@ public class Box extends Visitor {
         }
     }
 
+    // Column és Wall
+    //nem tud elmozdulni ezekre a mezőkre
+    // összenyomni se lehet, így a dobozt toló munkás se mozdul el a helyéről
     public void pushTo(Wall next, Directions d) {
         tabulate.in();
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
@@ -226,12 +246,15 @@ public class Box extends Visitor {
         tabulate.out();
     }
 
+    //mozgathatatlanná válik a box
     public void setUnmovable() {
         tabulate.in();
         System.out.println(this.toString() + ".setUnmovable()");
         tabulate.out();
     }
 
+    //ha meghal az aktuális mező visitorját nullra állítja
+    //ezután csökkenti a mozgatható dobozok számát
     public void die() {
         tabulate.in();
         System.out.println(this.toString() + ".die()");
@@ -241,6 +264,7 @@ public class Box extends Visitor {
         tabulate.out();
     }
 
+    //objektum kiíráshoz
     public String toString() {
         return "box" + counter;
     }

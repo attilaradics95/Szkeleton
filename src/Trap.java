@@ -17,6 +17,7 @@ public class Trap extends ATile {
     public void accept(Visitor v, Directions d) {
         tabulate.in();
 
+        //mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
         System.out.println(this.toString() + ".accept(" + v + "," + d + ")");
         v.pushTo(this, d);
 
@@ -38,6 +39,7 @@ public class Trap extends ATile {
         tabulate.out();
     }
 
+    //objektum kiíráshoz
     public String toString() {
         return "trap" + counter;
     }

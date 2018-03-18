@@ -30,6 +30,7 @@ public class Controller {
     /**
      * Metódusok
      */
+    //hogy irányítanyi tudjuk, hozzá kell adni a listához a munkásokat
     public void addWorker(Worker w) {
         workers.add(w);
         selectedworker = workers.get(0);
@@ -39,6 +40,7 @@ public class Controller {
         return selectedworker;
     }
 
+    //ha meghal egy munkés, kivesszük a listából
     public void eliminateWorker(Worker w) {
         tabulate.in();
 
@@ -63,6 +65,7 @@ public class Controller {
         }
     }
 
+    //munkás kiválasztási, hogy utána mozgathassuk
     public void selectWorker(int i) {
         if(!(workers.isEmpty())){
            // 0val kezdődik a raktárosok számozása!
@@ -80,6 +83,8 @@ public class Controller {
         }
     }
 
+    //a selectedWorker mozgatása a game által megadott irányba
+    //ezzel kezdődik minden mozgatási szekvencia
     public void moveWorker(Directions direction) {
         tabulate.in();
         System.out.println("moveWorker(" + direction + ")");
