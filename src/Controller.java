@@ -81,6 +81,7 @@ public class Controller {
     }
 
     public void moveWorker(Directions direction) {
+        tabulate.in();
         System.out.println("moveWorker(" + direction + ")");
         if (selectedworker != null){
             selectedworker.move(direction);
@@ -88,5 +89,6 @@ public class Controller {
         else{
             System.out.println("Nincs kiválasztott raktáros");
         }
+        tabulate.out();
     }
 }

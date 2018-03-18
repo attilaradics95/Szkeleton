@@ -33,11 +33,13 @@ public abstract class ATile {
     abstract public void accept(Visitor v, Directions d);
 
     public void setNeighbors(ATile north,ATile east, ATile south, ATile west){
-
+        tabulate.in();
+        System.out.println(this.toString() + ".setNeighbors(" + north + east + south + west + ")");
             neighbors.put(Directions.NORTH, north);
             neighbors.put(Directions.EAST, east);
             neighbors.put(Directions.SOUTH, south);
             neighbors.put(Directions.WEST, west);
+        tabulate.out();
     }
 
 }

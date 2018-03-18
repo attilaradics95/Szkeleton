@@ -3,7 +3,7 @@ public class Column extends ATile {
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
     int counter = 0;
-    Tabulate tabulate = new Tabulate();
+    //Tabulate tabulate = new Tabulate();
 
     public Column() {
         instanceCounter++;

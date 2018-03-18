@@ -8,7 +8,7 @@ public class Box extends Visitor {
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
     int counter = 0;
-    Tabulate tabulate = new Tabulate();
+    //Tabulate tabulate = new Tabulate();
 
     //Függvények
     public Box() {

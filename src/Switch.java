@@ -4,7 +4,8 @@ public class Switch extends ATile {
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
     int counter = 0;
-    Tabulate tabulate = new Tabulate();
+   //dupla tabulátorozás ellen kikommenteltem @author Rozi
+    //Tabulate tabulate = new Tabulate();
 
     public Switch() {
         instanceCounter++;

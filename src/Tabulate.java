@@ -8,8 +8,10 @@ public class Tabulate {
     }
 
     public void out() {
+        //System.out.println("Fuggveny visszatert.");
         tabNum--;
         tabulate();
+
     }
 
     public void tabulate() {

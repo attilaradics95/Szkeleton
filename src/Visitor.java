@@ -1,6 +1,7 @@
 public abstract class Visitor {
     protected ATile currentTile;
     protected boolean movable;
+    Tabulate tabulate = new Tabulate();
 
     public void setCurrentTile(ATile currentTile){
         this.currentTile = currentTile;

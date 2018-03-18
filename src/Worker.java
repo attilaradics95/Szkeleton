@@ -5,12 +5,10 @@ import java.io.InputStreamReader;
 public class Worker extends Visitor{
     private Controller controller = null;
 
-
-
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
     int counter = 0;
-    Tabulate tabulate = new Tabulate();
+    //Tabulate tabulate = new Tabulate();
 
     public Worker(){
         controller = Controller.getInstance();
