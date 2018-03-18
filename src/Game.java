@@ -103,7 +103,9 @@ public class Game {
         System.out.println("endRound()");
         //Akkor lep ki a loopbol ha megkapja a megfelelo inputot
         while (true) {
+            tabulate.tabulate();
             System.out.println("Vége van a körnek? (Y/N)");
+            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {

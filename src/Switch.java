@@ -35,6 +35,7 @@ public class Switch extends ATile {
         if (trap != null){
             trap.setOpened(true);
         } else {
+            tabulate.tabulate();
             System.out.println("Nem tartozik csapda a kapcsolohoz.");
         }
 

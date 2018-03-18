@@ -29,7 +29,9 @@ public class Box extends Visitor {
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         while (true) {
+            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
+            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -70,7 +72,9 @@ public class Box extends Visitor {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
+            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
+            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -113,7 +117,9 @@ public class Box extends Visitor {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
+            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
+            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -147,7 +153,9 @@ public class Box extends Visitor {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
+            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
+            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -157,7 +165,9 @@ public class Box extends Visitor {
             }
             if (input.equals("Y") || input.equals("y")) {
                 while (true) {
+                    tabulate.tabulate();
                     System.out.println("Nyitva van a csapda? (Y/N)");
+                    tabulate.tabulate();
                     BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
                     String input1 = "";
                     try {
@@ -201,7 +211,9 @@ public class Box extends Visitor {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
+            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
+            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {

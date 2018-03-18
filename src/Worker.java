@@ -110,7 +110,9 @@ public class Worker extends Visitor{
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         //Input beolvasása a konzolról
         while (true) {
+            tabulate.tabulate();
             System.out.println("Nyitva van a csapda? (Y/N)");
+            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
