@@ -3,6 +3,8 @@ public abstract class Visitor {
     protected boolean movable;
     Tabulate tabulate = new Tabulate();
 
+    //függvények, leszármazottakban implementálva
+    //setCurrentTile beállítja az aktuális Visitornak, hogy melyik mezőn áll
     public void setCurrentTile(ATile currentTile){
         this.currentTile = currentTile;
     }

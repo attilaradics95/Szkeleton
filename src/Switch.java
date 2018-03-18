@@ -56,6 +56,7 @@ public class Switch extends ATile {
         tabulate.out();
     }
 
+    //objektum kiíráshoz
     public String toString() {
         return "switch" + counter;
     }

@@ -1,10 +1,8 @@
 public class TestCases {
 
-    public static int counter;
 
     // @author Bálint
     public void MLL() {
-        counter = 0;
 
         Directions dir = Directions.EAST;
 

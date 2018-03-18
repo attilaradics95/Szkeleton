@@ -5,10 +5,12 @@ public class Column extends ATile {
     int counter = 0;
     //Tabulate tabulate = new Tabulate();
 
+    //konstruktor
     public Column() {
         instanceCounter++;
         counter = instanceCounter;
     }
+
 
     public void accept(Visitor v, Directions d) {
         tabulate.in();
