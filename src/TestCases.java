@@ -424,4 +424,204 @@ public class TestCases {
         controller.moveWorker(Directions.EAST);
 
     }
+
+    // @author Klári
+    public void WorkerPushesBoxToWall() {
+        Controller controller = Controller.getInstance();
+        Tile tile1 = new Tile();
+        Tile tile2 = new Tile();
+        Wall tile3 = new Wall();
+        Worker visitor1 = new Worker();
+        Box visitor2 = new Box();
+
+        //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
+        tile1.setNeighbors(null, tile2,null,null);
+        tile2.setNeighbors(null, tile3,null,tile1);
+        tile3.setNeighbors(null, null,null,tile2);
+
+        // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
+        tile1.setVisitor(visitor1);
+        tile2.setVisitor(visitor2);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+
+        //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
+        controller.addWorker(visitor1);
+
+        // a teszteset szerint a munkás keletre tolja a ládát eggyel
+        controller.moveWorker(Directions.EAST);
+
+    }
+
+    // @author Klári
+    public void WorkerPushesBoxToSwitch() {
+        Controller controller = Controller.getInstance();
+        Tile tile1 = new Tile();
+        Tile tile2 = new Tile();
+        Switch tile3 = new Switch();
+        Worker visitor1 = new Worker();
+        Box visitor2 = new Box();
+
+        //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
+        tile1.setNeighbors(null, tile2,null,null);
+        tile2.setNeighbors(null, tile3,null,tile1);
+        tile3.setNeighbors(null, null,null,tile2);
+
+        // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
+        tile1.setVisitor(visitor1);
+        tile2.setVisitor(visitor2);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+
+        //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
+        controller.addWorker(visitor1);
+
+        // a teszteset szerint a munkás keletre tolja a ládát eggyel
+        controller.moveWorker(Directions.EAST);
+
+    }
+
+    // @author Klári
+    public void WorkerPushesBoxFromSwitch() {
+        Controller controller = Controller.getInstance();
+        Tile tile1 = new Tile();
+        Switch tile2 = new Switch();
+        Tile tile3 = new Tile();
+        Worker visitor1 = new Worker();
+        Box visitor2 = new Box();
+
+        //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
+        tile1.setNeighbors(null, tile2, null, null);
+        tile2.setNeighbors(null, tile3, null, tile1);
+        tile3.setNeighbors(null, null, null, tile2);
+
+        // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
+        tile1.setVisitor(visitor1);
+        tile2.setVisitor(visitor2);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+
+        //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
+        controller.addWorker(visitor1);
+
+        // a teszteset szerint a munkás keletre tolja a ládát eggyel
+        controller.moveWorker(Directions.EAST);
+    }
+
+    // @author Klári
+    public void WorkerPushesAnotherWorkerToTile() {
+        Controller controller = Controller.getInstance();
+        Tile tile1 = new Tile();
+        Tile tile2 = new Tile();
+        Tile tile3 = new Tile();
+        Worker visitor1 = new Worker();
+        Worker visitor2 = new Worker();
+
+        //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
+        tile1.setNeighbors(null, tile2, null, null);
+        tile2.setNeighbors(null, tile3, null, tile1);
+        tile3.setNeighbors(null, null, null, tile2);
+
+        // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
+        tile1.setVisitor(visitor1);
+        tile2.setVisitor(visitor2);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+
+        //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
+        controller.addWorker(visitor1);
+
+        // a teszteset szerint a munkás keletre tolja a ládát eggyel
+        controller.moveWorker(Directions.EAST);
+    }
+
+    // @author Klári
+    public void WorkerPushesAnotherWorkerToHole() {
+        Controller controller = Controller.getInstance();
+        Tile tile1 = new Tile();
+        Tile tile2 = new Tile();
+        Hole tile3 = new Hole();
+        Worker visitor1 = new Worker();
+        Worker visitor2 = new Worker();
+
+        //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
+        tile1.setNeighbors(null, tile2, null, null);
+        tile2.setNeighbors(null, tile3, null, tile1);
+        tile3.setNeighbors(null, null, null, tile2);
+
+        // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
+        tile1.setVisitor(visitor1);
+        tile2.setVisitor(visitor2);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+
+        //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
+        controller.addWorker(visitor1);
+
+        // a teszteset szerint a munkás keletre tolja a ládát eggyel
+        controller.moveWorker(Directions.EAST);
+    }
+
+    // @author Klári
+    public void WorkerPushesBoxToHole() {
+        Controller controller = Controller.getInstance();
+        Tile tile1 = new Tile();
+        Tile tile2 = new Tile();
+        Hole tile3 = new Hole();
+        Worker visitor1 = new Worker();
+        Box visitor2 = new Box();
+
+        //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
+        tile1.setNeighbors(null, tile2, null, null);
+        tile2.setNeighbors(null, tile3, null, tile1);
+        tile3.setNeighbors(null, null, null, tile2);
+
+        // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
+        tile1.setVisitor(visitor1);
+        tile2.setVisitor(visitor2);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+        visitor2.setCurrentTile(tile2);
+
+        //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
+        controller.addWorker(visitor1);
+
+        // a teszteset szerint a munkás keletre tolja a ládát eggyel
+        controller.moveWorker(Directions.EAST);
+    }
+
+    // @author Klári
+    public void WorkerStepsOnSwitch() {
+        Controller controller = Controller.getInstance();
+        Tile tile1 = new Tile();
+        Switch tile2 = new Switch();
+        Worker visitor1 = new Worker();
+
+        //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
+        tile1.setNeighbors(null, tile2, null, null);
+        tile2.setNeighbors(null, null, null, tile1);
+
+        // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
+        tile1.setVisitor(visitor1);
+
+        //beállítjuk a látogatók aktuális mezőit
+        visitor1.setCurrentTile(tile1);
+
+        //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
+        controller.addWorker(visitor1);
+
+        // a teszteset szerint a munkás keletre tolja a ládát eggyel
+        controller.moveWorker(Directions.EAST);
+    }
 }
