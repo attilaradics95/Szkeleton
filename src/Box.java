@@ -13,17 +13,30 @@ public class Box extends Visitor {
 
     public void pushTo(Tile next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
-
-        if(movable){
-            Visitor visitorOnNext = next.getVisitor();
-            if(visitorOnNext != null){
-                ATile next1 = next.getNeighbor(d);
-                next1.accept(visitorOnNext, d);
-                visitorOnNext = next.getVisitor();
+        while (true) {
+            System.out.println("Mozgathato a doboz? (Y/N)");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String input = "";
+            try {
+                input = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            if(visitorOnNext == null){
-                currentTile.setVisitor(null);
-                next.setVisitor(this);
+            if (input.equals("Y") || input.equals("y")) {
+                Visitor visitorOnNext = next.getVisitor();
+                if(visitorOnNext != null){
+                    ATile next1 = next.getNeighbor(d);
+                    next1.accept(visitorOnNext, d);
+                    visitorOnNext = next.getVisitor();
+                }
+                if(visitorOnNext == null){
+                    currentTile.setVisitor(null);
+                    next.setVisitor(this);
+                }
+                return;
+            }
+            if (input.equals("N") || input.equals("n")) {
+                return;
             }
         }
     }
@@ -31,18 +44,32 @@ public class Box extends Visitor {
     public void pushTo(Switch next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
 
-        if(movable) {
-            Visitor visitorOnNext = next.getVisitor();
-            if (visitorOnNext != null) {
-                ATile next1 = next.getNeighbor(d);
-                next1.accept(visitorOnNext, d);
-                visitorOnNext = next.getVisitor();
+        while (true) {
+            System.out.println("Mozgathato a doboz? (Y/N)");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String input = "";
+            try {
+                input = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            if (input.equals("Y") || input.equals("y")) {
+                Visitor visitorOnNext = next.getVisitor();
+                if (visitorOnNext != null) {
+                    ATile next1 = next.getNeighbor(d);
+                    next1.accept(visitorOnNext, d);
+                    visitorOnNext = next.getVisitor();
+                }
 
-            if (visitorOnNext == null) {
-                currentTile.setVisitor(null);
-                next.setVisitor(this);
-                next.switchIt(this);
+                if (visitorOnNext == null) {
+                    currentTile.setVisitor(null);
+                    next.setVisitor(this);
+                    next.switchIt(this);
+                }
+                return;
+            }
+            if (input.equals("N") || input.equals("n")) {
+                return;
             }
         }
     }
@@ -50,42 +77,70 @@ public class Box extends Visitor {
     public void pushTo(Hole next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
 
-        if(movable){
-            this.die();
+        while (true) {
+            System.out.println("Mozgathato a doboz? (Y/N)");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String input = "";
+            try {
+                input = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (input.equals("Y") || input.equals("y")) {
+                this.die();
+                return;
+            }
+            if (input.equals("N") || input.equals("n")) {
+                return;
+            }
         }
     }
 
     public void pushTo(Trap next, Directions d) {
 
         System.out.println("pushTo(" + next + "," + d + ")");
-        if(movable) {
-            while (true) {
-                System.out.println("Nyitva van a csapda? (Y/N)");
-                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-                String input = "";
-                try {
-                    input = br.readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                if (input.equals("Y") || input.equals("y")) {
-                    this.die();
-                    return;
-                }
-                if (input.equals("N") || input.equals("n")) {
-                    Visitor visitorOnNext = next.getVisitor();
-                    if (visitorOnNext != null) {
-                        ATile next1 = next.getNeighbor(d);
-                        next1.accept(visitorOnNext, d);
-                        visitorOnNext = next.getVisitor();
-                    }
 
-                    if (visitorOnNext == null) {
-                        currentTile.setVisitor(null);
-                        next.setVisitor(this);
+        while (true) {
+            System.out.println("Mozgathato a doboz? (Y/N)");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String input = "";
+            try {
+                input = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (input.equals("Y") || input.equals("y")) {
+                while (true) {
+                    System.out.println("Nyitva van a csapda? (Y/N)");
+                    BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
+                    String input1 = "";
+                    try {
+                        input1 = br1.readLine();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    return;
+                    if (input1.equals("Y") || input1.equals("y")) {
+                        this.die();
+                        return;
+                    }
+                    if (input1.equals("N") || input1.equals("n")) {
+                        Visitor visitorOnNext = next.getVisitor();
+                        if (visitorOnNext != null) {
+                            ATile next1 = next.getNeighbor(d);
+                            next1.accept(visitorOnNext, d);
+                            visitorOnNext = next.getVisitor();
+                        }
+
+                        if (visitorOnNext == null) {
+                            currentTile.setVisitor(null);
+                            next.setVisitor(this);
+                        }
+                        return;
+                    }
                 }
+            }
+            if (input.equals("N") || input.equals("n")) {
+                return;
             }
         }
     }
@@ -93,17 +148,31 @@ public class Box extends Visitor {
     public void pushTo(Target next, Directions d) {
         System.out.println("pushTo(" + next + "," + d + ")");
 
-        if(movable){
-            Visitor visitorOnNext = next.getVisitor();
-            if(visitorOnNext != null){
-                ATile next1 = next.getNeighbor(d);
-                next1.accept(visitorOnNext, d);
-                visitorOnNext = next.getVisitor();
+        while (true) {
+            System.out.println("Mozgathato a doboz? (Y/N)");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String input = "";
+            try {
+                input = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            if(visitorOnNext == null){
-                currentTile.setVisitor(null);
-                next.setVisitor(this);
-                this.setUnmovable();
+            if (input.equals("Y") || input.equals("y")) {
+                Visitor visitorOnNext = next.getVisitor();
+                if(visitorOnNext != null){
+                    ATile next1 = next.getNeighbor(d);
+                    next1.accept(visitorOnNext, d);
+                    visitorOnNext = next.getVisitor();
+                }
+                if(visitorOnNext == null){
+                    currentTile.setVisitor(null);
+                    next.setVisitor(this);
+                    this.setUnmovable();
+                }
+                return;
+            }
+            if (input.equals("N") || input.equals("n")) {
+                return;
             }
         }
     }
@@ -118,7 +187,6 @@ public class Box extends Visitor {
 
     public void setUnmovable() {
         System.out.println("setUnmovable()");
-        movable = false;
     }
 
     public void die() {
