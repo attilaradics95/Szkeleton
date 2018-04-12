@@ -20,11 +20,9 @@ public class Worker extends Visitor{
     //így ezzel indul el minden szekvenciában a visitorok mozgatása
     //meghívja a kapott irányban következő mező accept metódusát a workerrel
     public void move(Directions d) {
-        tabulate.in();
         System.out.println(this.toString() + ".move("+ d +")");
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d);
-        tabulate.out();
     }
 
     //Minden pushTo-nál megnézzük, hogy van-e a mezőn, amire lépne visitor
@@ -36,7 +34,6 @@ public class Worker extends Visitor{
     //Tile
     // semmi extra nem történik
     public void pushTo(Tile next, Directions d) {
-        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
@@ -57,13 +54,11 @@ public class Worker extends Visitor{
             }
         }
 
-        tabulate.out();
     }
 
     //Switch
     // amikor átlép meghívja önmagát átadva paraméterként a switch switchIt metódusát
     public void pushTo(Switch next, Directions d) {
-        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
@@ -86,18 +81,13 @@ public class Worker extends Visitor{
             }
         }
 
-        tabulate.out();
     }
 
     //Hole
     //beleesik és meghal
     public void pushTo(Hole next, Directions d) {
-        tabulate.in();
-
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         this.die();
-
-        tabulate.out();
     }
 
     //Trap
@@ -105,14 +95,11 @@ public class Worker extends Visitor{
     // ha igen beleesik és meghal
     // ha nem, megpróbál odalépni - úgy viselkedik a Trap csukva, mint egy egyszerű Tile
     public void pushTo(Trap next, Directions d) {
-        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         //Input beolvasása a konzolról
         while (true) {
-            tabulate.tabulate();
             System.out.println("Nyitva van a csapda? (Y/N)");
-            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -122,9 +109,6 @@ public class Worker extends Visitor{
             }
             if (input.equals("Y") || input.equals("y")) {
                 this.die();
-
-                tabulate.out();
-
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
@@ -145,9 +129,6 @@ public class Worker extends Visitor{
                         this.die();
                     }
                 }
-
-                tabulate.out();
-
                 return;
             }
         }
@@ -156,8 +137,6 @@ public class Worker extends Visitor{
     //Target
     //ugyanúgy viselkedik a raktárossal szemben, mint a sima Tile
     public void pushTo(Target next, Directions d) {
-        tabulate.in();
-
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
@@ -176,15 +155,12 @@ public class Worker extends Visitor{
                 this.die();
             }
         }
-
-        tabulate.out();
     }
 
     // Column és Wall
     //ha a kiválasztott raktárost léptetik ide, akkor nem tud elmozdulni ezekre a mezőkre
     //ha nem a kiválasztott raktáros az, akkor összenyomódik és meghal
     public void pushTo(Wall next, Directions d) {
-        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
@@ -192,12 +168,9 @@ public class Worker extends Visitor{
         if(this != sw){
             this.die();
         }
-
-        tabulate.out();
     }
 
     public void pushTo(Column next, Directions d) {
-        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
@@ -206,20 +179,15 @@ public class Worker extends Visitor{
             this.die();
         }
 
-        tabulate.out();
     }
 
     //ha meghal az aktuális mező visitorját nullra állítja
     //ezután kiveszi az elérhető munkások listájából magát
     public void die() {
-        tabulate.in();
-
         System.out.println(this.toString() + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         controller.eliminateWorker(this);
-
-        tabulate.out();
     }
 
     //objektum kiírásához

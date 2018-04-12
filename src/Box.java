@@ -25,13 +25,10 @@ public class Box extends Visitor {
     //Tile
     // semmi extra nem történik
     public void pushTo(Tile next, Directions d) {
-        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         while (true) {
-            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
-            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -51,14 +48,10 @@ public class Box extends Visitor {
                     next.setVisitor(this);
                 }
 
-                tabulate.out();
 
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
-
-                tabulate.out();
-
                 return;
             }
         }
@@ -67,14 +60,11 @@ public class Box extends Visitor {
     //Switch
     // amikor átlép meghívja önmagát átadva paraméterként a switch switchIt metódusát
     public void pushTo(Switch next, Directions d) {
-        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
-            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
-            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -96,13 +86,11 @@ public class Box extends Visitor {
                     next.switchIt(this);
                 }
 
-                tabulate.out();
 
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
 
-                tabulate.out();
 
                 return;
             }
@@ -112,14 +100,11 @@ public class Box extends Visitor {
     //Hole
     //beleesik és meghal
     public void pushTo(Hole next, Directions d) {
-        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
-            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
-            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -129,15 +114,9 @@ public class Box extends Visitor {
             }
             if (input.equals("Y") || input.equals("y")) {
                 this.die();
-
-                tabulate.out();
-
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
-
-                tabulate.out();
-
                 return;
             }
         }
@@ -148,14 +127,11 @@ public class Box extends Visitor {
     // ha igen beleesik és meghal
     // ha nem, megpróbál odalépni - úgy viselkedik a Trap csukva, mint egy egyszerű Tile
     public void pushTo(Trap next, Directions d) {
-        tabulate.in();
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
-            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
-            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -165,9 +141,7 @@ public class Box extends Visitor {
             }
             if (input.equals("Y") || input.equals("y")) {
                 while (true) {
-                    tabulate.tabulate();
                     System.out.println("Nyitva van a csapda? (Y/N)");
-                    tabulate.tabulate();
                     BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
                     String input1 = "";
                     try {
@@ -177,7 +151,6 @@ public class Box extends Visitor {
                     }
                     if (input1.equals("Y") || input1.equals("y")) {
                         this.die();
-                        tabulate.out();
                         return;
                     }
                     if (input1.equals("N") || input1.equals("n")) {
@@ -192,13 +165,11 @@ public class Box extends Visitor {
                             currentTile.setVisitor(null);
                             next.setVisitor(this);
                         }
-                        tabulate.out();
                         return;
                     }
                 }
             }
             if (input.equals("N") || input.equals("n")) {
-                tabulate.out();
                 return;
             }
         }
@@ -207,13 +178,10 @@ public class Box extends Visitor {
     //Target
     // ha odalép a doboz, mozgathatatlanná válik
     public void pushTo(Target next, Directions d) {
-        tabulate.in();
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         while (true) {
-            tabulate.tabulate();
             System.out.println("Mozgathato a doboz? (Y/N)");
-            tabulate.tabulate();
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String input = "";
             try {
@@ -233,11 +201,9 @@ public class Box extends Visitor {
                     next.setVisitor(this);
                     this.setUnmovable();
                 }
-                tabulate.out();
                 return;
             }
             if (input.equals("N") || input.equals("n")) {
-                tabulate.out();
                 return;
             }
         }
@@ -247,33 +213,25 @@ public class Box extends Visitor {
     //nem tud elmozdulni ezekre a mezőkre
     // összenyomni se lehet, így a dobozt toló munkás se mozdul el a helyéről
     public void pushTo(Wall next, Directions d) {
-        tabulate.in();
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-        tabulate.out();
     }
 
     public void pushTo(Column next, Directions d) {
-        tabulate.in();
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-        tabulate.out();
     }
 
     //mozgathatatlanná válik a box
     public void setUnmovable() {
-        tabulate.in();
         System.out.println(this.toString() + ".setUnmovable()");
-        tabulate.out();
     }
 
     //ha meghal az aktuális mező visitorját nullra állítja
     //ezután csökkenti a mozgatható dobozok számát
     public void die() {
-        tabulate.in();
         System.out.println(this.toString() + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         game.decreaseBoxes(this);
-        tabulate.out();
     }
 
     //objektum kiíráshoz
