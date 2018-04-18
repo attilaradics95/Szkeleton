@@ -131,6 +131,7 @@ public class Game {
         }
     }
 
+    //A PROGRAM BELÉPÉSI PONTJA
     public static void main(String[] args) {
         Game game = getInstance();
         game.controller = Controller.getInstance();

@@ -30,6 +30,12 @@ public class Controller {
     /**
      * Metódusok
      */
+    // @author Attila
+    //Munkások számának lekérdezésére szolgáló függvény
+    public int getNumberOfWorkers() {
+        return workers.size();
+    }
+
     //hogy irányítanyi tudjuk, hozzá kell adni a listához a munkásokat
     public void addWorker(Worker w) {
         workers.add(w);
