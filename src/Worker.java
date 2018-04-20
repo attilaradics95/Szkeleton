@@ -7,12 +7,11 @@ public class Worker extends Visitor{
 
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
-    int counter = 0;
 
     public Worker(){
         controller = Controller.getInstance();
         instanceCounter++;
-        counter = instanceCounter;
+        id = instanceCounter;
     }
 
     //egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját
@@ -176,6 +175,6 @@ public class Worker extends Visitor{
 
     //objektum kiírásához
     public String toString() {
-        return "worker" + counter;
+        return "worker" + id;
     }
 }
