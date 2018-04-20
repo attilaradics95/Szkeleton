@@ -19,5 +19,6 @@ public abstract class Visitor {
     abstract public void pushTo(Target next, Directions d, int force);
     abstract public void pushTo(Wall next, Directions d, int force);
     abstract public void pushTo(Column next, Directions d, int force);
+    abstract public void pushTo(Obstacle next, Directions d, int force);
     abstract public void die();
 }

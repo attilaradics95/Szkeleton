@@ -31,7 +31,7 @@ public class Box extends Visitor {
             Visitor visitorOnNext = next.getVisitor();
             if(visitorOnNext != null){
                 ATile next1 = next.getNeighbor(d);
-                next1.accept(visitorOnNext, d);
+                next1.accept(visitorOnNext, d, force);
                 visitorOnNext = next.getVisitor();
             }
             if(visitorOnNext == null){
@@ -50,7 +50,7 @@ public class Box extends Visitor {
             Visitor visitorOnNext = next.getVisitor();
             if (visitorOnNext != null) {
                 ATile next1 = next.getNeighbor(d);
-                next1.accept(visitorOnNext, d);
+                next1.accept(visitorOnNext, d, force);
                 visitorOnNext = next.getVisitor();
             }
 
@@ -85,7 +85,7 @@ public class Box extends Visitor {
                 Visitor visitorOnNext = next.getVisitor();
                 if (visitorOnNext != null) {
                     ATile next1 = next.getNeighbor(d);
-                    next1.accept(visitorOnNext, d);
+                    next1.accept(visitorOnNext, d, force);
                     visitorOnNext = next.getVisitor();
                 }
 
@@ -106,7 +106,7 @@ public class Box extends Visitor {
             Visitor visitorOnNext = next.getVisitor();
             if(visitorOnNext != null){
                 ATile next1 = next.getNeighbor(d);
-                next1.accept(visitorOnNext, d);
+                next1.accept(visitorOnNext, d, force);
                 visitorOnNext = next.getVisitor();
             }
             if(visitorOnNext == null){
@@ -127,6 +127,11 @@ public class Box extends Visitor {
 
     public void pushTo(Column next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
+    }
+
+    @Override
+    public void pushTo(Obstacle next, Directions d, int force) {
+        
     }
 
     //mozgathatatlanná válik a box

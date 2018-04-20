@@ -8,7 +8,6 @@ public class Worker extends Visitor{
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
     int counter = 0;
-    //Tabulate tabulate = new Tabulate();
 
     public Worker(){
         controller = Controller.getInstance();
@@ -22,7 +21,7 @@ public class Worker extends Visitor{
     public void move(Directions d, int force) {
         System.out.println(this.toString() + ".move("+ d +")");
         ATile next = currentTile.getNeighbor(d);
-        next.accept(this, d);
+        next.accept(this, d, force);
     }
 
     //Minden pushTo-nál megnézzük, hogy van-e a mezőn, amire lépne visitor
@@ -38,7 +37,7 @@ public class Worker extends Visitor{
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
-            next1.accept(visitorOnNext, d);
+            next1.accept(visitorOnNext, d, force);
             visitorOnNext = next.getVisitor();
         }
 
@@ -63,7 +62,7 @@ public class Worker extends Visitor{
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
-            next1.accept(visitorOnNext, d);
+            next1.accept(visitorOnNext, d, force);
             visitorOnNext = next.getVisitor();
         }
 
@@ -113,7 +112,7 @@ public class Worker extends Visitor{
                 Visitor visitorOnNext = next.getVisitor();
                 if(visitorOnNext != null){
                     ATile next1 = next.getNeighbor(d);
-                    next1.accept(visitorOnNext, d);
+                    next1.accept(visitorOnNext, d, force);
                     visitorOnNext = next.getVisitor();
                 }
 
@@ -139,7 +138,7 @@ public class Worker extends Visitor{
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
-            next1.accept(visitorOnNext, d);
+            next1.accept(visitorOnNext, d, force);
             visitorOnNext = next.getVisitor();
         }
 
@@ -177,6 +176,14 @@ public class Worker extends Visitor{
             this.die();
         }
 
+    }
+
+    @Override
+    public void pushTo(Obstacle next, Directions d, int force) {
+        Worker sw = controller.getSelectedworker();
+        if(this != sw){
+            this.die();
+        }
     }
 
     //ha meghal az aktuális mező visitorját nullra állítja
