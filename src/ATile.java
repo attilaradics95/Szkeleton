@@ -31,7 +31,7 @@ public abstract class ATile {
         tabulate.out();
     }
 
-    abstract public void accept(Visitor v, Directions d);
+    abstract public void accept(Visitor v, Directions d, int force);
 
     //a pálya létrehozásakor minden mezőnek megadjuk, hogy kik az ő szomszédai
     public void setNeighbors(ATile north,ATile east, ATile south, ATile west){

@@ -12,14 +12,10 @@ public class Tile extends ATile{
         counter = instanceCounter;
     }
 
-    public void accept(Visitor v, Directions d) {
-        tabulate.in();
-
+    public void accept(Visitor v, Directions d, int force) {
         //mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
         System.out.println(this.toString() + ".accept(" + v + "," + d + ")");
-        v.pushTo(this, d);
-
-        tabulate.out();
+        v.pushTo(this, d, force);
     }
 
     //objektum kiíráshoz

@@ -12,10 +12,10 @@ public class Switch extends ATile {
     }
 
     //Függvények
-    public void accept(Visitor v, Directions d) {
+    public void accept(Visitor v, Directions d, int force) {
         //mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
         System.out.println(this.toString() + ".accept(" + v + "," + d + ")");
-        v.pushTo(this, d);
+        v.pushTo(this, d, force);
     }
 
     public void setTrap(Trap t){
