@@ -35,7 +35,7 @@ public class Game {
         boxes.remove(box);
         if (boxes.isEmpty()){
             //mivel csak különálló tesztesetek vizsgálunk ezért nem hívunk endRoundot, ha elfogy az adott tesztben a láda
-           // this.endRound();
+           this.endRound();
         }
     }
 
@@ -99,36 +99,7 @@ public class Game {
     }
 
     public void endRound(){
-        tabulate.in();
-
-        System.out.println("endRound()");
-        //Akkor lep ki a loopbol ha megkapja a megfelelo inputot
-        while (true) {
-            tabulate.tabulate();
-            System.out.println("Vége van a körnek? (Y/N)");
-            tabulate.tabulate();
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String input = "";
-            try {
-                input = br.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (input.equals("Y") || input.equals("y")) {
-                roundover = true;
-
-                tabulate.out();
-
-                return;
-            }
-            if (input.equals("N") || input.equals("n")) {
-                roundover = false;
-
-                tabulate.out();
-
-                return;
-            }
-        }
+        roundover = true;
     }
 
     //A PROGRAM BELÉPÉSI PONTJA
@@ -142,16 +113,14 @@ public class Game {
         System.out.println("Választható tesztesetek:");
         System.out.println("1. Teszt: Worker pushes Box");
         System.out.println("2. Teszt: Worker pushes Box to Target");
-        System.out.println("3. Teszt: Worker pushes Box to Column");
+        System.out.println("3. Teszt: Worker pushes Box to Obstacle");
         System.out.println("4. Teszt: Worker pushes Box to Switch");
         System.out.println("5. Teszt: Worker pushes Box from Switch");
         System.out.println("6. Teszt: Worker pushes Box to Hole");
-        System.out.println("7. Teszt: Worker pushes Box to Wall");
         System.out.println("8. Teszt: Worker pushes another Worker to Tile");
         System.out.println("9. Teszt: Worker pushes another Worker to Hole");
-        System.out.println("10. Teszt: Worker steps on Column");
+        System.out.println("10. Teszt: Worker steps on Obstacle");
         System.out.println("11. Teszt: Worker steps on Hole");
-        System.out.println("12. Teszt: Worker steps on Wall");
         System.out.println("13. Teszt: Worker steps on Target");
         System.out.println("14. Teszt: Worker steps on Switch");
         System.out.println("15. Teszt: Worker steps on Trap");
@@ -201,9 +170,6 @@ public class Game {
             case 6:
                 tests.WorkerPushesBoxToHole();
                 break;
-            case 7:
-                tests.WorkerPushesBoxToWall();
-                break;
             case 8:
                 tests.WorkerPushesAnotherWorkerToTile();
                 break;
@@ -215,9 +181,6 @@ public class Game {
                 break;
             case 11:
                 tests.WorkerOnHole();
-                break;
-            case 12:
-                tests.WorkerOnWall();
                 break;
             case 13:
                 tests.WorkerStepsOnTarget();

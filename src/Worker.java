@@ -18,10 +18,10 @@ public class Worker extends Visitor{
     //egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját
     //így ezzel indul el minden szekvenciában a visitorok mozgatása
     //meghívja a kapott irányban következő mező accept metódusát a workerrel
-    public void move(Directions d, int force) {
+    public void move(Directions d) {
         System.out.println(this.toString() + ".move("+ d +")");
         ATile next = currentTile.getNeighbor(d);
-        next.accept(this, d, force);
+        next.accept(this, d, this.force);
     }
 
     //Minden pushTo-nál megnézzük, hogy van-e a mezőn, amire lépne visitor
