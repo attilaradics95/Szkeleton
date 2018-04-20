@@ -19,7 +19,7 @@ public class Worker extends Visitor{
     //egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját
     //így ezzel indul el minden szekvenciában a visitorok mozgatása
     //meghívja a kapott irányban következő mező accept metódusát a workerrel
-    public void move(Directions d) {
+    public void move(Directions d, int force) {
         System.out.println(this.toString() + ".move("+ d +")");
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d);
@@ -33,8 +33,7 @@ public class Worker extends Visitor{
 
     //Tile
     // semmi extra nem történik
-    public void pushTo(Tile next, Directions d) {
-
+    public void pushTo(Tile next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
@@ -53,12 +52,11 @@ public class Worker extends Visitor{
                 this.die();
             }
         }
-
     }
 
     //Switch
     // amikor átlép meghívja önmagát átadva paraméterként a switch switchIt metódusát
-    public void pushTo(Switch next, Directions d) {
+    public void pushTo(Switch next, Directions d, int force) {
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
@@ -85,7 +83,7 @@ public class Worker extends Visitor{
 
     //Hole
     //beleesik és meghal
-    public void pushTo(Hole next, Directions d) {
+    public void pushTo(Hole next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         this.die();
     }
@@ -94,7 +92,7 @@ public class Worker extends Visitor{
     // megkérdezzük, hogy nyitva van-e
     // ha igen beleesik és meghal
     // ha nem, megpróbál odalépni - úgy viselkedik a Trap csukva, mint egy egyszerű Tile
-    public void pushTo(Trap next, Directions d) {
+    public void pushTo(Trap next, Directions d, int force) {
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         //Input beolvasása a konzolról
@@ -136,7 +134,7 @@ public class Worker extends Visitor{
 
     //Target
     //ugyanúgy viselkedik a raktárossal szemben, mint a sima Tile
-    public void pushTo(Target next, Directions d) {
+    public void pushTo(Target next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
@@ -160,7 +158,7 @@ public class Worker extends Visitor{
     // Column és Wall
     //ha a kiválasztott raktárost léptetik ide, akkor nem tud elmozdulni ezekre a mezőkre
     //ha nem a kiválasztott raktáros az, akkor összenyomódik és meghal
-    public void pushTo(Wall next, Directions d) {
+    public void pushTo(Wall next, Directions d, int force) {
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
@@ -170,7 +168,7 @@ public class Worker extends Visitor{
         }
     }
 
-    public void pushTo(Column next, Directions d) {
+    public void pushTo(Column next, Directions d, int force) {
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 

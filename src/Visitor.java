@@ -12,12 +12,12 @@ public abstract class Visitor {
     public void setForce(int force){
         this.force = force;
     }
-    abstract public void pushTo(Tile next, Directions d);
-    abstract public void pushTo(Switch next, Directions d);
-    abstract public void pushTo(Hole next, Directions d);
-    abstract public void pushTo(Trap next, Directions d);
-    abstract public void pushTo(Target next, Directions d);
-    abstract public void pushTo(Wall next, Directions d);
-    abstract public void pushTo(Column next, Directions d);
+    abstract public void pushTo(Tile next, Directions d, int force);
+    abstract public void pushTo(Switch next, Directions d, int force);
+    abstract public void pushTo(Hole next, Directions d, int force);
+    abstract public void pushTo(Trap next, Directions d, int force);
+    abstract public void pushTo(Target next, Directions d, int force);
+    abstract public void pushTo(Wall next, Directions d, int force);
+    abstract public void pushTo(Column next, Directions d, int force);
     abstract public void die();
 }

@@ -24,7 +24,7 @@ public class Box extends Visitor {
 
     //Tile
     // semmi extra nem történik
-    public void pushTo(Tile next, Directions d) {
+    public void pushTo(Tile next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         if (movable){
@@ -43,7 +43,7 @@ public class Box extends Visitor {
 
     //Switch
     // amikor átlép meghívja önmagát átadva paraméterként a switch switchIt metódusát
-    public void pushTo(Switch next, Directions d) {
+    public void pushTo(Switch next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         if (movable){
@@ -64,7 +64,7 @@ public class Box extends Visitor {
 
     //Hole
     //beleesik és meghal
-    public void pushTo(Hole next, Directions d) {
+    public void pushTo(Hole next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (movable){
             this.die();
@@ -75,7 +75,7 @@ public class Box extends Visitor {
     // megkérdezzük, hogy nyitva van-e
     // ha igen beleesik és meghal
     // ha nem, megpróbál odalépni - úgy viselkedik a Trap csukva, mint egy egyszerű Tile
-    public void pushTo(Trap next, Directions d) {
+    public void pushTo(Trap next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (movable){
             if (true/*Ha a csapda nyitva van*/){
@@ -100,7 +100,7 @@ public class Box extends Visitor {
 
     //Target
     // ha odalép a doboz, mozgathatatlanná válik
-    public void pushTo(Target next, Directions d) {
+    public void pushTo(Target next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (movable){
             Visitor visitorOnNext = next.getVisitor();
@@ -121,11 +121,11 @@ public class Box extends Visitor {
     // Column és Wall
     //nem tud elmozdulni ezekre a mezőkre
     // összenyomni se lehet, így a dobozt toló munkás se mozdul el a helyéről
-    public void pushTo(Wall next, Directions d) {
+    public void pushTo(Wall next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
     }
 
-    public void pushTo(Column next, Directions d) {
+    public void pushTo(Column next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
     }
 
