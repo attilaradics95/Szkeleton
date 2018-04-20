@@ -56,7 +56,7 @@ public class TestCases {
         Tile tile2 = new Tile();
         Tile tile3 = new Tile();
         Tile tile4 = new Tile();
-        Wall wall = new Wall();
+        Obstacle wall = new Obstacle();
 
         //beállítjuk a visitorokat a mezőkre
         tile1.setVisitor(visitor1);
@@ -90,7 +90,7 @@ public class TestCases {
 
         Controller controller = Controller.getInstance();
         Worker worker = new Worker();
-        Column next = new Column();
+        Obstacle next = new Obstacle();
         Tile tile = new Tile();
 
         tile.setVisitor(worker);
@@ -123,28 +123,6 @@ public class TestCases {
 
         //munkás mozgatása
         controller.addWorker(worker1);
-        controller.moveWorker(dir);
-    }
-
-    // @author Bálint
-    public void WorkerOnWall() {
-        Directions dir = Directions.EAST;
-
-        Controller controller = Controller.getInstance();
-
-        //elemek létrehozása
-        Worker worker = new Worker();
-        Wall next = new Wall();
-        Tile tile = new Tile();
-
-        tile.setVisitor(worker);
-        worker.setCurrentTile(tile);
-
-        tile.setNeighbors(null, next, null, null);
-        next.setNeighbors(null, null, null, tile);
-
-        //munkás mozgatása
-        controller.addWorker(worker);
         controller.moveWorker(dir);
     }
 
@@ -309,7 +287,7 @@ public class TestCases {
         Controller controller = Controller.getInstance();
         Tile tile1 = new Tile();
         Tile tile2 = new Tile();
-        Column tile3 = new Column();
+        Obstacle tile3 = new Obstacle();
         Worker visitor1 = new Worker();
         Box visitor2 = new Box();
 
@@ -396,36 +374,6 @@ public class TestCases {
         visitor1.setCurrentTile(tile1);
         visitor2.setCurrentTile(tile2);
         visitor3.setCurrentTile(tile4);
-
-        //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
-        controller.addWorker(visitor1);
-
-        // a teszteset szerint a munkás keletre tolja a ládát eggyel
-        controller.moveWorker(Directions.EAST);
-
-    }
-
-    // @author Klári
-    public void WorkerPushesBoxToWall() {
-        Controller controller = Controller.getInstance();
-        Tile tile1 = new Tile();
-        Tile tile2 = new Tile();
-        Wall tile3 = new Wall();
-        Worker visitor1 = new Worker();
-        Box visitor2 = new Box();
-
-        //beállítjuk a mezők szomszédjait a tesztesetnek megfelelően
-        tile1.setNeighbors(null, tile2,null,null);
-        tile2.setNeighbors(null, tile3,null,tile1);
-        tile3.setNeighbors(null, null,null,tile2);
-
-        // beállítjuk a mezők látogatóit a kiindulási állapotnak megfelelően
-        tile1.setVisitor(visitor1);
-        tile2.setVisitor(visitor2);
-
-        //beállítjuk a látogatók aktuális mezőit
-        visitor1.setCurrentTile(tile1);
-        visitor2.setCurrentTile(tile2);
 
         //hozzáadjuk a munkást a controller listájához a munkásokról, hogy irányítani tudjuk
         controller.addWorker(visitor1);

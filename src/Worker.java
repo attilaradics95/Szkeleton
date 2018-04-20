@@ -154,30 +154,9 @@ public class Worker extends Visitor{
         }
     }
 
-    // Column és Wall
+    // Obstacle
     //ha a kiválasztott raktárost léptetik ide, akkor nem tud elmozdulni ezekre a mezőkre
     //ha nem a kiválasztott raktáros az, akkor összenyomódik és meghal
-    public void pushTo(Wall next, Directions d, int force) {
-
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-
-        Worker sw = controller.getSelectedworker();
-        if(this != sw){
-            this.die();
-        }
-    }
-
-    public void pushTo(Column next, Directions d, int force) {
-
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-
-        Worker sw = controller.getSelectedworker();
-        if(this != sw){
-            this.die();
-        }
-
-    }
-
     @Override
     public void pushTo(Obstacle next, Directions d, int force) {
         Worker sw = controller.getSelectedworker();

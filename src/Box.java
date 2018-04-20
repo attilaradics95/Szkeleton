@@ -118,20 +118,12 @@ public class Box extends Visitor {
         }
     }
 
-    // Column és Wall
+    // Obstacle
     //nem tud elmozdulni ezekre a mezőkre
     // összenyomni se lehet, így a dobozt toló munkás se mozdul el a helyéről
-    public void pushTo(Wall next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-    }
-
-    public void pushTo(Column next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-    }
-
     @Override
     public void pushTo(Obstacle next, Directions d, int force) {
-        
+        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
     }
 
     //mozgathatatlanná válik a box
