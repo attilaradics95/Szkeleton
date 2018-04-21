@@ -70,6 +70,28 @@ public class Box extends Visitor {
         }
     }
 
+    @Override
+    public void pushTo(Honey next, Directions d, int force) {
+        if (movable){
+            int reducedforce = force - this.force;
+            //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
+            if(reducedforce < 0){
+                return;
+            }
+
+            Visitor visitorOnNext = next.getVisitor();
+            if(visitorOnNext != null){
+                ATile next1 = next.getNeighbor(d);
+                next1.accept(visitorOnNext, d, reducedforce);
+                visitorOnNext = next.getVisitor();
+            }
+            if(visitorOnNext == null){
+                currentTile.setVisitor(null);
+                next.setVisitor(this);
+            }
+        }
+    }
+
     //Hole
     //beleesik és meghal
     public void pushTo(Hole next, Directions d, int force) {
@@ -82,6 +104,28 @@ public class Box extends Visitor {
             }
 
             this.die();
+        }
+    }
+
+    @Override
+    public void pushTo(Oil next, Directions d, int force) {
+        if (movable){
+            int reducedforce = force - this.force;
+            //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
+            if(reducedforce < 0){
+                return;
+            }
+
+            Visitor visitorOnNext = next.getVisitor();
+            if(visitorOnNext != null){
+                ATile next1 = next.getNeighbor(d);
+                next1.accept(visitorOnNext, d, reducedforce);
+                visitorOnNext = next.getVisitor();
+            }
+            if(visitorOnNext == null){
+                currentTile.setVisitor(null);
+                next.setVisitor(this);
+            }
         }
     }
 

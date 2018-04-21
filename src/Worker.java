@@ -75,11 +75,53 @@ public class Worker extends Visitor{
 
     }
 
+    @Override
+    public void pushTo(Honey next, Directions d, int force) {
+        Visitor visitorOnNext = next.getVisitor();
+        if(visitorOnNext != null){
+            ATile next1 = next.getNeighbor(d);
+            next1.accept(visitorOnNext, d, force);
+            visitorOnNext = next.getVisitor();
+        }
+
+        if(visitorOnNext == null){
+            currentTile.setVisitor(null);
+            next.setVisitor(this);
+        }
+        else {
+            Worker sw = controller.getSelectedworker();
+            if (this != sw){
+                this.die();
+            }
+        }
+    }
+
     //Hole
     //beleesik és meghal
     public void pushTo(Hole next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         this.die();
+    }
+
+    @Override
+    public void pushTo(Oil next, Directions d, int force) {
+        Visitor visitorOnNext = next.getVisitor();
+        if(visitorOnNext != null){
+            ATile next1 = next.getNeighbor(d);
+            next1.accept(visitorOnNext, d, force);
+            visitorOnNext = next.getVisitor();
+        }
+
+        if(visitorOnNext == null){
+            currentTile.setVisitor(null);
+            next.setVisitor(this);
+        }
+        else {
+            Worker sw = controller.getSelectedworker();
+            if (this != sw){
+                this.die();
+            }
+        }
     }
 
     //Trap

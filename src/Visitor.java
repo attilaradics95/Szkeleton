@@ -14,7 +14,9 @@ public abstract class Visitor {
     }
     abstract public void pushTo(Tile next, Directions d, int force);
     abstract public void pushTo(Switch next, Directions d, int force);
+    abstract public void pushTo(Honey next, Directions d, int force);
     abstract public void pushTo(Hole next, Directions d, int force);
+    abstract public void pushTo(Oil next, Directions d, int force);
     abstract public void pushTo(Trap next, Directions d, int force);
     abstract public void pushTo(Target next, Directions d, int force);
     abstract public void pushTo(Obstacle next, Directions d, int force);
