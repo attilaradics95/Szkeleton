@@ -9,6 +9,7 @@ public class Trap extends ATile {
     public Trap() {
         instanceCounter++;
         counter = instanceCounter;
+        opened = false;
     }
 
     //Függvények
@@ -27,6 +28,10 @@ public class Trap extends ATile {
         if(bool && visitor != null){
             visitor.die();
         }
+    }
+
+    public boolean isOpened(){
+        return opened;
     }
 
     //objektum kiíráshoz
