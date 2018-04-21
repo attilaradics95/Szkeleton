@@ -1,7 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Box extends Visitor {
     //Attribútumok
     private Game game = null;
@@ -17,7 +13,16 @@ public class Box extends Visitor {
         id = instanceCounter;
     }
 
-    //Wall és Column kivételével - mivel ide úgyse tud menni -  minden pushTo-nál megkérdezzük, hogy mozgatható-e a doboz
+    /**
+     * Visszaadja a surlodast.
+     * @return a force attributum a surlodas a boxnal.
+     */
+    @Override
+    public int getFriction() {
+        return force;
+    }
+
+    //Obstacle kivételével - mivel ide úgyse tud menni -  minden pushTo-nál megkérdezzük, hogy mozgatható-e a doboz
     //ha nem, akkor nem mozdul el -- ki hitte volna? -- egyébként a mezőtől függ, mi történik
     //ha van visitor a mezőn, amire lépne, akkor meghívja az azután következő mező accept függvényét a szomszédos visitorral
     // ha átkerül a következő mezőre beállítja magát a visitorának, annak a mezőnek, ahonnan ellépett nullra állítja

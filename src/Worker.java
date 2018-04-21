@@ -23,6 +23,14 @@ public class Worker extends Visitor{
         next.accept(this, d, this.force);
     }
 
+    /**
+     * @return Mindig nulla, mert a workernek nincs surlodasa.
+     */
+    @Override
+    public int getFriction() {
+        return 0;
+    }
+
     //Minden pushTo-nál megnézzük, hogy van-e a mezőn, amire lépne visitor
     //ha van visitor a mezőn, amire lépne, akkor meghívja az azután következő mező accept függvényét a szomszédos visitorral
     //ha az accept visszatért és még mindig van visitor a mezőn, amire lépne, akkor ha nem ő a kiválasztott raktáros, akkor meghal, mert összenyomják
