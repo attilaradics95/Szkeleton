@@ -1,7 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Worker extends Visitor{
     private Controller controller = null;
 
@@ -21,14 +17,6 @@ public class Worker extends Visitor{
         System.out.println(this.toString() + ".move("+ d +")");
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d, this.force);
-    }
-
-    /**
-     * @return Mindig nulla, mert a workernek nincs surlodasa.
-     */
-    @Override
-    public int getFriction() {
-        return 0;
     }
 
     //Minden pushTo-nál megnézzük, hogy van-e a mezőn, amire lépne visitor
@@ -101,39 +89,24 @@ public class Worker extends Visitor{
     public void pushTo(Trap next, Directions d, int force) {
 
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-        //Input beolvasása a konzolról
-        while (true) {
-            System.out.println("Nyitva van a csapda? (Y/N)");
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String input = "";
-            try {
-                input = br.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
+        if (next.isOpened()) {
+            this.die();
+        } else {
+            Visitor visitorOnNext = next.getVisitor();
+            if (visitorOnNext != null) {
+                ATile next1 = next.getNeighbor(d);
+                next1.accept(visitorOnNext, d, force);
+                visitorOnNext = next.getVisitor();
             }
-            if (input.equals("Y") || input.equals("y")) {
-                this.die();
-                return;
-            }
-            if (input.equals("N") || input.equals("n")) {
-                Visitor visitorOnNext = next.getVisitor();
-                if(visitorOnNext != null){
-                    ATile next1 = next.getNeighbor(d);
-                    next1.accept(visitorOnNext, d, force);
-                    visitorOnNext = next.getVisitor();
-                }
 
-                if(visitorOnNext == null){
-                    currentTile.setVisitor(null);
-                    next.setVisitor(this);
+            if (visitorOnNext == null) {
+                currentTile.setVisitor(null);
+                next.setVisitor(this);
+            } else {
+                Worker sw = controller.getSelectedworker();
+                if (this != sw) {
+                    this.die();
                 }
-                else {
-                    Worker sw = controller.getSelectedworker();
-                    if (this != sw){
-                        this.die();
-                    }
-                }
-                return;
             }
         }
     }

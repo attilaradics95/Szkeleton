@@ -12,7 +12,6 @@ public abstract class Visitor {
     public void setForce(int force){
         this.force = force;
     }
-    abstract public int getFriction();
     abstract public void pushTo(Tile next, Directions d, int force);
     abstract public void pushTo(Switch next, Directions d, int force);
     abstract public void pushTo(Hole next, Directions d, int force);

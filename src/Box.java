@@ -13,15 +13,6 @@ public class Box extends Visitor {
         id = instanceCounter;
     }
 
-    /**
-     * Visszaadja a surlodast.
-     * @return a force attributum a surlodas a boxnal.
-     */
-    @Override
-    public int getFriction() {
-        return force;
-    }
-
     //Obstacle kivételével - mivel ide úgyse tud menni -  minden pushTo-nál megkérdezzük, hogy mozgatható-e a doboz
     //ha nem, akkor nem mozdul el -- ki hitte volna? -- egyébként a mezőtől függ, mi történik
     //ha van visitor a mezőn, amire lépne, akkor meghívja az azután következő mező accept függvényét a szomszédos visitorral
@@ -33,10 +24,16 @@ public class Box extends Visitor {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         if (movable){
+            int reducedforce = force - this.force;
+            //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
+            if(reducedforce < 0){
+                return;
+            }
+
             Visitor visitorOnNext = next.getVisitor();
             if(visitorOnNext != null){
                 ATile next1 = next.getNeighbor(d);
-                next1.accept(visitorOnNext, d, force);
+                next1.accept(visitorOnNext, d, reducedforce);
                 visitorOnNext = next.getVisitor();
             }
             if(visitorOnNext == null){
@@ -52,10 +49,16 @@ public class Box extends Visitor {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
 
         if (movable){
+            int reducedforce = force - this.force;
+            //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
+            if(reducedforce < 0){
+                return;
+            }
+
             Visitor visitorOnNext = next.getVisitor();
             if (visitorOnNext != null) {
                 ATile next1 = next.getNeighbor(d);
-                next1.accept(visitorOnNext, d, force);
+                next1.accept(visitorOnNext, d, reducedforce);
                 visitorOnNext = next.getVisitor();
             }
 
@@ -72,6 +75,12 @@ public class Box extends Visitor {
     public void pushTo(Hole next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (movable){
+            int reducedforce = force - this.force;
+            //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
+            if(reducedforce < 0){
+                return;
+            }
+
             this.die();
         }
     }
@@ -83,14 +92,20 @@ public class Box extends Visitor {
     public void pushTo(Trap next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (movable){
-            if (true/*Ha a csapda nyitva van*/){
+            int reducedforce = force - this.force;
+            //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
+            if(reducedforce < 0){
+                return;
+            }
+
+            if (next.isOpened()){
                 this.die();
             }
             else{
                 Visitor visitorOnNext = next.getVisitor();
                 if (visitorOnNext != null) {
                     ATile next1 = next.getNeighbor(d);
-                    next1.accept(visitorOnNext, d, force);
+                    next1.accept(visitorOnNext, d, reducedforce);
                     visitorOnNext = next.getVisitor();
                 }
 
@@ -108,10 +123,16 @@ public class Box extends Visitor {
     public void pushTo(Target next, Directions d, int force) {
         System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (movable){
+            int reducedforce = force - this.force;
+            //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
+            if(reducedforce < 0){
+                return;
+            }
+
             Visitor visitorOnNext = next.getVisitor();
             if(visitorOnNext != null){
                 ATile next1 = next.getNeighbor(d);
-                next1.accept(visitorOnNext, d, force);
+                next1.accept(visitorOnNext, d, reducedforce);
                 visitorOnNext = next.getVisitor();
             }
             if(visitorOnNext == null){
