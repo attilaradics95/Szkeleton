@@ -568,7 +568,7 @@ public class TestCases {
     //ezt végzi el ez a függvény
     private void testing()  {
         //kezdeti pálya kiíratása
-        //game.showmap();
+        game.showMap();
 
         //parancsfeldolgozás
         System.out.println("Adja meg a parancsokat!");
@@ -580,7 +580,8 @@ public class TestCases {
         }
 
         //teszteset végállapotában is kiírjuk a pályát
-        //game.showmap
+        game.showMap();
+
     }
 
     public void MoveWorker(){
@@ -588,143 +589,215 @@ public class TestCases {
         game.loadMap("test1.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test1_out");
     }
     public void SelectWorker(){
         //map betöltése
         game.loadMap("test2.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test2_out");
     }
     public void KillWorker(){
         //map betöltése
         game.loadMap("test3.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test3_out");
     }
     public void DestructionofBox(){
         //map betöltése
         game.loadMap("test4.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test4_out");
     }
     public void BoxtoTarget(){
         //map betöltése
         game.loadMap("test5.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test5_out");
     }
     public void GameOver(){
         //map betöltése
         game.loadMap("test6.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test6_out");
     }
     public void Switch(){
         //map betöltése
         game.loadMap("test7.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test7_out");
     }
     public void PutOil(){
         //map betöltése
         game.loadMap("test8.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test8_out");
     }
     public void PutHoney(){
         //map betöltése
         game.loadMap("test9.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test9_out");
     }
     public void WorkerStepsOnActiveTrap(){
         //map betöltése
         game.loadMap("test10.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test10_out");
     }
     public void WorkerStepsOnInactiveTrap(){
         //map betöltése
         game.loadMap("test11.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test11_out");
     }
     public void WorkerStepsOnObstacle(){
         //map betöltése
         game.loadMap("test12.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test12_out");
     }
     public void WorkerStepsOnSwitch(){
         //map betöltése
         game.loadMap("test13.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test13_out");
     }
     public void WorkerStepsOnTarget(){
         //map betöltése
         game.loadMap("test14.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test14_out");
     }
     public void WorkerStepsOnHole(){
         //map betöltése
         game.loadMap("test15.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test15_out");
     }
     public void WorkerPushesWorkerToTile(){
         //map betöltése
         game.loadMap("test16.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test16_out");
     }
     public void WorkerPushesBoxToTile(){
         //map betöltése
         game.loadMap("test17.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test17_out");
     }
     public void WorkerPushesBoxToInactiveTrap(){
         //map betöltése
         game.loadMap("test18.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test18_out");
     }
     public void WorkerPushesBoxToActiveTrap(){
         //map betöltése
         game.loadMap("test19.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test19_out");
     }
     public void WorkerPushesBoxToSwitch(){
         //map betöltése
         game.loadMap("test20.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test20_out");
     }
     public void WorkerPushesBoxToHole(){
         //map betöltése
         game.loadMap("test21.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test21_out");
     }
     public void WorkerPushesBoxToObstacle(){
         //map betöltése
         game.loadMap("test22.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test22_out");
     }
     public void MML(){
         //map betöltése
         game.loadMap("test23.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test23_out");
     }
     public void MLM(){
         //map betöltése
         game.loadMap("test24.txt");
 
         testing();
+
+        //map elmentése
+        game.saveMap("test24_out");
     }
 }
