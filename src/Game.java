@@ -94,7 +94,8 @@ public class Game {
                             l++;
                             break;
                         case 'T':
-                            tiles[x][y] = new Trap();
+                            int id = line.charAt(i+1);
+                            tiles[x][y] = new Trap(id);
                             x++;
                             l++;
                             break;
