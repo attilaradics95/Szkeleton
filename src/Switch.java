@@ -1,20 +1,24 @@
 public class Switch extends ATile {
     //Attribútumok
     private Trap trap;
-    //név kiírására szolgáló számlálók
-    static int instanceCounter = 0;
-    int counter = 0;
-   //dupla tabulátorozás ellen kikommenteltem @author Rozi
-
-    public Switch() {
-        instanceCounter++;
-        counter = instanceCounter;
-    }
+    private int id;
 
     //Függvények
+    public Switch() {
+        id = 0;
+    }
+
+    public Switch(int id) {
+        this.id = id;
+    }
+
+    /**
+     * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
+     * @param v visitor
+     * @param d irany
+     * @param force worker ereje
+     */
     public void accept(Visitor v, Directions d, int force) {
-        //mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
-        System.out.println(this.toString() + ".accept(" + v + "," + d + ")");
         v.pushTo(this, d, force);
     }
 
@@ -22,9 +26,11 @@ public class Switch extends ATile {
         trap = t;
     }
 
+    /**
+     * ha box kerül a kapcsolóra vált - a trap kinyílik
+     * @param b Box
+     */
     public void switchIt(Box b) {
-        //ha box kerül a kapcsolóra vált - a trap kinyílik
-        System.out.println(this.toString() + ".switchIt(" + b + ")");
         if (trap != null){
             trap.setOpened(true);
         } else {
@@ -32,9 +38,11 @@ public class Switch extends ATile {
         }
     }
 
+    /**
+     * ha worker kerül a kapcsolóra - a trap inaktív lesz
+     * @param w Worker
+     */
     public void switchIt(Worker w){
-        //ha worker kerül a kapcsolóra - a trap inaktív lesz
-        System.out.println(this.toString() + ".switchIt(" + w + ")");
         if (trap != null){
             trap.setOpened(false);
         } else {
@@ -42,9 +50,12 @@ public class Switch extends ATile {
         }
     }
 
-    //objektum kiíráshoz
+    /**
+     * objektum kiíráshoz
+     * @return a kimeneti nyelvvel egyező szimbólum
+     */
     public String toString() {
-        return "switch" + counter;
+        return "S" + id;
     }
 
 }

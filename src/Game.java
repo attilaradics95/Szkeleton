@@ -23,13 +23,9 @@ public class Game {
     private boolean roundover = false;
     private ArrayList<Box> boxes;
 
-
-    //ebbe tároljuk el a fájlból beolvasott dolgokat
+    //ebben tároljuk el a fájlból beolvasott dolgokat
     private ATile[][] tiles;
     private Visitor[][] visitors;
-
-    /**Tabulator*/
-    Tabulate tabulate = new Tabulate();
 
     /**Metódusok*/
     private void loadMap(){
