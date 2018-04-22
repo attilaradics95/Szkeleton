@@ -23,6 +23,8 @@ public class Game {
     private boolean roundover = false;
     private ArrayList<Box> boxes;
 
+
+    //ebbe tároljuk el a fájlból beolvasott dolgokat
     private ATile[][] tiles;
     private Visitor[][] visitors;
 
