@@ -141,6 +141,59 @@ public class Game {
 
     }
 
+    //pálya kiíratása konzolra
+    public void showMap(){
+       for(int i = 0; i < tiles.length; i++){
+           for(int j = 0; j < tiles[0].length; j++){
+               if(visitors[i][j] != null)
+                   System.out.print(visitors[i][j].toString());
+               System.out.print(tiles[i][j].toString());
+               if(j != tiles[0].length - 1){
+                   System.out.print("\t");
+               }
+           }
+           System.out.println();
+       }
+
+    }
+
+    //pálya mentése fájlba
+    public void saveMap(String filename){
+        File f = new File(filename);
+        FileWriter fw = null;
+        try{
+            fw = new FileWriter(f);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        BufferedWriter bw = new BufferedWriter(fw);
+        try{
+            for(int i = 0; i < tiles.length; i++){
+                for(int j = 0; j < tiles[0].length; j++){
+                    if(visitors[i][j] != null)
+                        bw.write(visitors[i][j].toString());
+                    bw.write(tiles[i][j].toString());
+                    if(j != tiles[0].length - 1){
+                        bw.write("\t");
+                    }
+                }
+                bw.newLine();
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void decreaseBoxes(Box box){
         boxes.remove(box);
         if (boxes.isEmpty()){
