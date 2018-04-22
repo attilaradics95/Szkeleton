@@ -1,6 +1,6 @@
 public class TestCases {
 
-
+/*
     // @author Bálint
     public void MLL() {
 
@@ -554,4 +554,30 @@ public class TestCases {
         // a teszteset szerint a munkás keletre tolja a ládát eggyel
         controller.moveWorker(Directions.EAST);
     }
+    */
+
+    public void MoveWorker(){}
+    public void SelectWorker(){}
+    public void KillWorker(){}
+    public void DestructionofBox(){}
+    public void BoxtoTarget(){}
+    public void GameOver(){}
+    public void Switch(){}
+    public void PutOil(){}
+    public void PutHoney(){}
+    public void WorkerStepsOnActiveTrap(){}
+    public void WorkerStepsOnInactiveTrap(){}
+    public void WorkerStepsOnObstacle(){}
+    public void WorkerStepsOnSwitch(){}
+    public void WorkerStepsOnTarget(){}
+    public void WorkerStepsOnHole(){}
+    public void WorkerPushesWorkerToTile(){}
+    public void WorkerPushesBoxToTile(){}
+    public void WorkerPushesBoxToInactiveTrap(){}
+    public void WorkerPushesBoxToActiveTrap(){}
+    public void WorkerPushesBoxToSwitch(){}
+    public void WorkerPushesBoxToHole(){}
+    public void WorkerPushesBoxToObstacle(){}
+    public void MML(){}
+    public void MLM(){}
 }
