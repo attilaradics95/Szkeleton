@@ -34,7 +34,7 @@ public class TestCases {
         tile3.setNeighbors(null, tile4, null, tile2);
         tile4.setNeighbors(null, null, null, tile3);
 
-        //munkás hozzáadása a conotrollerhez
+        //munkás hozzáadása a controllerhez
         controller.addWorker(worker);
 
         //controller segítségével a munkás mozgatása

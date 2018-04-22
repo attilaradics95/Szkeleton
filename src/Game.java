@@ -18,15 +18,31 @@ public class Game {
         return instance;
     }
 
+
     /**Attributumok*/
     private Controller controller = null;
     private boolean roundover = false;
     private ArrayList<Box> boxes;
 
+
     /**Tabulator*/
     Tabulate tabulate = new Tabulate();
 
+
     /**Metódusok*/
+
+    // @author Attila
+    //Dobozok számának lekérdezésére szolgáló függvény
+    public int getNumberOfBoxes() {
+        return boxes.size();
+    }
+
+
+    // @author Attila
+    // Visszaadja az adott indexű dobozt
+    public int getBox(int index) {return boxes.get(index-1); }
+
+
     private void loadMap(){
 
     }
