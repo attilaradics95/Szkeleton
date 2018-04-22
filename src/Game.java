@@ -111,24 +111,30 @@ public class Game {
 
         /**Teszt template */
         System.out.println("Választható tesztesetek:");
-        System.out.println("1. Teszt: Worker pushes Box");
-        System.out.println("2. Teszt: Worker pushes Box to Target");
-        System.out.println("3. Teszt: Worker pushes Box to Obstacle");
-        System.out.println("4. Teszt: Worker pushes Box to Switch");
-        System.out.println("5. Teszt: Worker pushes Box from Switch");
-        System.out.println("6. Teszt: Worker pushes Box to Hole");
-        System.out.println("8. Teszt: Worker pushes another Worker to Tile");
-        System.out.println("9. Teszt: Worker pushes another Worker to Hole");
-        System.out.println("10. Teszt: Worker steps on Obstacle");
-        System.out.println("11. Teszt: Worker steps on Hole");
-        System.out.println("13. Teszt: Worker steps on Target");
-        System.out.println("14. Teszt: Worker steps on Switch");
-        System.out.println("15. Teszt: Worker steps on Trap");
-        System.out.println("16. Teszt: Worker stands on a Trap");
-        System.out.println("17. Teszt: Select Worker In Action");
-        System.out.println("18. Teszt: Trap Opens With A Box On It ");
-        System.out.println("19. Teszt: Worker -> Box -> Box");
-        System.out.println("20. Teszt: Worker -> Box -> Worker -> Worker -> Wall");
+        System.out.println("1. Teszt: Moving a worker");
+        System.out.println("2. Teszt: Select worker");
+        System.out.println("3. Teszt: Killing a worker");
+        System.out.println("4. Teszt: Destruction of box");
+        System.out.println("5. Teszt: Box to Target");
+        System.out.println("6. Teszt: Game over");
+        System.out.println("7. Teszt: Switch");
+        System.out.println("8. Teszt: Put oil");
+        System.out.println("9. Teszt: Put honey");
+        System.out.println("10. Teszt: Worker steps on active Trap");
+        System.out.println("11. Teszt: Worker steps on inactive Trap");
+        System.out.println("12. Teszt: Worker steps on Obstacle");
+        System.out.println("13. Teszt: Worker steps on Switch");
+        System.out.println("14. Teszt: Worker steps on Target");
+        System.out.println("15. Teszt: Worker steps on Hole");
+        System.out.println("16. Teszt: Worker pushes another Worker to Tile");
+        System.out.println("17. Teszt: Worker pushes Box to Tile");
+        System.out.println("18. Teszt: Worker pushes Box to inactive Trap ");
+        System.out.println("19. Teszt: Worker pushes Box to active Trap");
+        System.out.println("20. Teszt: Worker pushes Box to Switch");
+        System.out.println("21. Teszt: Worker pushes Box to Hole");
+        System.out.println("22. Teszt: Worker pushes Box to Obstacle");
+        System.out.println("23. Teszt: Worker -> Worker -> Box");
+        System.out.println("24. Teszt: Worker -> Box -> Worker");
         System.out.println("Teszt kiválasztása(1,2,...):");
 
 
@@ -153,58 +159,76 @@ public class Game {
 
         switch (Integer.parseInt(input)){
             case 1:
-                tests.WorkerPushesBox();
+                tests.MoveWorker();
                 break;
             case 2:
-                tests.WorkerPushesBoxToTarget();
+                tests.SelectWorker();
                 break;
             case 3:
-                tests.WorkerPushesBoxToColumn();
+                tests.KillWorker();
                 break;
             case 4:
-                tests.WorkerPushesBoxToSwitch();
+                tests.DestructionofBox();
                 break;
             case 5:
-                tests.WorkerPushesBoxFromSwitch();
+                tests.BoxtoTarget();
                 break;
             case 6:
-                tests.WorkerPushesBoxToHole();
+                tests.GameOver();
+                break;
+            case 7:
+                tests.Switch();
                 break;
             case 8:
-                tests.WorkerPushesAnotherWorkerToTile();
+                tests.PutOil();
                 break;
             case 9:
-                tests.WorkerPushesAnotherWorkerToHole();
+                tests.PutHoney();
                 break;
             case 10:
-                tests.WorkerOnColumn();
-                break;
-            case 11:
-                tests.WorkerOnHole();
-                break;
-            case 13:
-                tests.WorkerStepsOnTarget();
-                break;
-            case 14:
-                tests.WorkerStepsOnSwitch();
-                break;
-            case 15:
                 tests.WorkerStepsOnActiveTrap();
                 break;
+            case 11:
+                tests.WorkerStepsOnInactiveTrap();
+                break;
+            case 12:
+                tests.WorkerStepsOnObstacle();
+                break;
+            case 13:
+                tests.WorkerStepsOnSwitch();
+                break;
+            case 14:
+                tests.WorkerStepsOnTarget();
+                break;
+            case 15:
+                tests.WorkerStepsOnHole();
+                break;
             case 16:
-                tests.WorkerStandsOnTrap();
+                tests.WorkerPushesWorkerToTile();
                 break;
             case 17:
-                tests.SelectWorkerInAction();
+                tests.WorkerPushesBoxToTile();
                 break;
             case 18:
-                tests.trapOpensWithABoxOnIt();
+                tests.WorkerPushesBoxToInactiveTrap();
                 break;
             case 19:
-                tests.MLL();
+                tests.WorkerPushesBoxToActiveTrap();
                 break;
             case 20:
-                tests.MLMMF();
+                tests.WorkerPushesBoxToSwitch();
+                break;
+            case 21:
+                tests.WorkerPushesBoxToHole();
+                break;
+            case 22:
+                tests.WorkerPushesBoxToObstacle();
+                break;
+            case 23:
+                tests.MML();
+                break;
+            case 24:
+                tests.MLM();
                 break;
         }
     }
