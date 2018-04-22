@@ -34,11 +34,12 @@ public class Game {
 
     /**Metódusok*/
     //Kicserél egy mezőt
-    public void swap(ATile old, ATile new) {
-        for (ATile tile :
-                tiles) {
-            if (tile.equals(old)) {
-                tile = new;
+    public void swap(ATile old, ATile newtile) {
+        for (int i = 0; i < tiles.length; i++) {
+            for (int j = 0; j < tiles[i].length; j++) {
+                if (old == tiles[i][j]) {
+                    tiles[i][j] = newtile;
+                }
             }
         }
     }
