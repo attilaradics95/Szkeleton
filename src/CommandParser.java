@@ -3,8 +3,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
+// @author Attila
+// A parancsfeldolgozásért felelős osztály
 public class CommandParser {
-
 
     // @author Attila
     // Feldolgoz egy parancsot

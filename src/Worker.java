@@ -209,7 +209,12 @@ public class Worker extends Visitor{
 
     //Kicseréli a munkás alatti mezőt a Honey osztály egy példányára. Átállítja az összes érintett szomszédot.
     public void putHoney() {
+        Honey honey = new Honey();
+        game.swap(this.currentTile,honey);
+    }
 
-
+    public void putOil() {
+        Oil oil = new Oil();
+        game.swap(this.currentTile,oil);
     }
 }
