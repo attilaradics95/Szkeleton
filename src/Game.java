@@ -89,12 +89,13 @@ public class Game {
                             l++;
                             break;
                         case 'S':
-                            tiles[x][y] = new Switch();
+                            int id = (int)line.charAt(i+1);
+                            tiles[x][y] = new Switch(id);
                             x++;
                             l++;
                             break;
                         case 'T':
-                            int id = line.charAt(i+1);
+                            int id = (int)line.charAt(i+1);
                             tiles[x][y] = new Trap(id);
                             x++;
                             l++;
