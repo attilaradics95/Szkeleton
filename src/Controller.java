@@ -6,8 +6,6 @@ public class Controller {
      */
     private static Controller instance = null;
 
-    Tabulate tabulate = new Tabulate();
-
     private Controller() {
         workers = new ArrayList<>();
         game = Game.getInstance();
@@ -36,7 +34,10 @@ public class Controller {
         return workers.size();
     }
 
-    //hogy irányítanyi tudjuk, hozzá kell adni a listához a munkásokat
+    /**
+     * hogy irányítanyi tudjuk, hozzá kell adni a listához a munkásokat
+     * @param w hozzáadandó munkás
+     */
     public void addWorker(Worker w) {
         workers.add(w);
         selectedworker = workers.get(0);
@@ -46,11 +47,11 @@ public class Controller {
         return selectedworker;
     }
 
-    //ha meghal egy munkés, kivesszük a listából
+    /**
+     * ha meghal egy munkés, kivesszük a listából
+     * @param w meghalt munkás
+     */
     public void eliminateWorker(Worker w) {
-        tabulate.in();
-
-        System.out.println("eliminateWorker(" + w + ")");
         //Ha több munkas van mint egy akkor kivesszük a Listabol és szukseg eseten csereljuk a kivalasztottat
         //Ha mar csak az utolso munkas van benne akkor kivesszuk és befejezzuk a kort
         if (workers.size() > 1) {
@@ -61,17 +62,16 @@ public class Controller {
                 workers.remove(w);
             }
 
-            tabulate.out();
-
         } else {
             workers.remove(w);
             game.endRound();
-
-            tabulate.out();
         }
     }
 
-    //munkás kiválasztási, hogy utána mozgathassuk
+    /**
+     * munkás kiválasztási, hogy utána mozgathassuk
+     * @param i worker id-ja
+     */
     public void selectWorker(int i) {
         if(!(workers.isEmpty())){
            // 0val kezdődik a raktárosok számozása!
@@ -89,17 +89,17 @@ public class Controller {
         }
     }
 
-    //a selectedWorker mozgatása a game által megadott irányba
-    //ezzel kezdődik minden mozgatási szekvencia
+    /**
+     * a selectedWorker mozgatása a game által megadott irányba
+     * ezzel kezdődik minden mozgatási szekvencia
+     * @param direction mozgatás iránya
+     */
     public void moveWorker(Directions direction) {
-        tabulate.in();
-        System.out.println("moveWorker(" + direction + ")");
         if (selectedworker != null){
             selectedworker.move(direction);
         }
         else{
             System.out.println("Nincs kiválasztott raktáros");
         }
-        tabulate.out();
     }
 }
