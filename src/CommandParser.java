@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 public class CommandParser {
 
     // @author Attila
-    //Parses commands
+    // Feldolgoz egy parancsot
     public String parse(Controller controller) throws IOException
     {
         InputStreamReader is = new InputStreamReader(System.in);
@@ -18,29 +18,22 @@ public class CommandParser {
             in = br.readLine();
             array = in.split(" ");
 
-            //Ez csak példa a tavalyi 3. laborról. A végleges kódban nem lesz benne
-            /*if (array[0].equals("cd")) {
-                if (array[1].equals(".."))
-                    f = f.getParentFile();
-                else {
-                    String path = f.getAbsolutePath();
-                    f = new File(path, array[1]);
-                }
-            }*/
+
 
             //Munkás kiválasztása: pl. select 1
             if (array[0].equals("select")) {
                 int id = Integer.parseInt(array[1]);
-                if (id > controller.getNumberOfWorkers() || id<=0)
-                    throw new ArrayIndexOutOfBoundsException("No such worker!");
+                if (id > controller.getNumberOfWorkers() || id < 1)
+                    return "No such worker!";
                 controller.selectWorker(id);
             }
+
 
             //Munkás léptetése: pl. step w, step a, step s, step d
             if (array[0].equals("step")) {
                 //Leellenőrizzük, hogy a felhasználó létező irányt adott-e meg
-                if (array[1] != "w" || array[1] != "a" || array[1] != "s" || array[1] != "d")
-                    throw new Exception("Wrong key!");
+                if (array[1] != "w" && array[1] != "a" && array[1] != "s" && array[1] != "d")
+                    return "Wrong key!";
                 if (array[1] == "w")
                     controller.moveWorker(Directions.NORTH);
                 if (array[1] == "a")
@@ -51,31 +44,63 @@ public class CommandParser {
                     controller.moveWorker(Directions.EAST);
             }
 
-            /*
+
             //Doboz mozgatása: pl. push 1 a
             if (array[0].equals("push")) {
 
                 //Leellenőrizzük, hogy a felhasználó létező dobozt adott-e meg
-                if (Integer.parseInt(array[1]) > game.getNumberOfBoxes() || Integer.parseInt(array[1]) <= 0)
-                    throw new Exception("No such Box!");
-
-                //Ha jó számot adott meg, akkor kiválasztjuk a dobozt
-                Box box = game.getBox(Integer.parseInt(array[1]));
+                if (Integer.parseInt(array[1]) > controller.boxes.size() || Integer.parseInt(array[1]) < 1)
+                    return "No such Box!";
 
                 //Leellenőrizzük, hogy a felhasználó létező irányt adott-e meg
-                if (array[2] != "w" || array[1] != "a" || array[1] != "s" || array[1] != "d")
-                    throw new Exception("Wrong key!");
+                if (array[2] != "w" && array[2] != "a" && array[2] != "s" && array[2] != "d")
+                    return "Wrong key!";
 
                 //Ha létező irányt adott meg, akkor mozgatjuk a dobozt
-                if (array[2] == "w")
-
-                if (array[2] == "a")
-                if (array[2] == "s")
-                if (array[2] == "d")
+                if (array[2] == "w") {
+                    for (Box b : controller.boxes) {
+                        if (b.getId() == Integer.parseInt(array[1]))
+                            b.getTile().getNeighbor(Directions.NORTH).accept(b,Directions.NORTH,b.getForce());
+                    }
+                }
+                if (array[2] == "a") {
+                    for (Box b : controller.boxes) {
+                        if (b.getId() == Integer.parseInt(array[1]))
+                            b.getTile().getNeighbor(Directions.WEST).accept(b,Directions.WEST,b.getForce());
+                    }
+                }
+                if (array[2] == "s") {
+                    for (Box b : controller.boxes) {
+                        if (b.getId() == Integer.parseInt(array[1]))
+                            b.getTile().getNeighbor(Directions.SOUTH).accept(b,Directions.SOUTH,b.getForce());
+                    }
+                }
+                if (array[2] == "d") {
+                    for (Box b : controller.boxes) {
+                        if (b.getId() == Integer.parseInt(array[1]))
+                            b.getTile().getNeighbor(Directions.EAST).accept(b,Directions.EAST,b.getForce());
+                    }
+                }
             }
-            */
-            
-            //Hiányzik: push, igiveup, put, showmap, loadmap, switch, force;
+
+
+
+            // Váltó állítása: pl. switch 1
+            if (array[0].equals("switch")) {
+                //Leellenőrizzük, hogy a felhasználó létező kapcsolót adott-e meg
+                if (Integer.parseInt(array[1]) > Switch.getInstanceCounter() || Integer.parseInt(array[1]) < 1)
+                    return "No such switch!";
+                //Local variable 'dummy' is created to resemble and serve as a substitute for the real instance of Box.
+                Box dummy = new Box();
+                for (Switch s : controller.switches) {
+                    if(s.getId() == Integer.parseInt(array[1]))
+                        s.switchIt(dummy);
+                }
+            }
+
+
+
+            //Hiányzik: push, igiveup, put, showmap, loadmap, force;
                     return "";
             }
         }

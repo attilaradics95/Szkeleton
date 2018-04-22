@@ -12,6 +12,8 @@ public class Switch extends ATile {
         this.id = id;
     }
 
+  
+
     /**
      * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
      * @param v visitor
