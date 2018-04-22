@@ -23,6 +23,11 @@ public class Game {
     private boolean roundover = false;
     private ArrayList<Box> boxes;
 
+    //projekt mappa elérési útvonala
+    //ezen a mappán belül lesznek a bemeneti pályák
+    //és ide lesznek elmentve is
+    private static String path;
+
     //ebben tároljuk el a fájlból beolvasott dolgokat
     private ATile[][] tiles;
     private Visitor[][] visitors;
@@ -34,7 +39,7 @@ public class Game {
         //tartalmazó fájl nevét
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream(map);
+            fis = new FileInputStream(path + "/Inputs/" + map);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -159,7 +164,7 @@ public class Game {
 
     //pálya mentése fájlba
     public void saveMap(String filename){
-        File f = new File(filename);
+        File f = new File(path + "/Outputs/" + filename);
         FileWriter fw = null;
         try{
             fw = new FileWriter(f);
@@ -270,6 +275,10 @@ public class Game {
         Game game = getInstance();
         game.controller = Controller.getInstance();
         TestCases tests = new TestCases();
+
+        //parancssorból futtatás elején
+        //bekérve a projekt mappa elérési útvonala
+        path = args[0];
 
 
         /**Teszt template */
