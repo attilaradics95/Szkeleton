@@ -196,8 +196,12 @@ public class Worker extends Visitor{
         controller.eliminateWorker(this);
     }
 
-    //objektum kiírásához
+    /**
+     * objektum kiíráshoz
+     * @return a kimeneti nyelvvel egyező szimbólum
+     */
+    @Override
     public String toString() {
-        return "worker" + id;
+        return "W" + id;
     }
 }
