@@ -211,9 +211,13 @@ public class Box extends Visitor {
         game.decreaseBoxes(this);
     }
 
-    //objektum kiíráshoz
+    /**
+     * objektum kiíráshoz
+     * @return a kimeneti nyelvvel egyező szimbólum
+     */
+    @Override
     public String toString() {
-        return "box" + id;
+        return "B" + id;
     }
 
 }

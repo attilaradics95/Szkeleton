@@ -1,29 +1,35 @@
 public class Trap extends ATile {
     //Attribútumok
     private boolean opened;
-
-    //név kiírására szolgáló számlálók
-    static int instanceCounter = 0;
-    int counter = 0;
+    private int id;
 
     public Trap() {
-        instanceCounter++;
-        counter = instanceCounter;
         opened = false;
+        id = 0;
+    }
+
+    public Trap(int id) {
+        opened = false;
+        this.id = id;
     }
 
     //Függvények
+    /**
+     * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
+     * @param v visitor
+     * @param d irany
+     * @param force worker ereje
+     */
     public void accept(Visitor v, Directions d, int force) {
-        //mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
-        System.out.println(this.toString() + ".accept(" + v + "," + d + ")");
         v.pushTo(this, d, force);
     }
 
-    //ha visitor kerül, akkor attól függően, hogy milyen visitor,
-    // kinyílik vagy becsukódik a csapda
+    /**
+     * ha visitor kerül, akkor attól függően, hogy milyen visitor,
+     * kinyílik vagy becsukódik a csapda
+     * @param bool true - nyit, false - csuk.
+     */
     public void setOpened(Boolean bool) {
-        System.out.println(this.toString() + ".setOpened(" + bool + ")");
-
         opened = bool;
         if(bool && visitor != null){
             visitor.die();
@@ -34,8 +40,11 @@ public class Trap extends ATile {
         return opened;
     }
 
-    //objektum kiíráshoz
+    /**
+     * objektum kiíráshoz
+     * @return a kimeneti nyelvvel egyező szimbólum
+     */
     public String toString() {
-        return "trap" + counter;
+        return "T" + id;
     }
 }
