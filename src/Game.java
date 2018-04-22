@@ -33,6 +33,15 @@ public class Game {
     private Visitor[][] visitors;
 
     /**Metódusok*/
+    //Kicserél egy mezőt
+    public void swap(ATile old, ATile new) {
+        for (ATile tile :
+                tiles) {
+            if (tile.equals(old)) {
+                tile = new;
+            }
+        }
+    }
     public void loadMap(String map){
         //minden tesztesetnél megkapja
         // a teszthez tartozó pálya leírását

@@ -1,11 +1,13 @@
 public class Worker extends Visitor{
     private Controller controller = null;
+    private Game game;
 
     //név kiírására szolgáló számlálók
     static int instanceCounter = 0;
 
     public Worker(){
         controller = Controller.getInstance();
+        game = Game.getInstance();
         instanceCounter++;
         id = instanceCounter;
     }
@@ -203,5 +205,11 @@ public class Worker extends Visitor{
     @Override
     public String toString() {
         return "W" + id;
+    }
+
+    //Kicseréli a munkás alatti mezőt a Honey osztály egy példányára. Átállítja az összes érintett szomszédot.
+    public void putHoney() {
+
+
     }
 }
