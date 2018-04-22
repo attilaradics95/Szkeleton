@@ -28,8 +28,10 @@ public class Game {
     private Visitor[][] visitors;
 
     /**Metódusok*/
-    private void loadMap(){
-        String map = null;          //meg kéne adni a testfile nevét
+    public void loadMap(String map){
+        //minden tesztesetnél megkapja
+        // a teszthez tartozó pálya leírását
+        //tartalmazó fájl nevét
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(map);
@@ -148,7 +150,7 @@ public class Game {
     private void startRound(){
         System.out.println("startRound()");
         //MAP betöltese
-        this.loadMap();
+        //this.loadMap();
 
         //Loop az inputok kezelesere
         while(!roundover){
