@@ -12,7 +12,7 @@ public class Switch extends ATile {
         this.id = id;
     }
 
-  
+
 
     /**
      * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
@@ -60,5 +60,8 @@ public class Switch extends ATile {
         return "S" + id;
     }
 
+    public int getId() {
+        return id;
+    }
 }
 

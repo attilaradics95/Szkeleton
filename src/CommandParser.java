@@ -8,8 +8,7 @@ public class CommandParser {
 
     // @author Attila
     // Feldolgoz egy parancsot
-    public String parse(Controller controller, Game game) throws IOException
-    {
+    public String parse(Controller controller, Game game) throws IOException {
         InputStreamReader is = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(is);
 
@@ -18,7 +17,6 @@ public class CommandParser {
         while (true) {
             in = br.readLine();
             array = in.split(" ");
-
 
 
             //Munkás kiválasztása: pl. select 1
@@ -61,29 +59,28 @@ public class CommandParser {
                 if (array[2] == "w") {
                     for (Box b : controller.boxes) {
                         if (b.getId() == Integer.parseInt(array[1]))
-                            b.getCurrentTile().getNeighbor(Directions.NORTH).accept(b,Directions.NORTH,b.getForce());
+                            b.getCurrentTile().getNeighbor(Directions.NORTH).accept(b, Directions.NORTH, b.getForce());
                     }
                 }
                 if (array[2] == "a") {
                     for (Box b : controller.boxes) {
                         if (b.getId() == Integer.parseInt(array[1]))
-                            b.getCurrentTile().getNeighbor(Directions.WEST).accept(b,Directions.WEST,b.getForce());
+                            b.getCurrentTile().getNeighbor(Directions.WEST).accept(b, Directions.WEST, b.getForce());
                     }
                 }
                 if (array[2] == "s") {
                     for (Box b : controller.boxes) {
                         if (b.getId() == Integer.parseInt(array[1]))
-                            b.getCurrentTile().getNeighbor(Directions.SOUTH).accept(b,Directions.SOUTH,b.getForce());
+                            b.getCurrentTile().getNeighbor(Directions.SOUTH).accept(b, Directions.SOUTH, b.getForce());
                     }
                 }
                 if (array[2] == "d") {
                     for (Box b : controller.boxes) {
                         if (b.getId() == Integer.parseInt(array[1]))
-                            b.getCurrentTile().getNeighbor(Directions.EAST).accept(b,Directions.EAST,b.getForce());
+                            b.getCurrentTile().getNeighbor(Directions.EAST).accept(b, Directions.EAST, b.getForce());
                     }
                 }
             }
-
 
 
             // Kapcsoló állítása: pl. switch 1
@@ -94,7 +91,7 @@ public class CommandParser {
                 //Local variable 'dummy' is created to resemble and serve as a substitute for the real instance of Box.
                 Box dummy = new Box();
                 for (Switch s : controller.switches) {
-                    if(s.getId() == Integer.parseInt(array[1]))
+                    if (s.getId() == Integer.parseInt(array[1]))
                         s.switchIt(dummy);
                 }
             }
@@ -102,20 +99,20 @@ public class CommandParser {
 
             //Erő és súrlódás módosítása: pl. force worker 1
             if (array[0].equals("force")) {
-                if(!(array[1].equals("worker") || array[1].equals("box"))){
+                if (!(array[1].equals("worker") || array[1].equals("box"))) {
                     return "'" + array[1] + "' is not a valid type!";
                 }
-                if(array[1].equals("worker")){
+                if (array[1].equals("worker")) {
                     for (Worker w :
                             controller.workers) {
-                        if(w.getId()==Integer.parseInt(array[2]))
+                        if (w.getId() == Integer.parseInt(array[2]))
                             w.setForce(Integer.parseInt(array[3]));
                     }
                 }
-                if(array[1].equals("box")){
+                if (array[1].equals("box")) {
                     for (Box b :
                             controller.boxes) {
-                        if(b.getId()==Integer.parseInt(array[2]))
+                        if (b.getId() == Integer.parseInt(array[2]))
                             b.setForce(Integer.parseInt(array[3]));
                     }
                 }
@@ -124,20 +121,27 @@ public class CommandParser {
             }
 
             //Pálya betöltése: loadmap
-            if(array[0].equals("loadmap"))
+            if (array[0].equals("loadmap"))
                 game.loadMap(array[1]);
 
-            if(array[0].equals("showmap"))
+            //Pálya kiírása: showmap
+            if (array[0].equals("showmap"))
                 game.showMap();
 
-            if(array[0].equals("igiveup"))
+            //Játék befejezése: igiveup
+            if (array[0].equals("igiveup"))
                 game.endRound();
 
-            if(array[0].equals("putOil")){
+            //Olaj elhelyezése: putOil
+            if (array[0].equals("putOil"))
                 controller.getSelectedworker().putOil();
-            }
 
-            if(array[0].equals("putHoney"))
+            //Méz elhelyezése: putHoney
+            if (array[0].equals("putHoney"))
                 controller.getSelectedworker().putHoney();
+
+            else
+                return "No such command!";
         }
     }
+}

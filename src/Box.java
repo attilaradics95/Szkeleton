@@ -18,6 +18,8 @@ public class Box extends Visitor {
     //ha van visitor a mezőn, amire lépne, akkor meghívja az azután következő mező accept függvényét a szomszédos visitorral
     // ha átkerül a következő mezőre beállítja magát a visitorának, annak a mezőnek, ahonnan ellépett nullra állítja
 
+
+
     //Tile
     // semmi extra nem történik
     public void pushTo(Tile next, Directions d, int force) {
@@ -220,4 +222,7 @@ public class Box extends Visitor {
         return "B" + id;
     }
 
+    public int getForce() {
+        return force;
+    }
 }

@@ -22,7 +22,9 @@ public class Controller {
      * Attribútumok
      */
     private Game game = null;
-    private ArrayList<Worker> workers;
+    public ArrayList<Worker> workers;
+    public ArrayList<Switch> switches;
+    public ArrayList<Box> boxes;
     private Worker selectedworker = null;
 
     /**

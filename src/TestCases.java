@@ -574,7 +574,7 @@ public class TestCases {
         System.out.println("Adja meg a parancsokat!");
         CommandParser cp = new CommandParser();
         try {
-            cp.parse(Controller.getInstance());
+            cp.parse(Controller.getInstance(),Game.getInstance());
         } catch (IOException e) {
             e.printStackTrace();
         }
