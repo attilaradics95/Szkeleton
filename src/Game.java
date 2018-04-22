@@ -1,6 +1,6 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,32 +18,124 @@ public class Game {
         return instance;
     }
 
-
     /**Attributumok*/
     private Controller controller = null;
     private boolean roundover = false;
     private ArrayList<Box> boxes;
 
+    private ATile[][] tiles;
+    private Visitor[][] visitors;
 
     /**Tabulator*/
     Tabulate tabulate = new Tabulate();
 
-
     /**Metódusok*/
-
-    // @author Attila
-    //Dobozok számának lekérdezésére szolgáló függvény
-    public int getNumberOfBoxes() {
-        return boxes.size();
-    }
-
-
-    // @author Attila
-    // Visszaadja az adott indexű dobozt
-    public int getBox(int index) {return boxes.get(index-1); }
-
-
     private void loadMap(){
+        String map = null;          //meg kéne adni a testfile nevét
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(map);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //Construct BufferedReader from InputStreamReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+
+        //mezők indexelésére
+        int x = 0;
+        int y = 0;
+
+        //visitorok indexelésére
+        int l = 0;
+        int m = 0;
+
+        try{
+            String line = null;
+
+
+
+            while ((line = br.readLine()) != null) {
+                for(int i = 0; i < line.length(); i++) {
+                    switch (line.charAt(i)) {
+                        case '.':
+                            tiles[x][y] = new Tile();
+                            x++;
+                            l++;
+                            break;
+                        case '+':
+                            tiles[x][y] = new Obstacle();
+                            x++;
+                            l++;
+                            break;
+                        case 'X':
+                            tiles[x][y] = new Target();
+                            x++;
+                            l++;
+                            break;
+                        case 'H':
+                            tiles[x][y] = new Hole();
+                            x++;
+                            l++;
+                            break;
+                        case 'M':
+                            tiles[x][y] = new Honey();
+                            x++;
+                            l++;
+                            break;
+                        case 'O':
+                            tiles[x][y] = new Oil();
+                            x++;
+                            l++;
+                            break;
+                        case 'S':
+                            tiles[x][y] = new Switch();
+                            x++;
+                            l++;
+                            break;
+                        case 'T':
+                            tiles[x][y] = new Trap();
+                            x++;
+                            l++;
+                            break;
+                        case 'W':
+                            visitors[l][m] = new Worker();
+                            visitors[l][m].id = line.charAt(i+1);
+                            break;
+                        case 'B':
+                            visitors[l][m] = new Box();
+                            visitors[l][m].id = line.charAt(i+1);
+                            break;
+                    }
+                }
+                y++;
+                m++;
+            }
+        } catch(IOException e) {
+
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //visitorok beállítása a mezőkre
+        for(int i = 0; i < l; i++) {
+            for(int j = 0; j < m; j++) {
+                visitors[i][j].setCurrentTile(tiles[i][j]);
+            }
+        }
+
+        //tile-ok szomszédainak beállítása
+        for(int i = 0; i < x; i++) {
+            for(int j = 0; j < y; j++) {
+                if(i > 0 && i < x-1 && j > 0 && j < y-1) {
+                    tiles[i][j].setNeighbors(tiles[i][j-1], tiles[i-1][j], tiles[i][j+1], tiles[i+1][j]);
+                }
+            }
+        }
 
     }
 
