@@ -60,6 +60,36 @@ public class Game {
         }
     }
     public void loadMap(String map){
+        int lines = 0, coloums = 0;
+        FileInputStream fis1 = null;
+        try {
+            fis1 = new FileInputStream(path + "/Inputs/" + map);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
+
+        try {
+            String line;
+            char[] chs = null;
+            while ((line = br1.readLine()) != null){
+                lines++;
+                chs = line.toCharArray();
+            }
+            for (char c : chs) {
+                if(c == '.' || c == '+' || c == 'X' || c == 'H' || c == 'M' || c == 'O' || c == 'S' || c == 'T'){
+                    coloums++;
+                }
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        tiles = new ATile[coloums][lines];
+        visitors = new Visitor[coloums][lines];
+
         //minden tesztesetnél megkapja
         // a teszthez tartozó pálya leírását
         //tartalmazó fájl nevét
@@ -131,16 +161,17 @@ public class Game {
                             break;
                         case 'W':
                             visitors[l][m] = new Worker();
-                            visitors[l][m].id = line.charAt(i+1);
+                            visitors[l][m].id = (int)line.charAt(i+1);
                             break;
                         case 'B':
                             visitors[l][m] = new Box();
-                            visitors[l][m].id = line.charAt(i+1);
+                            visitors[l][m].id = (int)line.charAt(i+1);
                             break;
                     }
                 }
                 y++;
                 m++;
+                x = l = 0;
             }
         } catch(IOException e) {
 
@@ -155,7 +186,8 @@ public class Game {
         //visitorok beállítása a mezőkre
         for(int i = 0; i < l; i++) {
             for(int j = 0; j < m; j++) {
-                visitors[i][j].setCurrentTile(tiles[i][j]);
+                if(visitors[i][j] != null)
+                    visitors[i][j].setCurrentTile(tiles[i][j]);
             }
         }
 
@@ -176,7 +208,8 @@ public class Game {
            for(int j = 0; j < tiles[0].length; j++){
                if(visitors[i][j] != null)
                    System.out.print(visitors[i][j].toString());
-               System.out.print(tiles[i][j].toString());
+               if(tiles[i][j] != null)
+                   System.out.print(tiles[i][j].toString());
                if(j != tiles[0].length - 1){
                    System.out.print("\t");
                }
@@ -304,6 +337,8 @@ public class Game {
         //bekérve a projekt mappa elérési útvonala
         if(args.length > 0){
             path = args[0];
+        }else{
+            path = System.getProperty("user.dir");
         }
 
 
@@ -333,6 +368,7 @@ public class Game {
         System.out.println("22. Teszt: Worker pushes Box to Obstacle");
         System.out.println("23. Teszt: Worker -> Worker -> Box");
         System.out.println("24. Teszt: Worker -> Box -> Worker");
+        System.out.println("25. Teszt: All test");
         System.out.println("Teszt kiválasztása(1,2,...):");
 
 
@@ -427,6 +463,9 @@ public class Game {
                 break;
             case 24:
                 tests.MLM();
+                break;
+            case 25:
+                tests.allTest();
                 break;
         }
     }
