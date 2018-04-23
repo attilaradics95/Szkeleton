@@ -185,7 +185,7 @@ public class Box extends Visitor {
                 currentTile.setVisitor(null);
                 next.setVisitor(this);
                 this.setUnmovable();
-                //TODO addpoint meghivasa
+                game.addPoint();
             }
         }
     }
