@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class TestCases {
 
@@ -569,7 +567,7 @@ public class TestCases {
     private void testing()  {
         //kezdeti pálya kiíratása
         game.showMap();
-
+        System.out.println("Pontszám a teszt kezdetekor: " + game.getPoints());
         //parancsfeldolgozás
         System.out.println("Adja meg a parancsokat!");
         CommandParser cp = new CommandParser();
@@ -581,6 +579,7 @@ public class TestCases {
 
         //teszteset végállapotában is kiírjuk a pályát
         game.showMap();
+        System.out.println("Pontszám a teszt végén: " + game.getPoints());
 
     }
 
@@ -591,7 +590,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test1_out");
+        game.saveMap("test1_out.txt");
     }
     public void SelectWorker(){
         //map betöltése
@@ -600,7 +599,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test2_out");
+        game.saveMap("test2_out.txt");
     }
     public void KillWorker(){
         //map betöltése
@@ -609,7 +608,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test3_out");
+        game.saveMap("test3_out.txt");
     }
     public void DestructionofBox(){
         //map betöltése
@@ -618,7 +617,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test4_out");
+        game.saveMap("test4_out.txt");
     }
     public void BoxtoTarget(){
         //map betöltése
@@ -627,7 +626,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test5_out");
+        game.saveMap("test5_out.txt");
     }
     public void GameOver(){
         //map betöltése
@@ -636,7 +635,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test6_out");
+        game.saveMap("test6_out.txt");
     }
     public void Switch(){
         //map betöltése
@@ -645,7 +644,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test7_out");
+        game.saveMap("test7_out.txt");
     }
     public void PutOil(){
         //map betöltése
@@ -654,7 +653,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test8_out");
+        game.saveMap("test8_out.txt");
     }
     public void PutHoney(){
         //map betöltése
@@ -663,7 +662,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test9_out");
+        game.saveMap("test9_out.txt");
     }
     public void WorkerStepsOnActiveTrap(){
         //map betöltése
@@ -672,7 +671,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test10_out");
+        game.saveMap("test10_out.txt");
     }
     public void WorkerStepsOnInactiveTrap(){
         //map betöltése
@@ -681,7 +680,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test11_out");
+        game.saveMap("test11_out.txt");
     }
     public void WorkerStepsOnObstacle(){
         //map betöltése
@@ -690,7 +689,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test12_out");
+        game.saveMap("test12_out.txt");
     }
     public void WorkerStepsOnSwitch(){
         //map betöltése
@@ -699,7 +698,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test13_out");
+        game.saveMap("test13_out.txt");
     }
     public void WorkerStepsOnTarget(){
         //map betöltése
@@ -708,7 +707,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test14_out");
+        game.saveMap("test14_out.txt");
     }
     public void WorkerStepsOnHole(){
         //map betöltése
@@ -717,7 +716,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test15_out");
+        game.saveMap("test15_out.txt");
     }
     public void WorkerPushesWorkerToTile(){
         //map betöltése
@@ -726,7 +725,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test16_out");
+        game.saveMap("test16_out.txt");
     }
     public void WorkerPushesBoxToTile(){
         //map betöltése
@@ -735,7 +734,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test17_out");
+        game.saveMap("test17_out.txt");
     }
     public void WorkerPushesBoxToInactiveTrap(){
         //map betöltése
@@ -744,7 +743,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test18_out");
+        game.saveMap("test18_out.txt");
     }
     public void WorkerPushesBoxToActiveTrap(){
         //map betöltése
@@ -753,7 +752,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test19_out");
+        game.saveMap("test19_out.txt");
     }
     public void WorkerPushesBoxToSwitch(){
         //map betöltése
@@ -762,7 +761,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test20_out");
+        game.saveMap("test20_out.txt");
     }
     public void WorkerPushesBoxToHole(){
         //map betöltése
@@ -771,7 +770,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test21_out");
+        game.saveMap("test21_out.txt");
     }
     public void WorkerPushesBoxToObstacle(){
         //map betöltése
@@ -780,7 +779,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test22_out");
+        game.saveMap("test22_out.txt");
     }
     public void MML(){
         //map betöltése
@@ -789,7 +788,7 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test23_out");
+        game.saveMap("test23_out.txt");
     }
     public void MLM(){
         //map betöltése
@@ -798,6 +797,6 @@ public class TestCases {
         testing();
 
         //map elmentése
-        game.saveMap("test24_out");
+        game.saveMap("test24_out.txt");
     }
 }
