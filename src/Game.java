@@ -302,7 +302,9 @@ public class Game {
 
         //parancssorból futtatás elején
         //bekérve a projekt mappa elérési útvonala
-        path = args[0];
+        if(args.length > 0){
+            path = args[0];
+        }
 
 
         /**Teszt template */
