@@ -584,6 +584,7 @@ public class TestCases {
     }
 
     public void MoveWorker(){
+        System.out.println("1. Teszt");
         //map betöltése
         game.loadMap("test1.txt");
 
@@ -593,6 +594,7 @@ public class TestCases {
         game.saveMap("test1_out.txt");
     }
     public void SelectWorker(){
+        System.out.println("2. Teszt");
         //map betöltése
         game.loadMap("test2.txt");
 
@@ -602,6 +604,7 @@ public class TestCases {
         game.saveMap("test2_out.txt");
     }
     public void KillWorker(){
+        System.out.println("3. Teszt");
         //map betöltése
         game.loadMap("test3.txt");
 
@@ -611,6 +614,7 @@ public class TestCases {
         game.saveMap("test3_out.txt");
     }
     public void DestructionofBox(){
+        System.out.println("4. Teszt");
         //map betöltése
         game.loadMap("test4.txt");
 
@@ -620,6 +624,7 @@ public class TestCases {
         game.saveMap("test4_out.txt");
     }
     public void BoxtoTarget(){
+        System.out.println("5. Teszt");
         //map betöltése
         game.loadMap("test5.txt");
 
@@ -629,6 +634,7 @@ public class TestCases {
         game.saveMap("test5_out.txt");
     }
     public void GameOver(){
+        System.out.println("6. Teszt");
         //map betöltése
         game.loadMap("test6.txt");
 
@@ -638,6 +644,7 @@ public class TestCases {
         game.saveMap("test6_out.txt");
     }
     public void Switch(){
+        System.out.println("7. Teszt");
         //map betöltése
         game.loadMap("test7.txt");
 
@@ -647,6 +654,7 @@ public class TestCases {
         game.saveMap("test7_out.txt");
     }
     public void PutOil(){
+        System.out.println("8. Teszt");
         //map betöltése
         game.loadMap("test8.txt");
 
@@ -656,6 +664,7 @@ public class TestCases {
         game.saveMap("test8_out.txt");
     }
     public void PutHoney(){
+        System.out.println("9. Teszt");
         //map betöltése
         game.loadMap("test9.txt");
 
@@ -665,6 +674,7 @@ public class TestCases {
         game.saveMap("test9_out.txt");
     }
     public void WorkerStepsOnActiveTrap(){
+        System.out.println("10. Teszt");
         //map betöltése
         game.loadMap("test10.txt");
 
@@ -674,6 +684,7 @@ public class TestCases {
         game.saveMap("test10_out.txt");
     }
     public void WorkerStepsOnInactiveTrap(){
+        System.out.println("11. Teszt");
         //map betöltése
         game.loadMap("test11.txt");
 
@@ -683,6 +694,7 @@ public class TestCases {
         game.saveMap("test11_out.txt");
     }
     public void WorkerStepsOnObstacle(){
+        System.out.println("12. Teszt");
         //map betöltése
         game.loadMap("test12.txt");
 
@@ -692,6 +704,7 @@ public class TestCases {
         game.saveMap("test12_out.txt");
     }
     public void WorkerStepsOnSwitch(){
+        System.out.println("13. Teszt");
         //map betöltése
         game.loadMap("test13.txt");
 
@@ -701,6 +714,7 @@ public class TestCases {
         game.saveMap("test13_out.txt");
     }
     public void WorkerStepsOnTarget(){
+        System.out.println("14. Teszt");
         //map betöltése
         game.loadMap("test14.txt");
 
@@ -710,6 +724,7 @@ public class TestCases {
         game.saveMap("test14_out.txt");
     }
     public void WorkerStepsOnHole(){
+        System.out.println("15. Teszt");
         //map betöltése
         game.loadMap("test15.txt");
 
@@ -719,6 +734,7 @@ public class TestCases {
         game.saveMap("test15_out.txt");
     }
     public void WorkerPushesWorkerToTile(){
+        System.out.println("16. Teszt");
         //map betöltése
         game.loadMap("test16.txt");
 
@@ -728,6 +744,7 @@ public class TestCases {
         game.saveMap("test16_out.txt");
     }
     public void WorkerPushesBoxToTile(){
+        System.out.println("17. Teszt");
         //map betöltése
         game.loadMap("test17.txt");
 
@@ -737,6 +754,7 @@ public class TestCases {
         game.saveMap("test17_out.txt");
     }
     public void WorkerPushesBoxToInactiveTrap(){
+        System.out.println("18. Teszt");
         //map betöltése
         game.loadMap("test18.txt");
 
@@ -746,6 +764,7 @@ public class TestCases {
         game.saveMap("test18_out.txt");
     }
     public void WorkerPushesBoxToActiveTrap(){
+        System.out.println("19. Teszt");
         //map betöltése
         game.loadMap("test19.txt");
 
@@ -755,6 +774,7 @@ public class TestCases {
         game.saveMap("test19_out.txt");
     }
     public void WorkerPushesBoxToSwitch(){
+        System.out.println("20. Teszt");
         //map betöltése
         game.loadMap("test20.txt");
 
@@ -764,6 +784,7 @@ public class TestCases {
         game.saveMap("test20_out.txt");
     }
     public void WorkerPushesBoxToHole(){
+        System.out.println("21. Teszt");
         //map betöltése
         game.loadMap("test21.txt");
 
@@ -773,6 +794,7 @@ public class TestCases {
         game.saveMap("test21_out.txt");
     }
     public void WorkerPushesBoxToObstacle(){
+        System.out.println("22. Teszt");
         //map betöltése
         game.loadMap("test22.txt");
 
@@ -782,6 +804,7 @@ public class TestCases {
         game.saveMap("test22_out.txt");
     }
     public void MML(){
+        System.out.println("23. Teszt");
         //map betöltése
         game.loadMap("test23.txt");
 
@@ -791,6 +814,7 @@ public class TestCases {
         game.saveMap("test23_out.txt");
     }
     public void MLM(){
+        System.out.println("24. Teszt");
         //map betöltése
         game.loadMap("test24.txt");
 
@@ -798,5 +822,31 @@ public class TestCases {
 
         //map elmentése
         game.saveMap("test24_out.txt");
+    }
+    public void allTest(){
+        MoveWorker();
+        SelectWorker();
+        KillWorker();
+        DestructionofBox();
+        BoxtoTarget();
+        GameOver();
+        Switch();
+        PutOil();
+        PutHoney();
+        WorkerStepsOnActiveTrap();
+        WorkerStepsOnInactiveTrap();
+        WorkerStepsOnObstacle();
+        WorkerStepsOnSwitch();
+        WorkerStepsOnTarget();
+        WorkerStepsOnHole();
+        WorkerPushesWorkerToTile();
+        WorkerPushesBoxToTile();
+        WorkerPushesBoxToInactiveTrap();
+        WorkerPushesBoxToActiveTrap();
+        WorkerPushesBoxToSwitch();
+        WorkerPushesBoxToHole();
+        WorkerPushesBoxToObstacle();
+        MML();
+        MLM();
     }
 }
