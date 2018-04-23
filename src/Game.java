@@ -120,14 +120,12 @@ public class Game {
                             l++;
                             break;
                         case 'S':
-                            int id = (int)line.charAt(i+1);
-                            tiles[x][y] = new Switch(id);
+                            tiles[x][y] = new Switch((int)line.charAt(i+1));
                             x++;
                             l++;
                             break;
                         case 'T':
-                            int id = (int)line.charAt(i+1);
-                            tiles[x][y] = new Trap(id);
+                            tiles[x][y] = new Trap((int)line.charAt(i+1));
                             x++;
                             l++;
                             break;
@@ -304,7 +302,9 @@ public class Game {
 
         //parancssorból futtatás elején
         //bekérve a projekt mappa elérési útvonala
-        path = args[0];
+        if(args.length > 0){
+            path = args[0];
+        }
 
 
         /**Teszt template */
