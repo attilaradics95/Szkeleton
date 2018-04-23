@@ -98,8 +98,8 @@ public class Game {
             e.printStackTrace();
         }
 
-        tiles = new ATile[coloums][lines];
-        visitors = new Visitor[coloums][lines];
+        tiles = new ATile[lines][coloums];
+        visitors = new Visitor[lines][coloums];
 
         //minden tesztesetnél megkapja
         // a teszthez tartozó pálya leírását
@@ -117,11 +117,7 @@ public class Game {
         //mezők indexelésére
         int x = 0;
         int y = 0;
-
-        //visitorok indexelésére
-        int l = 0;
-        int m = 0;
-
+        
         try{
             String line;
 
@@ -130,57 +126,48 @@ public class Game {
                     switch (line.charAt(i)) {
                         case '.':
                             tiles[x][y] = new Tile();
-                            x++;
-                            l++;
+                            y++;
                             break;
                         case '+':
                             tiles[x][y] = new Obstacle();
-                            x++;
-                            l++;
+                            y++;
                             break;
                         case 'X':
                             tiles[x][y] = new Target();
-                            x++;
-                            l++;
+                            y++;
                             break;
                         case 'H':
                             tiles[x][y] = new Hole();
-                            x++;
-                            l++;
+                            y++;
                             break;
                         case 'M':
                             tiles[x][y] = new Honey();
-                            x++;
-                            l++;
+                            y++;
                             break;
                         case 'O':
                             tiles[x][y] = new Oil();
-                            x++;
-                            l++;
+                            y++;
                             break;
                         case 'S':
                             tiles[x][y] = new Switch(Character.getNumericValue(line.charAt(i+1)));
-                            x++;
-                            l++;
+                            y++;
                             break;
                         case 'T':
                             tiles[x][y] = new Trap(Character.getNumericValue(line.charAt(i+1)));
-                            x++;
-                            l++;
+                            y++;
                             break;
                         case 'W':
-                            visitors[l][m] = new Worker(Character.getNumericValue(line.charAt(i+1)));
-                            controller.addWorker((Worker)visitors[l][m]);
+                            visitors[x][y] = new Worker(Character.getNumericValue(line.charAt(i+1)));
+                            controller.addWorker((Worker)visitors[x][y]);
                             break;
                         case 'B':
-                            visitors[l][m] = new Box(Character.getNumericValue(line.charAt(i+1)));
-                            boxes.add((Box)visitors[l][m]);
+                            visitors[x][y] = new Box(Character.getNumericValue(line.charAt(i+1)));
+                            boxes.add((Box)visitors[x][y]);
                             break;
                     }
                 }
-                y++;
-                m++;
-                x = l = 0;
+                x++;
+                y = 0;
             }
         }
         catch(IOException e) {
