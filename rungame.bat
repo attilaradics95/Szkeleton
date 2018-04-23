@@ -6,4 +6,5 @@ cd ..
 cd src
 javac Game.java
 java Game
+cd ..
 pause
