@@ -368,6 +368,7 @@ public class Game {
         System.out.println("22. Teszt: Worker pushes Box to Obstacle");
         System.out.println("23. Teszt: Worker -> Worker -> Box");
         System.out.println("24. Teszt: Worker -> Box -> Worker");
+        System.out.println("25. Teszt: All test");
         System.out.println("Teszt kiválasztása(1,2,...):");
 
 
@@ -462,6 +463,9 @@ public class Game {
                 break;
             case 24:
                 tests.MLM();
+                break;
+            case 25:
+                tests.allTest();
                 break;
         }
     }
