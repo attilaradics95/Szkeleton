@@ -60,6 +60,36 @@ public class Game {
         }
     }
     public void loadMap(String map){
+        int lines = 0, coloums = 0;
+        FileInputStream fis1 = null;
+        try {
+            fis1 = new FileInputStream(path + "/Inputs/" + map);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
+
+        try {
+            String line;
+            char[] chs = null;
+            while ((line = br1.readLine()) != null){
+                lines++;
+                chs = line.toCharArray();
+            }
+            for (char c : chs) {
+                if(c != '\t'){
+                    coloums++;
+                }
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        tiles = new ATile[coloums][lines];
+        visitors = new Visitor[coloums][lines];
+
         //minden tesztesetnél megkapja
         // a teszthez tartozó pálya leírását
         //tartalmazó fájl nevét
@@ -155,7 +185,8 @@ public class Game {
         //visitorok beállítása a mezőkre
         for(int i = 0; i < l; i++) {
             for(int j = 0; j < m; j++) {
-                visitors[i][j].setCurrentTile(tiles[i][j]);
+                if(visitors[i][j] != null)
+                    visitors[i][j].setCurrentTile(tiles[i][j]);
             }
         }
 
