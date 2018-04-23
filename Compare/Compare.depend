@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1523199849 source:c:\users\sandorbalint\documents\bmetargyak\2017_18_2\projlab\compare\main.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<string.h>
+
