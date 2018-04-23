@@ -29,6 +29,10 @@ public abstract class ATile {
 
     abstract public void accept(Visitor v, Directions d, int force);
 
+    public void setNeighbor(ATile tile, Directions d){
+        neighbors.put(d, tile);
+    }
+
     //a pálya létrehozásakor minden mezőnek megadjuk, hogy kik az ő szomszédai
     public void setNeighbors(ATile north,ATile east, ATile south, ATile west){
             neighbors.put(Directions.NORTH, north);

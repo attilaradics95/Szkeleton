@@ -56,6 +56,17 @@ public class Game {
                 }
             }
         }
+        ATile west = old.getNeighbor(Directions.WEST);
+        ATile east = old.getNeighbor(Directions.EAST);
+        ATile north = old.getNeighbor(Directions.NORTH);
+        ATile south = old.getNeighbor(Directions.SOUTH);
+
+        newtile.setNeighbors(north,east,south,west);
+        north.setNeighbor(newtile, Directions.SOUTH);
+        south.setNeighbor(newtile, Directions.NORTH);
+        west.setNeighbor(newtile, Directions.EAST);
+        east.setNeighbor(newtile, Directions.WEST);
+
     }
     public void loadMap(String map){
         int lines = 0, coloums = 0;
