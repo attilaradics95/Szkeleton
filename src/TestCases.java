@@ -567,7 +567,7 @@ public class TestCases {
     private void testing()  {
         //kezdeti pálya kiíratása
         game.showMap();
-
+        System.out.println("Pontszám a teszt kezdetekor: " + game.getPoints());
         //parancsfeldolgozás
         System.out.println("Adja meg a parancsokat!");
         CommandParser cp = new CommandParser();
@@ -579,6 +579,7 @@ public class TestCases {
 
         //teszteset végállapotában is kiírjuk a pályát
         game.showMap();
+        System.out.println("Pontszám a teszt végén: " + game.getPoints());
 
     }
 
