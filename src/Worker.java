@@ -1,15 +1,21 @@
 public class Worker extends Visitor{
-    private Controller controller = null;
+    private Controller controller;
     private Game game;
-
     //név kiírására szolgáló számlálók
-    static int instanceCounter = 0;
+    private static int instanceCounter = 0;
 
     public Worker(){
         controller = Controller.getInstance();
         game = Game.getInstance();
         instanceCounter++;
         id = instanceCounter;
+    }
+
+    public Worker(int id){
+        controller = Controller.getInstance();
+        game = Game.getInstance();
+        instanceCounter++;
+        this.id = id;
     }
 
     //egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját

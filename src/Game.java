@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -112,9 +110,7 @@ public class Game {
         int m = 0;
 
         try{
-            String line = null;
-
-
+            String line;
 
             while ((line = br.readLine()) != null) {
                 for(int i = 0; i < line.length(); i++) {
@@ -150,23 +146,21 @@ public class Game {
                             l++;
                             break;
                         case 'S':
-                            tiles[x][y] = new Switch((int)line.charAt(i+1));
+                            tiles[x][y] = new Switch(Character.getNumericValue(line.charAt(i+1)));
                             x++;
                             l++;
                             break;
                         case 'T':
-                            tiles[x][y] = new Trap((int)line.charAt(i+1));
+                            tiles[x][y] = new Trap(Character.getNumericValue(line.charAt(i+1)));
                             x++;
                             l++;
                             break;
                         case 'W':
-                            visitors[l][m] = new Worker();
-                            visitors[l][m].id = Integer.parseInt((Character.toString(line.charAt(i+1))));
+                            visitors[l][m] = new Worker(Character.getNumericValue(line.charAt(i+1)));
                             controller.addWorker((Worker)visitors[l][m]);
                             break;
                         case 'B':
-                            visitors[l][m] = new Box();
-                            visitors[l][m].id = Integer.parseInt((Character.toString(line.charAt(i+1))));
+                            visitors[l][m] = new Box(Character.getNumericValue(line.charAt(i+1)));
                             boxes.add((Box)visitors[l][m]);
                             break;
                     }
@@ -175,9 +169,11 @@ public class Game {
                 m++;
                 x = l = 0;
             }
-        } catch(IOException e) {
+        }
+        catch(IOException e) {
 
-        } finally {
+        }
+        finally {
             try {
                 br.close();
             } catch (IOException e) {

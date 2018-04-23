@@ -1,6 +1,6 @@
 public class Box extends Visitor {
     //Attribútumok
-    private Game game = null;
+    private Game game;
     private boolean movable;
     //id meghatározására szolgáló számlálók
     private static int instanceCounter = 0;
@@ -11,6 +11,13 @@ public class Box extends Visitor {
         movable = true;
         instanceCounter++;
         id = instanceCounter;
+    }
+
+    public Box(int id) {
+        game = Game.getInstance();
+        movable = true;
+        instanceCounter++;
+        this.id = id;
     }
 
     //Obstacle kivételével - mivel ide úgyse tud menni -  minden pushTo-nál megkérdezzük, hogy mozgatható-e a doboz
