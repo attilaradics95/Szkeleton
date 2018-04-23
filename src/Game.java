@@ -304,6 +304,8 @@ public class Game {
         //bekérve a projekt mappa elérési útvonala
         if(args.length > 0){
             path = args[0];
+        }else{
+            path = System.getProperty("user.dir");
         }
 
 
