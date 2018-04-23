@@ -161,11 +161,13 @@ public class Game {
                             break;
                         case 'W':
                             visitors[l][m] = new Worker();
-                            visitors[l][m].id = (int)line.charAt(i+1);
+                            visitors[l][m].id = Integer.parseInt((Character.toString(line.charAt(i+1))));
+                            controller.addWorker((Worker)visitors[l][m]);
                             break;
                         case 'B':
                             visitors[l][m] = new Box();
-                            visitors[l][m].id = (int)line.charAt(i+1);
+                            visitors[l][m].id = Integer.parseInt((Character.toString(line.charAt(i+1))));
+                            boxes.add((Box)visitors[l][m]);
                             break;
                     }
                 }
@@ -184,16 +186,16 @@ public class Game {
         }
 
         //visitorok beállítása a mezőkre
-        for(int i = 0; i < l; i++) {
-            for(int j = 0; j < m; j++) {
+        for(int i = 0; i < visitors.length; i++) {
+            for(int j = 0; j < visitors[0].length; j++) {
                 if(visitors[i][j] != null)
                     visitors[i][j].setCurrentTile(tiles[i][j]);
             }
         }
 
         //tile-ok szomszédainak beállítása
-        for(int i = 0; i < x; i++) {
-            for(int j = 0; j < y; j++) {
+        for(int i = 0; i < tiles.length; i++) {
+            for(int j = 0; j < tiles[0].length; j++) {
                 if(i > 0 && i < x-1 && j > 0 && j < y-1) {
                     tiles[i][j].setNeighbors(tiles[i][j-1], tiles[i-1][j], tiles[i][j+1], tiles[i+1][j]);
                 }
