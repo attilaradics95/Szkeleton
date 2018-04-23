@@ -68,7 +68,11 @@ public class Game {
         east.setNeighbor(newtile, Directions.WEST);
 
     }
+
     public void loadMap(String map){
+        /**
+         * 2d-s tömbök méretének meghatározása
+         */
         int lines = 0, coloums = 0;
         FileInputStream fis1 = null;
         try {
@@ -76,9 +80,7 @@ public class Game {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
-
         try {
             String line;
             char[] chs = null;
@@ -195,19 +197,39 @@ public class Game {
         //visitorok beállítása a mezőkre
         for(int i = 0; i < visitors.length; i++) {
             for(int j = 0; j < visitors[0].length; j++) {
-                if(visitors[i][j] != null)
+                if(visitors[i][j] != null) {
                     visitors[i][j].setCurrentTile(tiles[i][j]);
+                    tiles[i][j].setVisitor(visitors[i][j]);
+                }
             }
         }
 
         //tile-ok szomszédainak beállítása
-        for(int i = 0; i < tiles.length; i++) {
-            for(int j = 0; j < tiles[0].length; j++) {
-                if(i > 0 && i < x-1 && j > 0 && j < y-1) {
-                    tiles[i][j].setNeighbors(tiles[i][j-1], tiles[i-1][j], tiles[i][j+1], tiles[i+1][j]);
-                }
+        for(int i = 0; i < tiles.length-1; i++) {
+            for(int j = 0; j < tiles[0].length-1; j++) {
+                tiles[i][j].setNeighbor(tiles[i+1][j], Directions.SOUTH);
+                tiles[i][j].setNeighbor(tiles[i][j+1], Directions.EAST);
             }
         }
+        for(int i = tiles.length-1; i > 0; i--) {
+            for(int j = tiles[0].length-1; j > 0; j--) {
+                tiles[i][j].setNeighbor(tiles[i-1][j], Directions.NORTH);
+                tiles[i][j].setNeighbor(tiles[i][j-1], Directions.WEST);
+            }
+        }
+        for(int i = tiles.length-1; i > 0; i--) {
+            for(int j = 0; j < tiles[0].length-1; j++) {
+                tiles[i][j].setNeighbor(tiles[i-1][j], Directions.NORTH);
+                tiles[i][j].setNeighbor(tiles[i][j+1], Directions.EAST);
+            }
+        }
+        for(int i = 0; i < tiles.length-1; i++) {
+            for(int j = tiles[0].length-1; j > 0; j--) {
+                tiles[i][j].setNeighbor(tiles[i+1][j], Directions.SOUTH);
+                tiles[i][j].setNeighbor(tiles[i][j-1], Directions.WEST);
+            }
+        }
+
 
     }
 
@@ -215,10 +237,11 @@ public class Game {
     public void showMap(){
        for(int i = 0; i < tiles.length; i++){
            for(int j = 0; j < tiles[0].length; j++){
-               if(visitors[i][j] != null)
-                   System.out.print(visitors[i][j].toString());
-               if(tiles[i][j] != null)
+               if(tiles[i][j] != null) {
+                   if(tiles[i][j].getVisitor() != null)
+                       System.out.print(tiles[i][j].getVisitor().toString());
                    System.out.print(tiles[i][j].toString());
+               }
                if(j != tiles[0].length - 1){
                    System.out.print("\t");
                }
@@ -242,9 +265,11 @@ public class Game {
         try{
             for(int i = 0; i < tiles.length; i++){
                 for(int j = 0; j < tiles[0].length; j++){
-                    if(visitors[i][j] != null)
-                        bw.write(visitors[i][j].toString());
-                    bw.write(tiles[i][j].toString());
+                    if(tiles[i][j] != null) {
+                        if(tiles[i][j].getVisitor() != null)
+                            bw.write(tiles[i][j].getVisitor().toString());
+                        bw.write(tiles[i][j].toString());
+                    }
                     if(j != tiles[0].length - 1){
                         bw.write("\t");
                     }
