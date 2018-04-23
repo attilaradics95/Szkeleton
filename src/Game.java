@@ -207,7 +207,8 @@ public class Game {
            for(int j = 0; j < tiles[0].length; j++){
                if(visitors[i][j] != null)
                    System.out.print(visitors[i][j].toString());
-               System.out.print(tiles[i][j].toString());
+               if(tiles[i][j] != null)
+                   System.out.print(tiles[i][j].toString());
                if(j != tiles[0].length - 1){
                    System.out.print("\t");
                }
