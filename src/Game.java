@@ -78,7 +78,7 @@ public class Game {
                 chs = line.toCharArray();
             }
             for (char c : chs) {
-                if(c != '\t'){
+                if(c == '.' || c == '+' || c == 'X' || c == 'H' || c == 'M' || c == 'O' || c == 'S' || c == 'T'){
                     coloums++;
                 }
             }
@@ -161,16 +161,17 @@ public class Game {
                             break;
                         case 'W':
                             visitors[l][m] = new Worker();
-                            visitors[l][m].id = line.charAt(i+1);
+                            visitors[l][m].id = (int)line.charAt(i+1);
                             break;
                         case 'B':
                             visitors[l][m] = new Box();
-                            visitors[l][m].id = line.charAt(i+1);
+                            visitors[l][m].id = (int)line.charAt(i+1);
                             break;
                     }
                 }
                 y++;
                 m++;
+                x = l = 0;
             }
         } catch(IOException e) {
 
