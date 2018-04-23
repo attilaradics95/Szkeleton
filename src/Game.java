@@ -23,6 +23,12 @@ public class Game {
     private boolean roundover = false;
     private ArrayList<Box> boxes;
 
+    // később két játékos esetén mindkettő pontját tárolni kell majd,
+    // ezért szükséges a list
+   // private List<Integer> points = new List<Integer>();
+    // de most elég egy intben tárolni a teszteseteknek megfelelően
+    private int points = 0;
+
     //projekt mappa elérési útvonala
     //ezen a mappán belül lesznek a bemeneti pályák
     //és ide lesznek elmentve is
@@ -31,6 +37,16 @@ public class Game {
     //ebben tároljuk el a fájlból beolvasott dolgokat
     private ATile[][] tiles;
     private Visitor[][] visitors;
+
+    //pontok növelése
+    public void addPoint(){
+        points++;
+    }
+
+    //pontok kiíratásához lekérdező fv
+    public int getPoints(){
+        return points;
+    }
 
     /**Metódusok*/
     //Kicserél egy mezőt
