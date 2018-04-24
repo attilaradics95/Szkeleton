@@ -126,34 +126,50 @@ public class Game {
                     switch (line.charAt(i)) {
                         case '.':
                             tiles[x][y] = new Tile();
+                            if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
+                                visitors[x][y] = null;
                             y++;
                             break;
                         case '+':
                             tiles[x][y] = new Obstacle();
+                            if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
+                                visitors[x][y] = null;
                             y++;
                             break;
                         case 'X':
                             tiles[x][y] = new Target();
+                            if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
+                                visitors[x][y] = null;
                             y++;
                             break;
                         case 'H':
                             tiles[x][y] = new Hole();
+                            if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
+                                visitors[x][y] = null;
                             y++;
                             break;
                         case 'M':
                             tiles[x][y] = new Honey();
+                            if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
+                                visitors[x][y] = null;
                             y++;
                             break;
                         case 'O':
                             tiles[x][y] = new Oil();
+                            if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
+                                visitors[x][y] = null;
                             y++;
                             break;
                         case 'S':
                             tiles[x][y] = new Switch(Character.getNumericValue(line.charAt(i+1)));
+                            if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
+                                visitors[x][y] = null;
                             y++;
                             break;
                         case 'T':
                             tiles[x][y] = new Trap(Character.getNumericValue(line.charAt(i+1)));
+                            if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
+                                visitors[x][y] = null;
                             y++;
                             break;
                         case 'W':
