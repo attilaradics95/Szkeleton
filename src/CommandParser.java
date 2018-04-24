@@ -13,10 +13,10 @@ public class CommandParser {
         InputStreamReader is = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(is);
 
-        String in;
+        String in = br.readLine();
         String array[];
-        while (br.readLine() != null) {
-            in = br.readLine();
+        while (in != null) {
+
             array = in.split(" ");
 
 
@@ -30,7 +30,7 @@ public class CommandParser {
 
 
             //Munkás léptetése: pl. step w, step a, step s, step d
-            if (array[0].equals("step")) {
+            else if (array[0].equals("step")) {
                 //Leellenőrizzük, hogy a felhasználó létező irányt adott-e meg
                 switch (array[1]){
                     case "w": controller.moveWorker(Directions.NORTH);
@@ -48,14 +48,14 @@ public class CommandParser {
 
 
             //Doboz mozgatása: pl. push 1 a
-            if (array[0].equals("push")) {
+            else if (array[0].equals("push")) {
 
                 //Leellenőrizzük, hogy a felhasználó létező dobozt adott-e meg
                 if (Integer.parseInt(array[1]) > controller.boxes.size() || Integer.parseInt(array[1]) < 1)
                     System.out.println("No such Box!");
 
                 //Leellenőrizzük, hogy a felhasználó létező irányt adott-e meg
-                if (!array[2].equals("w") && array[2] != "a" && array[2] != "s" && array[2] != "d")
+                if (!array[2].equals("w") && !array[2].equals("a") && !array[2].equals("s") && !array[2].equals("d"))
                     System.out.println("Wrong key!");
 
                 //Ha létező irányt adott meg, akkor mozgatjuk a dobozt
@@ -87,7 +87,7 @@ public class CommandParser {
 
 
             // Kapcsoló állítása: pl. switch 1
-            if (array[0].equals("switch")) {
+            else if (array[0].equals("switch")) {
                 //Leellenőrizzük, hogy a felhasználó létező kapcsolót adott-e meg
                 if (Integer.parseInt(array[1]) < 1)
                     System.out.println("No such switch!");
@@ -101,7 +101,7 @@ public class CommandParser {
 
 
             //Erő és súrlódás módosítása: pl. force worker 1
-            if (array[0].equals("force")) {
+            else if (array[0].equals("force")) {
                 if (!(array[1].equals("worker") || array[1].equals("box"))) {
                     System.out.println("'" + array[1] + "' is not a valid type!");
                 }
@@ -124,27 +124,38 @@ public class CommandParser {
             }
 
             //Pálya betöltése: loadmap
-            if (array[0].equals("loadmap"))
+            else if (array[0].equals("loadmap"))
                 game.loadMap(array[1]);
 
             //Pálya kiírása: showmap
-            if (array[0].equals("showmap"))
+            else if (array[0].equals("showmap"))
                 game.showMap();
 
-            //Játék befejezése: igiveup
-            if (array[0].equals("igiveup"))
-                game.endRound();
-
             //Olaj elhelyezése: putOil
-            if (array[0].equals("putOil"))
+            else if (array[0].equals("putOil"))
                 controller.getSelectedworker().putOil();
 
             //Méz elhelyezése: putHoney
-            if (array[0].equals("putHoney"))
+            else if (array[0].equals("putHoney"))
                 controller.getSelectedworker().putHoney();
+
+            //Játék befejezése: igiveup
+            else if (in.equals("igiveup")) {
+                game.endRound();
+                return;
+            }
+
+            else if(in.equals("")) {
+                game.endRound();
+                return;
+            }
 
             else
                 System.out.println("No such command!");
+
+            in = br.readLine();
         }
+
+
     }
 }
