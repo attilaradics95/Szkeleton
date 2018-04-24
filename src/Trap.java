@@ -50,6 +50,11 @@ public class Trap extends ATile {
      * @return a kimeneti nyelvvel egyező szimbólum
      */
     public String toString() {
-        return "T" + id;
+        if(opened){
+            return "T" + id + "A";
+        }
+        else {
+            return "T" + id;
+        }
     }
 }

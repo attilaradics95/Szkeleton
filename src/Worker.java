@@ -154,9 +154,14 @@ public class Worker extends Visitor{
             }
 
             if (visitorOnNext == null) {
-                currentTile.setVisitor(null);
-                currentTile = next;
-                next.setVisitor(this);
+                if(next.isOpened()){
+                    this.die();
+                }
+                else {
+                    currentTile.setVisitor(null);
+                    currentTile = next;
+                    next.setVisitor(this);
+                }
             } else {
                 Worker sw = controller.getSelectedworker();
                 if (this != sw) {

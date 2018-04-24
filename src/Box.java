@@ -167,9 +167,14 @@ public class Box extends Visitor {
                 }
 
                 if (visitorOnNext == null) {
-                    currentTile.setVisitor(null);
-                    currentTile = next;
-                    next.setVisitor(this);
+                    if(next.isOpened()){
+                        this.die();
+                    }
+                    else {
+                        currentTile.setVisitor(null);
+                        currentTile = next;
+                        next.setVisitor(this);
+                    }
                 }
             }
         }
