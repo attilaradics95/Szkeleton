@@ -1,7 +1,8 @@
 @echo off
 title Let's start running...
+set path =C:/mingw/bin;%path%
 cd Compare
-gcc main.cpp -o Main
+g++ main.cpp -o Main
 cd ..
 cd src
 javac Game.java
