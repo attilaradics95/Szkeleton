@@ -76,14 +76,15 @@ public class Controller {
      */
     public void selectWorker(int i) {
         if(!(workers.isEmpty())){
-           // 0val kezdődik a raktárosok számozása!
-            if(i-1 >= workers.size()){
-                System.out.println("Nincs ilyen sorszámú raktáros. Legnagyobb sorszámú:" + (workers.size() - 1));
+            selectedworker = null;
+            for (Worker w :workers) {
+                if(w.id == i){
+                    selectedworker = w;
+                }
             }
-            else{
-                // 0val kezdődik a raktárosok számozása!
-                selectedworker = workers.get(i-1);
-                System.out.println("selectWorker(" + i + ")");
+            if (selectedworker == null){
+                System.out.println("Nincs ilyen id-ju raktaros");
+                selectedworker = workers.get(0);
             }
         }
         else{
