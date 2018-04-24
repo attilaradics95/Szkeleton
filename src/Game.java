@@ -269,6 +269,17 @@ public class Game {
                     s.setTrap(t);
                 }
             }
+            if(s.getVisitor() != null){
+                Visitor v = s.getVisitor();
+                for (Worker w: controller.workers) {
+                    if(v == w){
+                        s.switchIt(w);
+                    }
+                    else {
+                        s.switchIt(new Box());
+                    }
+                }
+            }
         }
     }
 
