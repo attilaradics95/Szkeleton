@@ -224,28 +224,36 @@ public class Game {
         }
 
         //tile-ok szomszédainak beállítása
-        for(int i = 0; i < tiles.length-1; i++) {
-            for(int j = 0; j < tiles[0].length-1; j++) {
-                tiles[i][j].setNeighbor(tiles[i+1][j], Directions.SOUTH);
-                tiles[i][j].setNeighbor(tiles[i][j+1], Directions.EAST);
+        for(int i = 0; i < tiles.length; i++) {
+            for(int j = 0; j < tiles[0].length; j++) {
+                if(i != tiles.length-1)
+                    tiles[i][j].setNeighbor(tiles[i+1][j], Directions.SOUTH);
+                if(j != tiles[0].length-1)
+                    tiles[i][j].setNeighbor(tiles[i][j+1], Directions.EAST);
             }
         }
-        for(int i = tiles.length-1; i > 0; i--) {
-            for(int j = tiles[0].length-1; j > 0; j--) {
-                tiles[i][j].setNeighbor(tiles[i-1][j], Directions.NORTH);
-                tiles[i][j].setNeighbor(tiles[i][j-1], Directions.WEST);
+        for(int i = tiles.length-1; i >= 0; i--) {
+            for(int j = tiles[0].length-1; j >= 0; j--) {
+                if(i != 0)
+                    tiles[i][j].setNeighbor(tiles[i-1][j], Directions.NORTH);
+                if(j != 0)
+                    tiles[i][j].setNeighbor(tiles[i][j-1], Directions.WEST);
             }
         }
-        for(int i = tiles.length-1; i > 0; i--) {
-            for(int j = 0; j < tiles[0].length-1; j++) {
-                tiles[i][j].setNeighbor(tiles[i-1][j], Directions.NORTH);
-                tiles[i][j].setNeighbor(tiles[i][j+1], Directions.EAST);
+        for(int i = tiles.length-1; i >= 0; i--) {
+            for(int j = 0; j < tiles[0].length; j++) {
+                if(i != 0)
+                    tiles[i][j].setNeighbor(tiles[i-1][j], Directions.NORTH);
+                if(j != tiles[0].length-1)
+                    tiles[i][j].setNeighbor(tiles[i][j+1], Directions.EAST);
             }
         }
-        for(int i = 0; i < tiles.length-1; i++) {
-            for(int j = tiles[0].length-1; j > 0; j--) {
-                tiles[i][j].setNeighbor(tiles[i+1][j], Directions.SOUTH);
-                tiles[i][j].setNeighbor(tiles[i][j-1], Directions.WEST);
+        for(int i = 0; i < tiles.length; i++) {
+            for(int j = tiles[0].length-1; j >= 0; j--) {
+                if(i != tiles.length-1)
+                    tiles[i][j].setNeighbor(tiles[i+1][j], Directions.SOUTH);
+                if(j != 0)
+                    tiles[i][j].setNeighbor(tiles[i][j-1], Directions.WEST);
             }
         }
 
