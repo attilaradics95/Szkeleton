@@ -23,8 +23,6 @@ public class Controller {
      */
     private Game game = null;
     public ArrayList<Worker> workers;
-    public ArrayList<Switch> switches;
-    public ArrayList<Box> boxes;
     private Worker selectedworker = null;
 
     /**

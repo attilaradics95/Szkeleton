@@ -51,7 +51,7 @@ public class CommandParser {
             else if (array[0].equals("push")) {
 
                 //Leellenőrizzük, hogy a felhasználó létező dobozt adott-e meg
-                if (Integer.parseInt(array[1]) > controller.boxes.size() || Integer.parseInt(array[1]) < 1)
+                if (Integer.parseInt(array[1]) > game.boxes.size() || Integer.parseInt(array[1]) < 1)
                     System.out.println("No such Box!");
 
                 //Leellenőrizzük, hogy a felhasználó létező irányt adott-e meg
@@ -60,25 +60,25 @@ public class CommandParser {
 
                 //Ha létező irányt adott meg, akkor mozgatjuk a dobozt
                 if (array[2] == "w") {
-                    for (Box b : controller.boxes) {
+                    for (Box b : game.boxes) {
                         if (b.getId() == Integer.parseInt(array[1]))
                             b.getCurrentTile().getNeighbor(Directions.NORTH).accept(b, Directions.NORTH, b.getForce());
                     }
                 }
                 if (array[2] == "a") {
-                    for (Box b : controller.boxes) {
+                    for (Box b : game.boxes) {
                         if (b.getId() == Integer.parseInt(array[1]))
                             b.getCurrentTile().getNeighbor(Directions.WEST).accept(b, Directions.WEST, b.getForce());
                     }
                 }
                 if (array[2] == "s") {
-                    for (Box b : controller.boxes) {
+                    for (Box b : game.boxes) {
                         if (b.getId() == Integer.parseInt(array[1]))
                             b.getCurrentTile().getNeighbor(Directions.SOUTH).accept(b, Directions.SOUTH, b.getForce());
                     }
                 }
                 if (array[2] == "d") {
-                    for (Box b : controller.boxes) {
+                    for (Box b : game.boxes) {
                         if (b.getId() == Integer.parseInt(array[1]))
                             b.getCurrentTile().getNeighbor(Directions.EAST).accept(b, Directions.EAST, b.getForce());
                     }
@@ -93,7 +93,7 @@ public class CommandParser {
                     System.out.println("No such switch!");
                 //Local variable 'dummy' is created to resemble and serve as a substitute for the real instance of Box.
                 Box dummy = new Box();
-                for (Switch s : controller.switches) {
+                for (Switch s : game.switches) {
                     if (s.getId() == Integer.parseInt(array[1]))
                         s.switchIt(dummy);
                 }
@@ -114,7 +114,7 @@ public class CommandParser {
                 }
                 if (array[1].equals("box")) {
                     for (Box b :
-                            controller.boxes) {
+                            game.boxes) {
                         if (b.getId() == Integer.parseInt(array[2]))
                             b.setForce(Integer.parseInt(array[3]));
                     }

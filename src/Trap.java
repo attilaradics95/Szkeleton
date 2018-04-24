@@ -14,6 +14,11 @@ public class Trap extends ATile {
     }
 
     //Függvények
+
+    public int getId() {
+        return id;
+    }
+
     /**
      * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
      * @param v visitor
