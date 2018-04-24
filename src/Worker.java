@@ -22,7 +22,6 @@ public class Worker extends Visitor{
     //így ezzel indul el minden szekvenciában a visitorok mozgatása
     //meghívja a kapott irányban következő mező accept metódusát a workerrel
     public void move(Directions d) {
-        System.out.println(this.toString() + ".move("+ d +")");
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d, this.force);
     }
@@ -36,7 +35,6 @@ public class Worker extends Visitor{
     //Tile
     // semmi extra nem történik
     public void pushTo(Tile next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
@@ -60,9 +58,6 @@ public class Worker extends Visitor{
     //Switch
     // amikor átlép meghívja önmagát átadva paraméterként a switch switchIt metódusát
     public void pushTo(Switch next, Directions d, int force) {
-
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
@@ -110,7 +105,6 @@ public class Worker extends Visitor{
     //Hole
     //beleesik és meghal
     public void pushTo(Hole next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         this.die();
     }
 
@@ -141,8 +135,6 @@ public class Worker extends Visitor{
     // ha igen beleesik és meghal
     // ha nem, megpróbál odalépni - úgy viselkedik a Trap csukva, mint egy egyszerű Tile
     public void pushTo(Trap next, Directions d, int force) {
-
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (next.isOpened()) {
             this.die();
         } else {
@@ -174,7 +166,6 @@ public class Worker extends Visitor{
     //Target
     //ugyanúgy viselkedik a raktárossal szemben, mint a sima Tile
     public void pushTo(Target next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
             ATile next1 = next.getNeighbor(d);
@@ -209,7 +200,6 @@ public class Worker extends Visitor{
     //ha meghal az aktuális mező visitorját nullra állítja
     //ezután kiveszi az elérhető munkások listájából magát
     public void die() {
-        System.out.println(this.toString() + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         controller.eliminateWorker(this);

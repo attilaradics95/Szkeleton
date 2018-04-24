@@ -30,8 +30,6 @@ public class Box extends Visitor {
     //Tile
     // semmi extra nem történik
     public void pushTo(Tile next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-
         if (movable){
             int reducedforce = force - this.force;
             //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
@@ -56,8 +54,6 @@ public class Box extends Visitor {
     //Switch
     // amikor átlép meghívja önmagát átadva paraméterként a switch switchIt metódusát
     public void pushTo(Switch next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
-
         if (movable){
             int reducedforce = force - this.force;
             //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
@@ -107,7 +103,6 @@ public class Box extends Visitor {
     //Hole
     //beleesik és meghal
     public void pushTo(Hole next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (movable){
             int reducedforce = force - this.force;
             //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
@@ -147,7 +142,6 @@ public class Box extends Visitor {
     // ha igen beleesik és meghal
     // ha nem, megpróbál odalépni - úgy viselkedik a Trap csukva, mint egy egyszerű Tile
     public void pushTo(Trap next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (movable){
             int reducedforce = force - this.force;
             //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
@@ -184,7 +178,6 @@ public class Box extends Visitor {
     //Target
     // ha odalép a doboz, mozgathatatlanná válik
     public void pushTo(Target next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
         if (movable){
             int reducedforce = force - this.force;
             //Ha a surlodas miatt az ero 0 ala csokken akkor visszater a metodus es a doboz a helyen marad
@@ -213,19 +206,16 @@ public class Box extends Visitor {
     // összenyomni se lehet, így a dobozt toló munkás se mozdul el a helyéről
     @Override
     public void pushTo(Obstacle next, Directions d, int force) {
-        System.out.println(this.toString() + ".pushTo(" + next + "," + d + ")");
     }
 
     //mozgathatatlanná válik a box
     public void setUnmovable() {
-        System.out.println(this.toString() + ".setUnmovable()");
         movable = false;
     }
 
     //ha meghal az aktuális mező visitorját nullra állítja
     //ezután csökkenti a mozgatható dobozok számát
     public void die() {
-        System.out.println(this.toString() + ".die()");
         currentTile.setVisitor(null);
         currentTile = null;
         game.decreaseBoxes(this);
