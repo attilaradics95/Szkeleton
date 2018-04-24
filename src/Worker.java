@@ -46,6 +46,7 @@ public class Worker extends Visitor{
 
         if(visitorOnNext == null){
             currentTile.setVisitor(null);
+            currentTile = next;
             next.setVisitor(this);
         }
         else {
@@ -71,6 +72,7 @@ public class Worker extends Visitor{
 
         if(visitorOnNext == null){
             currentTile.setVisitor(null);
+            currentTile = next;
             next.setVisitor(this);
             next.switchIt(this);
         }
@@ -94,6 +96,7 @@ public class Worker extends Visitor{
 
         if(visitorOnNext == null){
             currentTile.setVisitor(null);
+            currentTile = next;
             next.setVisitor(this);
         }
         else {
@@ -122,6 +125,7 @@ public class Worker extends Visitor{
 
         if(visitorOnNext == null){
             currentTile.setVisitor(null);
+            currentTile = next;
             next.setVisitor(this);
         }
         else {
@@ -151,6 +155,7 @@ public class Worker extends Visitor{
 
             if (visitorOnNext == null) {
                 currentTile.setVisitor(null);
+                currentTile = next;
                 next.setVisitor(this);
             } else {
                 Worker sw = controller.getSelectedworker();
@@ -174,6 +179,7 @@ public class Worker extends Visitor{
 
         if(visitorOnNext == null){
             currentTile.setVisitor(null);
+            currentTile = next;
             next.setVisitor(this);
         }
         else {

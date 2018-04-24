@@ -47,6 +47,7 @@ public class Box extends Visitor {
             }
             if(visitorOnNext == null){
                 currentTile.setVisitor(null);
+                currentTile = next;
                 next.setVisitor(this);
             }
         }
@@ -73,6 +74,7 @@ public class Box extends Visitor {
 
             if (visitorOnNext == null) {
                 currentTile.setVisitor(null);
+                currentTile = next;
                 next.setVisitor(this);
                 next.switchIt(this);
             }
@@ -96,6 +98,7 @@ public class Box extends Visitor {
             }
             if(visitorOnNext == null){
                 currentTile.setVisitor(null);
+                currentTile = next;
                 next.setVisitor(this);
             }
         }
@@ -133,6 +136,7 @@ public class Box extends Visitor {
             }
             if(visitorOnNext == null){
                 currentTile.setVisitor(null);
+                currentTile = next;
                 next.setVisitor(this);
             }
         }
@@ -164,6 +168,7 @@ public class Box extends Visitor {
 
                 if (visitorOnNext == null) {
                     currentTile.setVisitor(null);
+                    currentTile = next;
                     next.setVisitor(this);
                 }
             }
@@ -190,6 +195,7 @@ public class Box extends Visitor {
             }
             if(visitorOnNext == null){
                 currentTile.setVisitor(null);
+                currentTile = next;
                 next.setVisitor(this);
                 this.setUnmovable();
                 game.addPoint();
