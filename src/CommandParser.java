@@ -32,16 +32,18 @@ public class CommandParser {
             //Munkás léptetése: pl. step w, step a, step s, step d
             if (array[0].equals("step")) {
                 //Leellenőrizzük, hogy a felhasználó létező irányt adott-e meg
-                if (array[1] != "w" && array[1] != "a" && array[1] != "s" && array[1] != "d")
-                    return "Wrong key!";
-                if (array[1] == "w")
-                    controller.moveWorker(Directions.NORTH);
-                if (array[1] == "a")
-                    controller.moveWorker(Directions.WEST);
-                if (array[1] == "s")
-                    controller.moveWorker(Directions.SOUTH);
-                if (array[1] == "d")
-                    controller.moveWorker(Directions.EAST);
+                switch (array[1]){
+                    case "w": controller.moveWorker(Directions.NORTH);
+                        break;
+                    case "a": controller.moveWorker(Directions.WEST);
+                        break;
+                    case "s": controller.moveWorker(Directions.SOUTH);
+                        break;
+                    case "d": controller.moveWorker(Directions.EAST);
+                        break;
+                    default:
+                        return "Wrong key!";
+                }
             }
 
 
