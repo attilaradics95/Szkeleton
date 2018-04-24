@@ -9,13 +9,13 @@ public class CommandParser {
 
     // @author Attila
     // Feldolgoz egy parancsot
-    public String parse(Controller controller, Game game) throws IOException {
+    public void parse(Controller controller, Game game) throws IOException {
         InputStreamReader is = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(is);
 
         String in;
         String array[];
-        while (true) {
+        while (br.readLine() != null) {
             in = br.readLine();
             array = in.split(" ");
 
@@ -24,7 +24,7 @@ public class CommandParser {
             if (array[0].equals("select")) {
                 int id = Integer.parseInt(array[1]);
                 if (id > controller.getNumberOfWorkers() || id < 1)
-                    return "No such worker!";
+                     System.out.println("No such worker!");
                 controller.selectWorker(id);
             }
 
@@ -42,7 +42,7 @@ public class CommandParser {
                     case "d": controller.moveWorker(Directions.EAST);
                         break;
                     default:
-                        return "Wrong key!";
+                        System.out.println("Wrong key!");
                 }
             }
 
@@ -52,11 +52,11 @@ public class CommandParser {
 
                 //Leellenőrizzük, hogy a felhasználó létező dobozt adott-e meg
                 if (Integer.parseInt(array[1]) > controller.boxes.size() || Integer.parseInt(array[1]) < 1)
-                    return "No such Box!";
+                    System.out.println("No such Box!");
 
                 //Leellenőrizzük, hogy a felhasználó létező irányt adott-e meg
-                if (array[2] != "w" && array[2] != "a" && array[2] != "s" && array[2] != "d")
-                    return "Wrong key!";
+                if (!array[2].equals("w") && array[2] != "a" && array[2] != "s" && array[2] != "d")
+                    System.out.println("Wrong key!");
 
                 //Ha létező irányt adott meg, akkor mozgatjuk a dobozt
                 if (array[2] == "w") {
@@ -90,7 +90,7 @@ public class CommandParser {
             if (array[0].equals("switch")) {
                 //Leellenőrizzük, hogy a felhasználó létező kapcsolót adott-e meg
                 if (Integer.parseInt(array[1]) < 1)
-                    return "No such switch!";
+                    System.out.println("No such switch!");
                 //Local variable 'dummy' is created to resemble and serve as a substitute for the real instance of Box.
                 Box dummy = new Box();
                 for (Switch s : controller.switches) {
@@ -103,7 +103,7 @@ public class CommandParser {
             //Erő és súrlódás módosítása: pl. force worker 1
             if (array[0].equals("force")) {
                 if (!(array[1].equals("worker") || array[1].equals("box"))) {
-                    return "'" + array[1] + "' is not a valid type!";
+                    System.out.println("'" + array[1] + "' is not a valid type!");
                 }
                 if (array[1].equals("worker")) {
                     for (Worker w :
@@ -144,7 +144,7 @@ public class CommandParser {
                 controller.getSelectedworker().putHoney();
 
             else
-                return "No such command!";
+                System.out.println("No such command!");
         }
     }
 }
