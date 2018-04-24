@@ -8,6 +8,8 @@ public class Game {
     private static Game instance = null;
     private Game(){
         boxes = new ArrayList<>();
+        switches = new ArrayList<>();
+        traps = new ArrayList<>();
     }
     public static Game getInstance() {
         if(instance == null) {
@@ -19,7 +21,9 @@ public class Game {
     /**Attributumok*/
     private Controller controller = null;
     private boolean roundover = false;
-    private ArrayList<Box> boxes;
+    private ArrayList<Trap> traps;
+    public ArrayList<Switch> switches;
+    public ArrayList<Box> boxes;
 
     // később két játékos esetén mindkettő pontját tárolni kell majd,
     // ezért szükséges a list
@@ -179,6 +183,7 @@ public class Game {
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
+                            switches.add((Switch) tiles[x][y]);
                             y++;
                             break;
                         case 'T':
@@ -186,6 +191,7 @@ public class Game {
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
+                            traps.add((Trap)tiles[x][y]);
                             y++;
                             break;
                         case 'W':
@@ -257,7 +263,13 @@ public class Game {
             }
         }
 
-
+        for (Switch s :switches) {
+            for (Trap t :traps) {
+                if(t.getId() == s.getId()){
+                    s.setTrap(t);
+                }
+            }
+        }
     }
 
     //pálya kiíratása konzolra
