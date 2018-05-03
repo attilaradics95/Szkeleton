@@ -111,5 +111,14 @@ public class MenuPanel extends JPanel {
                 System.exit(0);
             }
         });
+
+        start.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameWindow window = (GameWindow) SwingUtilities.getWindowAncestor(start);
+                GamePanel game = new GamePanel();
+                window.setMainpanel(game);
+            }
+        });
     }
 }

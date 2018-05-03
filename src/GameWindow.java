@@ -1,11 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class GameWindow extends JFrame {
-    //private GamePanel gameView;
-    private MenuPanel startMenu;
+    private JPanel mainpanel;
 
     public GameWindow() {
         super("Killer Sokoban");
@@ -13,7 +10,15 @@ public class GameWindow extends JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        startMenu = new MenuPanel();
-        this.add(startMenu);
+        mainpanel = new MenuPanel();
+        this.add(mainpanel);
+    }
+
+    public void setMainpanel(JPanel panel){
+        remove(mainpanel);
+        this.mainpanel = panel;
+        add(mainpanel);
+        repaint();
+        revalidate();
     }
 }
