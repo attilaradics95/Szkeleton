@@ -14,6 +14,6 @@ public class GameWindow extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         startMenu = new MenuPanel();
-
+        this.add(startMenu);
     }
 }

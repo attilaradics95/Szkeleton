@@ -415,7 +415,6 @@ public class Game {
     public static void main(String[] args) {
         Game game = getInstance();
         game.controller = Controller.getInstance();
-        TestCases tests = new TestCases();
 
         //parancssorból futtatás elején
         //bekérve a projekt mappa elérési útvonala
@@ -425,132 +424,7 @@ public class Game {
             path = System.getProperty("user.dir");
         }
 
-
-        /**Teszt template */
-        System.out.println("Választható tesztesetek:");
-        System.out.println("1. Teszt: Moving a worker");
-        System.out.println("2. Teszt: Select worker");
-        System.out.println("3. Teszt: Killing a worker");
-        System.out.println("4. Teszt: Destruction of box");
-        System.out.println("5. Teszt: Box to Target");
-        System.out.println("6. Teszt: Game over");
-        System.out.println("7. Teszt: Switch");
-        System.out.println("8. Teszt: Put oil");
-        System.out.println("9. Teszt: Put honey");
-        System.out.println("10. Teszt: Worker steps on active Trap");
-        System.out.println("11. Teszt: Worker steps on inactive Trap");
-        System.out.println("12. Teszt: Worker steps on Obstacle");
-        System.out.println("13. Teszt: Worker steps on Switch");
-        System.out.println("14. Teszt: Worker steps on Target");
-        System.out.println("15. Teszt: Worker steps on Hole");
-        System.out.println("16. Teszt: Worker pushes another Worker to Tile");
-        System.out.println("17. Teszt: Worker pushes Box to Tile");
-        System.out.println("18. Teszt: Worker pushes Box to inactive Trap ");
-        System.out.println("19. Teszt: Worker pushes Box to active Trap");
-        System.out.println("20. Teszt: Worker pushes Box to Switch");
-        System.out.println("21. Teszt: Worker pushes Box to Hole");
-        System.out.println("22. Teszt: Worker pushes Box to Obstacle");
-        System.out.println("23. Teszt: Worker -> Worker -> Box");
-        System.out.println("24. Teszt: Worker -> Box -> Worker");
-        System.out.println("25. Teszt: All test");
-        System.out.println("Teszt kiválasztása(1,2,...):");
-
-
-
-        /**
-         *
-         *  /\
-         *  |
-         *  |
-         *  |
-         * IDE PRINTELJETEK KI LEGYSZI A TESZTEKET AMIKET MEGIRTATOK EGY SZAMMAL AZ ELEJEN ÉS RAKJATOK BE A SWITCHBE PLS
-         */
-
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String input = "";
-        try {
-            input = br.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        switch (Integer.parseInt(input)){
-            case 1:
-                tests.MoveWorker();
-                break;
-            case 2:
-                tests.SelectWorker();
-                break;
-            case 3:
-                tests.KillWorker();
-                break;
-            case 4:
-                tests.DestructionofBox();
-                break;
-            case 5:
-                tests.BoxtoTarget();
-                break;
-            case 6:
-                tests.GameOver();
-                break;
-            case 7:
-                tests.Switch();
-                break;
-            case 8:
-                tests.PutOil();
-                break;
-            case 9:
-                tests.PutHoney();
-                break;
-            case 10:
-                tests.WorkerStepsOnActiveTrap();
-                break;
-            case 11:
-                tests.WorkerStepsOnInactiveTrap();
-                break;
-            case 12:
-                tests.WorkerStepsOnObstacle();
-                break;
-            case 13:
-                tests.WorkerStepsOnSwitch();
-                break;
-            case 14:
-                tests.WorkerStepsOnTarget();
-                break;
-            case 15:
-                tests.WorkerStepsOnHole();
-                break;
-            case 16:
-                tests.WorkerPushesWorkerToTile();
-                break;
-            case 17:
-                tests.WorkerPushesBoxToTile();
-                break;
-            case 18:
-                tests.WorkerPushesBoxToInactiveTrap();
-                break;
-            case 19:
-                tests.WorkerPushesBoxToActiveTrap();
-                break;
-            case 20:
-                tests.WorkerPushesBoxToSwitch();
-                break;
-            case 21:
-                tests.WorkerPushesBoxToHole();
-                break;
-            case 22:
-                tests.WorkerPushesBoxToObstacle();
-                break;
-            case 23:
-                tests.MML();
-                break;
-            case 24:
-                tests.MLM();
-                break;
-            case 25:
-                tests.allTest();
-                break;
-        }
+        GameWindow gw = new GameWindow();
+        gw.setVisible(true);
     }
 }
