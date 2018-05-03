@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
     public MenuPanel(){
@@ -26,10 +28,11 @@ public class MenuPanel extends JPanel {
 
         map_list.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Válassz pályát!"), BorderFactory.createEmptyBorder(10,200,10,200)));
 
+        ButtonGroup mapgroup = new ButtonGroup();
         JRadioButton map1 = new JRadioButton("Map1");
         JRadioButton map2 = new JRadioButton("Map2");
-
-        //TODO: csak az egyik pályát lehessen választani
+        mapgroup.add(map1);
+        mapgroup.add(map2);
 
         map_list.setLayout(new BorderLayout());
         JPanel rb = new JPanel();
@@ -40,16 +43,16 @@ public class MenuPanel extends JPanel {
 
         JLabel itile, iobstacle, itarget, ihole, iswitch, ihoney, ioil, ibox, iworker, iselectedworker;
 
-        itile = new JLabel(new ImageIcon("tile.jpg"));
-        iobstacle = new JLabel(new ImageIcon("obstacle.jpg"));
-        itarget = new JLabel(new ImageIcon("target.jpg"));
-        ihole = new JLabel(new ImageIcon("hole.jpg"));
-        iswitch = new JLabel(new ImageIcon("switch.jpg"));
-        ihoney = new JLabel(new ImageIcon("honey.jpg"));
-        ioil = new JLabel(new ImageIcon("oil.jpg"));
-        ibox = new JLabel(new ImageIcon("box.jpg"));
-        iworker = new JLabel(new ImageIcon("worker.jpg"));
-        iselectedworker = new JLabel(new ImageIcon("selectedworker.jpg"));
+        itile = new JLabel(new ImageIcon("img/tile.jpg"));
+        iobstacle = new JLabel(new ImageIcon("img/obstacle.jpg"));
+        itarget = new JLabel(new ImageIcon("img/target.jpg"));
+        ihole = new JLabel(new ImageIcon("img/hole.jpg"));
+        iswitch = new JLabel(new ImageIcon("img/switch.jpg"));
+        ihoney = new JLabel(new ImageIcon("img/honey.jpg"));
+        ioil = new JLabel(new ImageIcon("img/oil.jpg"));
+        ibox = new JLabel(new ImageIcon("img/box.jpg"));
+        iworker = new JLabel(new ImageIcon("img/worker.jpg"));
+        iselectedworker = new JLabel(new ImageIcon("img/selectedworker.jpg"));
 
         JLabel ttile, tobstacle, ttarget, thole, tswitch, thoney, toil, tbox, tworker, tselectedworker;
 
@@ -102,5 +105,11 @@ public class MenuPanel extends JPanel {
         buttons.add(start);
         buttons.add(exit);
 
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
 }
