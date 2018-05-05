@@ -5,7 +5,5 @@ public abstract class ElementView {
     private int y;
 
     //FÜGGVÉNYEK
-    abstract public void draw(){
-
-    }
+    abstract public void draw();
 }
