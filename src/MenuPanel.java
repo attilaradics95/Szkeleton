@@ -29,8 +29,8 @@ public class MenuPanel extends JPanel {
         map_list.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Válassz pályát!"), BorderFactory.createEmptyBorder(10,200,10,200)));
 
         ButtonGroup mapgroup = new ButtonGroup();
-        JRadioButton map1 = new JRadioButton("Map1");
-        JRadioButton map2 = new JRadioButton("Map2");
+        JRadioButton map1 = new JRadioButton("Map 1");
+        JRadioButton map2 = new JRadioButton("Map 2");
         mapgroup.add(map1);
         mapgroup.add(map2);
 
@@ -116,8 +116,22 @@ public class MenuPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GameWindow window = (GameWindow) SwingUtilities.getWindowAncestor(start);
-                GamePanel game = new GamePanel();
-                window.setMainpanel(game);
+
+                //Ha a felhasználó nem választott ki pályát, akkor értesítjük róla
+                if(!map1.isSelected() && !map2.isSelected()) {
+                    NoMapIsSelected noMapIsSelected = new NoMapIsSelected();
+                    noMapIsSelected.setVisible(true);
+                }
+
+                //Játék elindítása
+                if(map1.isSelected()){
+                    GamePanel game = new GamePanel("map1.txt");
+                    window.setMainpanel(game);
+                }
+                if(map2.isSelected()){
+                    GamePanel game = new GamePanel("map2.txt");
+                    window.setMainpanel(game);
+                }
             }
         });
     }

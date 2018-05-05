@@ -1,17 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 
 public class GameWindow extends JFrame {
     private JPanel mainpanel;
 
+
     public GameWindow() {
-        super("Killer Sokoban");
+
+        super("Game");
         this.setSize(new Dimension(800, 500));
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+
         mainpanel = new MenuPanel();
         this.add(mainpanel);
+
     }
 
     public void setMainpanel(JPanel panel){
