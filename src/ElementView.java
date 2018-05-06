@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public abstract class ElementView {
 
     //TAGVÁLTOZÓK
@@ -5,5 +7,5 @@ public abstract class ElementView {
     private int y;
 
     //FÜGGVÉNYEK
-    abstract public void draw();
+    abstract public JPanel draw();
 }

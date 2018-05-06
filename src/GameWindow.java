@@ -26,5 +26,6 @@ public class GameWindow extends JFrame {
         add(mainpanel);
         repaint();
         revalidate();
+        this.pack();
     }
 }

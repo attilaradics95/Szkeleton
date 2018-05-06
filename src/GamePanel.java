@@ -43,14 +43,17 @@ public class GamePanel extends JPanel {
         //endregion
 
         //region Ablak felépítése
+
+        ImageIcon icon = new ImageIcon(System.getProperty("user.dir") + "/img/" + "worker.jpg");
         this.setLayout(new GridLayout(numberOfRows,numberOfColumns,0,0));
-        for(int i = 0; i < numberOfRows; i++){
-            for(int j = 0; j< numberOfColumns; j++){
-                JPanel current = new JPanel();
-                current.add(new JLabel("(" + i + "," + j + ")"));
-                this.add(current);
+        for(int row = 0; row < numberOfRows; row++){
+            for(int col = 0; col< numberOfColumns; col++){
+                this.add(WorkerView.draw());
             }
         }
+
+
+
         //endregion
     }
 }
