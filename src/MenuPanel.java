@@ -46,21 +46,21 @@ public class MenuPanel extends JPanel {
 
         JLabel itile, iobstacle, itarget, ihole, iswitch, ihoney, ioil, ibox, iworker, iselectedworker;
 
-        itile = new JLabel(new ImageIcon("img/tile.jpg"));
-        iobstacle = new JLabel(new ImageIcon("img/obstacle.jpg"));
-        itarget = new JLabel(new ImageIcon("img/target.jpg"));
-        ihole = new JLabel(new ImageIcon("img/hole.jpg"));
-        iswitch = new JLabel(new ImageIcon("img/switch.jpg"));
-        ihoney = new JLabel(new ImageIcon("img/honey.jpg"));
-        ioil = new JLabel(new ImageIcon("img/oil.jpg"));
-        ibox = new JLabel(new ImageIcon("img/box.jpg"));
-        iworker = new JLabel(new ImageIcon("img/worker.jpg"));
-        iselectedworker = new JLabel(new ImageIcon("img/selectedworker.jpg"));
+        itile = new JLabel(new ImageIcon("img/tile_hq.jpg"));
+        iobstacle = new JLabel(new ImageIcon("img/obstacle_hq.jpg"));
+        itarget = new JLabel(new ImageIcon("img/target_hq.jpg"));
+        ihole = new JLabel(new ImageIcon("img/hole_hq.jpg"));
+        iswitch = new JLabel(new ImageIcon("img/switch_off_hq.jpg"));
+        ihoney = new JLabel(new ImageIcon("img/honey_hq.jpg"));
+        ioil = new JLabel(new ImageIcon("img/oil_hq.jpg"));
+        ibox = new JLabel(new ImageIcon("img/box_hq.jpg"));
+        iworker = new JLabel(new ImageIcon("img/worker_hq.jpg"));
+        iselectedworker = new JLabel(new ImageIcon("img/worker_selected_hq.jpg"));
 
         JLabel ttile, tobstacle, ttarget, thole, tswitch, thoney, toil, tbox, tworker, tselectedworker;
 
         ttile = new JLabel("Sima mező");
-        tobstacle = new JLabel("Obtacle");
+        tobstacle = new JLabel("Fal");
         ttarget = new JLabel("Célmező");
         thole = new JLabel("Lyuk");
         tswitch = new JLabel("Kapcsoló");
