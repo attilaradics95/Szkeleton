@@ -5,7 +5,7 @@ public class BoxView  extends ElementView {
     private String image = "box.jpg";
 
     public BoxView(){
-        this.image = "box.jpg";
+        this.image = "box.png";
     }
 
     public String getImage(){

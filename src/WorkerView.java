@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WorkerView extends ElementView{
-    private String image = "worker.png";
+    private String image = "worker.jpg";
 
     public WorkerView(){
         this.image = "worker.png";

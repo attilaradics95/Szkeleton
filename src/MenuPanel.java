@@ -46,16 +46,16 @@ public class MenuPanel extends JPanel {
 
         JLabel itile, iobstacle, itarget, ihole, iswitch, ihoney, ioil, ibox, iworker, iselectedworker;
 
-        itile = new JLabel(new ImageIcon("img/tile_hq.jpg"));
-        iobstacle = new JLabel(new ImageIcon("img/obstacle_hq.jpg"));
-        itarget = new JLabel(new ImageIcon("img/target_hq.jpg"));
-        ihole = new JLabel(new ImageIcon("img/hole_hq.jpg"));
-        iswitch = new JLabel(new ImageIcon("img/switch_off_hq.jpg"));
-        ihoney = new JLabel(new ImageIcon("img/honey_hq.jpg"));
-        ioil = new JLabel(new ImageIcon("img/oil_hq.jpg"));
-        ibox = new JLabel(new ImageIcon("img/box_hq.jpg"));
-        iworker = new JLabel(new ImageIcon("img/worker_hq.jpg"));
-        iselectedworker = new JLabel(new ImageIcon("img/worker_selected_hq.jpg"));
+        itile = new JLabel(new ImageIcon("img/tile.jpg"));
+        iobstacle = new JLabel(new ImageIcon("img/obstacle.jpg"));
+        itarget = new JLabel(new ImageIcon("img/target.jpg"));
+        ihole = new JLabel(new ImageIcon("img/hole.jpg"));
+        iswitch = new JLabel(new ImageIcon("img/switch_off.jpg"));
+        ihoney = new JLabel(new ImageIcon("img/honey.jpg"));
+        ioil = new JLabel(new ImageIcon("img/oil.jpg"));
+        ibox = new JLabel(new ImageIcon("img/box.png"));
+        iworker = new JLabel(new ImageIcon("img/worker.png"));
+        iselectedworker = new JLabel(new ImageIcon("img/worker_selected.jpg"));
 
         JLabel ttile, tobstacle, ttarget, thole, tswitch, thoney, toil, tbox, tworker, tselectedworker;
 
