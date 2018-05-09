@@ -7,7 +7,7 @@ public class Worker extends Visitor{
     private static int instanceCounter = 0;
     //endregion
 
-
+    //region Metódusok
     public Worker(){
         controller = Controller.getInstance();
         game = Game.getInstance();
@@ -229,4 +229,5 @@ public class Worker extends Visitor{
         Oil oil = new Oil(new OilView());
         game.swap(this.currentTile,oil);
     }
+    //endregion
 }

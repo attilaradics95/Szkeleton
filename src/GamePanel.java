@@ -16,8 +16,14 @@ public class GamePanel extends JPanel {
         this.setLayout(new GridLayout(numberOfRows,numberOfColumns,0,-5));
         for(int row = 0; row < numberOfRows; row++){
             for(int col = 0; col< numberOfColumns; col++){
-                ElementView view = tiles[row][col].getView();
-                this.add(view.draw());
+                ElementView tileView = tiles[row][col].getView();
+                if(tiles[row][col].getVisitor() == null)
+                this.add(tileView.draw());
+                else{
+                    ElementView visitorView = tiles[row][col].getVisitor().getView();
+                    this.add(tileView.draw(visitorView));
+
+                }
             }
         }
 

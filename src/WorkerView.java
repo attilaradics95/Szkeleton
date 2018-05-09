@@ -2,8 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WorkerView extends ElementView{
-    private static String image = "worker.jpg";
-    public JPanel draw(){
+    private String image = "worker.png";
+
+    public WorkerView(){
+        this.image = "worker.png";
+    }
+
+    public String getImage(){
+        return this.image;
+    }
+    public JPanel draw( ){
 
         JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
         JPanel panel = new JPanel();
@@ -11,4 +19,9 @@ public class WorkerView extends ElementView{
         panel.add(label);
         return panel;
     }
+    public JPanel draw(ElementView visitorView){
+        return new JPanel();
+        //ennek semmi értelme csak muszáj megvalósítani
+    }
+
 }

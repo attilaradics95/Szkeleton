@@ -1,14 +1,24 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class TileView extends ElementView {
-    private static String image = "tile.jpg";
-    public JPanel draw(){
-
-        JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + "tile.jpg"),JLabel.CENTER);
+    private String image = "tile.jpg";
+    public JPanel draw( ){
+        /*JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(60,60));
         panel.add(label);
-        return panel;
+        return panel;*/
+        return new TilePanel(this);
+    }
+    public JPanel draw(ElementView visitorView){
+        return new TilePanel(this, visitorView);
+    }
+    public String getImage(){
+        return this.image;
     }
 }
