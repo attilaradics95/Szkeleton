@@ -1,4 +1,7 @@
 public class Oil extends ATile {
+    public Oil(ElementView view){
+        this.view = view;
+    }
     /**
      * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
      * ha áll rajta visitor nő a toló erő

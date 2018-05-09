@@ -4,7 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
-    public MenuPanel(){
+    Game game;
+    public MenuPanel(Game game){
+        this.game = game;
+
         JPanel panel = new JPanel();
 
         this.setLayout(new BorderLayout());
@@ -123,14 +126,17 @@ public class MenuPanel extends JPanel {
                     noMapIsSelected.setVisible(true);
                 }
 
-                //Játék elindítása
+                //Pálya betöltése
                 if(map1.isSelected()){
-                    GamePanel game = new GamePanel("map1.txt");
-                    window.setMainpanel(game);
+
+                    game.loadMap("map1.txt");
+                    GamePanel gamePanel = new GamePanel(game.getTiles(), game.getVisitors());
+                    window.setMainpanel(gamePanel);
                 }
                 if(map2.isSelected()){
-                    GamePanel game = new GamePanel("map2.txt");
-                    window.setMainpanel(game);
+                    game.loadMap("map2.txt");
+                    GamePanel gamePanel = new GamePanel(game.getTiles(), game.getVisitors());
+                    window.setMainpanel(gamePanel);
                 }
             }
         });

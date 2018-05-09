@@ -1,8 +1,12 @@
 public class Worker extends Visitor{
+
+    //region Attribútumok
     private Controller controller;
     private Game game;
     //név kiírására szolgáló számlálók
     private static int instanceCounter = 0;
+    //endregion
+
 
     public Worker(){
         controller = Controller.getInstance();
@@ -11,11 +15,12 @@ public class Worker extends Visitor{
         id = instanceCounter;
     }
 
-    public Worker(int id){
+    public Worker(int id, ElementView view){
         controller = Controller.getInstance();
         game = Game.getInstance();
         instanceCounter++;
         this.id = id;
+        this.view = view;
     }
 
     //egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját
@@ -216,12 +221,12 @@ public class Worker extends Visitor{
 
     //Kicseréli a munkás alatti mezőt a Honey osztály egy példányára. Átállítja az összes érintett szomszédot.
     public void putHoney() {
-        Honey honey = new Honey();
+        Honey honey = new Honey(new HoneyView());
         game.swap(this.currentTile,honey);
     }
 
     public void putOil() {
-        Oil oil = new Oil();
+        Oil oil = new Oil(new OilView());
         game.swap(this.currentTile,oil);
     }
 }

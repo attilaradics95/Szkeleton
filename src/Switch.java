@@ -8,8 +8,9 @@ public class Switch extends ATile {
         id = 0;
     }
 
-    public Switch(int id) {
+    public Switch(int id, ElementView view) {
         this.id = id;
+        this.view = view;
     }
 
 

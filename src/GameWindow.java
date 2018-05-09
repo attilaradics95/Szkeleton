@@ -4,18 +4,18 @@ import java.io.*;
 
 public class GameWindow extends JFrame {
     private JPanel mainpanel;
+    Game game;
 
-
-    public GameWindow() {
+    public GameWindow(Game game) {
 
         super("Game");
         this.setSize(new Dimension(800, 500));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.game = game;
 
-
-        mainpanel = new MenuPanel();
+        mainpanel = new MenuPanel(game);
         this.add(mainpanel);
 
     }

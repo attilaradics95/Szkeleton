@@ -2,6 +2,7 @@ public abstract class Visitor {
     protected int id;
     protected int force;
     protected ATile currentTile;
+    protected ElementView view;
 
 
     public int getId() { return this.id; }
@@ -28,4 +29,8 @@ public abstract class Visitor {
     abstract public void pushTo(Target next, Directions d, int force);
     abstract public void pushTo(Obstacle next, Directions d, int force);
     abstract public void die();
+
+    public ElementView getView() {
+        return view;
+    }
 }

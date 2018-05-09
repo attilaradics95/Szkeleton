@@ -8,7 +8,8 @@ public class Trap extends ATile {
         id = 0;
     }
 
-    public Trap(int id) {
+    public Trap(int id, ElementView view) {
+        this.view = view;
         opened = false;
         this.id = id;
     }

@@ -1,4 +1,7 @@
 public class Honey extends ATile {
+    public Honey(ElementView view){
+        this.view = view;
+    }
     /**
      * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
      * ha áll rajta visitor csökken a toló erő

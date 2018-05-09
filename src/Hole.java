@@ -1,5 +1,6 @@
 public class Hole extends ATile {
-    public Hole() {
+    public Hole(ElementView view) {
+        this.view = view;
     }
 
     /**

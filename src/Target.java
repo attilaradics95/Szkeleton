@@ -1,5 +1,6 @@
 public class Target extends ATile {
-    public Target() {
+    public Target(ElementView view) {
+        this.view = view;
     }
 
     /**

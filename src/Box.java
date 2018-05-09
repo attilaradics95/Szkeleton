@@ -14,6 +14,7 @@ public class Box extends Visitor {
     }
 
     public Box(int id) {
+        this.view = new BoxView();
         game = Game.getInstance();
         movable = true;
         instanceCounter++;

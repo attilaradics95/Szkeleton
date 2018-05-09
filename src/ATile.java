@@ -2,9 +2,11 @@ import java.util.HashMap;
 
 public abstract class ATile {
 
-    //attribútumok minden mezőnek van 4 szomszédja, és lehet rajta egy visitor
+    //attribútumok
+    // minden mezőnek van 4 szomszédja, és lehet rajta egy visitor
     protected HashMap<Directions, ATile> neighbors;
     protected Visitor visitor;
+    protected ElementView view ;
 
     //konstruktor
     public ATile(){
@@ -41,4 +43,7 @@ public abstract class ATile {
             neighbors.put(Directions.WEST, west);
     }
 
+    public ElementView getView() {
+        return view;
+    }
 }

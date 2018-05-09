@@ -4,6 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Game {
+
+    //region Singleton attribútumok és metódusok
     /**Singleton metódusok és attributumok*/
     private static Game instance = null;
     private Game(){
@@ -17,7 +19,9 @@ public class Game {
         }
         return instance;
     }
+    //endregion
 
+    //region Attribútumok
     /**Attributumok*/
     private Controller controller = null;
     private boolean roundover = false;
@@ -49,7 +53,9 @@ public class Game {
     public int getPoints(){
         return points;
     }
+    //endregion
 
+    //region Metódusok
     /**Metódusok*/
     //Kicserél egy mezőt
     public void swap(ATile old, ATile newtile) {
@@ -85,10 +91,10 @@ public class Game {
         /**
          * 2d-s tömbök méretének meghatározása
          */
-        int lines = 0, coloums = 0;
+        int lines = 0, columns = 0;
         FileInputStream fis1 = null;
         try {
-            fis1 = new FileInputStream(path + "/Inputs/" + map);
+            fis1 = new FileInputStream(path + "/maps/" + map);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -102,7 +108,7 @@ public class Game {
             }
             for (char c : chs) {
                 if(c == '.' || c == '+' || c == 'X' || c == 'H' || c == 'M' || c == 'O' || c == 'S' || c == 'T'){
-                    coloums++;
+                    columns++;
                 }
             }
         }
@@ -110,15 +116,15 @@ public class Game {
             e.printStackTrace();
         }
 
-        tiles = new ATile[lines][coloums];
-        visitors = new Visitor[lines][coloums];
+        tiles = new ATile[lines][columns];
+        visitors = new Visitor[lines][columns];
 
         //minden tesztesetnél megkapja
         // a teszthez tartozó pálya leírását
         //tartalmazó fájl nevét
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream(path + "/Inputs/" + map);
+            fis = new FileInputStream(path + "/maps/" + map);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -137,49 +143,49 @@ public class Game {
                 for(int i = 0; i < line.length(); i++) {
                     switch (line.charAt(i)) {
                         case '.':
-                            tiles[x][y] = new Tile();
+                            tiles[x][y] = new Tile(new TileView());
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
                             y++;
                             break;
                         case '+':
-                            tiles[x][y] = new Obstacle();
+                            tiles[x][y] = new Obstacle(new ObstacleView());
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
                             y++;
                             break;
                         case 'X':
-                            tiles[x][y] = new Target();
+                            tiles[x][y] = new Target(new TargetView());
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
                             y++;
                             break;
                         case 'H':
-                            tiles[x][y] = new Hole();
+                            tiles[x][y] = new Hole(new HoleView());
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
                             y++;
                             break;
                         case 'M':
-                            tiles[x][y] = new Honey();
+                            tiles[x][y] = new Honey(new HoneyView());
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
                             y++;
                             break;
                         case 'O':
-                            tiles[x][y] = new Oil();
+                            tiles[x][y] = new Oil(new OilView());
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
                             y++;
                             break;
                         case 'S':
-                            tiles[x][y] = new Switch(Character.getNumericValue(line.charAt(i+1)));
+                            tiles[x][y] = new Switch(Character.getNumericValue(line.charAt(i+1)), new SwitchView());
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
@@ -187,7 +193,7 @@ public class Game {
                             y++;
                             break;
                         case 'T':
-                            tiles[x][y] = new Trap(Character.getNumericValue(line.charAt(i+1)));
+                            tiles[x][y] = new Trap(Character.getNumericValue(line.charAt(i+1)), new TrapView());
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;
@@ -195,7 +201,7 @@ public class Game {
                             y++;
                             break;
                         case 'W':
-                            visitors[x][y] = new Worker(Character.getNumericValue(line.charAt(i+1)));
+                            visitors[x][y] = new Worker(Character.getNumericValue(line.charAt(i+1)), new WorkerView());
                             controller.addWorker((Worker)visitors[x][y]);
                             break;
                         case 'B':
@@ -407,10 +413,27 @@ public class Game {
         }
     }
 
+
     public void endRound(){
         roundover = true;
     }
 
+
+    //Visszaadja a visitorokat
+    public Visitor[][] getVisitors(){
+        return visitors;
+    }
+
+    //Visszaadja a mezőket
+
+    public ATile[][] getTiles() {
+        return tiles;
+    }
+
+
+    //endregion
+
+    //region A program belépési pontja
     //A PROGRAM BELÉPÉSI PONTJA
     public static void main(String[] args) {
         Game game = getInstance();
@@ -424,7 +447,10 @@ public class Game {
             path = System.getProperty("user.dir");
         }
 
-        GameWindow gw = new GameWindow();
+        GameWindow gw = new GameWindow(game);
         gw.setVisible(true);
     }
+
+    //endregion
+
 }
