@@ -164,7 +164,7 @@ public class Game {
                             break;
                         case 'S':
                             int sid = Character.getNumericValue(line.charAt(i+1));
-                            tiles[x][y] = new Switch(sid, new InactiveSwitchView());
+                            tiles[x][y] = new Switch(sid);
                             switches.add((Switch) tiles[x][y]);
                             y++;
                             break;
@@ -330,62 +330,13 @@ public class Game {
         }
     }
 
-    private void startRound(){
-        System.out.println("startRound()");
+    private void startRound(String map){
         //MAP betöltese
-        //this.loadMap();
+        loadMap(map);
 
         //Loop az inputok kezelesere
         while(!roundover){
-            //Menu kiirasa
-            System.out.println("1.Irány megadása(W,A,S,D)");
-            System.out.println("2.Raktáros kiválasztása(0,1,2...99)");
-            System.out.println("3.Feladás(igiveup)");
-            System.out.println("Kérem adja meg az inputot:");
-            //Input beolvasása a konzolról
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String input = "";
-            try {
-                input = br.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-            //Regularis kifejezesek az input csekkolasara
-            Pattern selectPattern = Pattern.compile("^([0-9]|[1-9][0-9])$");
-            Pattern movePattern = Pattern.compile("^(W|A|S|D|w|a|s|d)$");
-            Matcher selectMatch = selectPattern.matcher(input);
-            Matcher moveMatch = movePattern.matcher(input);
-
-            if(selectMatch.matches()){
-                controller.selectWorker(Integer.parseInt(input));
-            }
-            if(moveMatch.matches()){
-                switch (input){
-                    case "W":
-                    case "w":
-                        controller.moveWorker(Directions.NORTH);
-                        break;
-                    case "D":
-                    case "d":
-                        controller.moveWorker(Directions.EAST);
-                        break;
-                    case "S":
-                    case "s":
-                        controller.moveWorker(Directions.SOUTH);
-                        break;
-                    case "A":
-                    case "a":
-                        controller.moveWorker(Directions.WEST);
-                        break;
-                }
-            }
-            if (input.equals("igiveup")){
-                this.endRound();
-            }
-            else{
-                System.out.println("Az input nem valid!");
-            }
         }
     }
 
