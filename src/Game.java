@@ -28,12 +28,8 @@ public class Game {
     private ArrayList<Trap> traps;
     public ArrayList<Switch> switches;
     public ArrayList<Box> boxes;
-
-    // később két játékos esetén mindkettő pontját tárolni kell majd,
-    // ezért szükséges a list
-   // private List<Integer> points = new List<Integer>();
-    // de most elég egy intben tárolni a teszteseteknek megfelelően
-    private int points = 0;
+    private ArrayList<Integer> points = new ArrayList<Integer>();
+    private int currentplayer = 0;
 
     //projekt mappa elérési útvonala
     //ezen a mappán belül lesznek a bemeneti pályák
@@ -46,12 +42,13 @@ public class Game {
 
     //pontok növelése
     public void addPoint(){
-        points++;
+        int point = points.get(currentplayer);
+        points.set(currentplayer, ++point);
     }
 
     //pontok kiíratásához lekérdező fv
-    public int getPoints(){
-        return points;
+    public int getPoints(int i){
+        return points.get(i);
     }
     //endregion
 
@@ -88,9 +85,7 @@ public class Game {
     }
 
     public void loadMap(String map){
-        /**
-         * 2d-s tömbök méretének meghatározása
-         */
+        //region tomb meret meghatarozasa
         int lines = 0, columns = 0;
         FileInputStream fis1 = null;
         try {
@@ -115,6 +110,7 @@ public class Game {
         catch (Exception e){
             e.printStackTrace();
         }
+        //endregion
 
         tiles = new ATile[lines][columns];
         visitors = new Visitor[lines][columns];
@@ -144,68 +140,48 @@ public class Game {
                     switch (line.charAt(i)) {
                         case '.':
                             tiles[x][y] = new Tile(new TileView());
-                            if(i > 1)
-                                if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
-                                    visitors[x][y] = null;
                             y++;
                             break;
                         case '+':
                             tiles[x][y] = new Obstacle(new ObstacleView());
-                            if(i > 1)
-                                if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
-                                    visitors[x][y] = null;
                             y++;
                             break;
                         case 'X':
                             tiles[x][y] = new Target(new TargetView());
-                            if(i > 1)
-                                if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
-                                    visitors[x][y] = null;
                             y++;
                             break;
                         case 'H':
                             tiles[x][y] = new Hole(new HoleView());
-                            if(i > 1)
-                                if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
-                                    visitors[x][y] = null;
                             y++;
                             break;
                         case 'M':
                             tiles[x][y] = new Honey(new HoneyView());
-                            if(i > 1)
-                                if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
-                                    visitors[x][y] = null;
                             y++;
                             break;
                         case 'O':
                             tiles[x][y] = new Oil(new OilView());
-                            if(i > 1)
-                                if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
-                                    visitors[x][y] = null;
                             y++;
                             break;
                         case 'S':
-                            tiles[x][y] = new Switch(Character.getNumericValue(line.charAt(i+1)), new InactiveSwitchView());
-                            if(i > 1)
-                                if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
-                                    visitors[x][y] = null;
+                            int sid = Character.getNumericValue(line.charAt(i+1));
+                            tiles[x][y] = new Switch(sid, new SwitchView());
                             switches.add((Switch) tiles[x][y]);
                             y++;
                             break;
                         case 'T':
-                            tiles[x][y] = new Trap(Character.getNumericValue(line.charAt(i+1)), new TrapView());
-                            if(i > 1)
-                                if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
-                                    visitors[x][y] = null;
+                            int tid = Character.getNumericValue(line.charAt(i+1));
+                            tiles[x][y] = new Trap(tid, new TrapView());
                             traps.add((Trap)tiles[x][y]);
                             y++;
                             break;
                         case 'W':
-                            visitors[x][y] = new Worker(Character.getNumericValue(line.charAt(i+1)), new WorkerView());
+                            int wid = Character.getNumericValue(line.charAt(i+1));
+                            visitors[x][y] = new Worker(wid, new WorkerView());
                             controller.addWorker((Worker)visitors[x][y]);
                             break;
                         case 'B':
-                            visitors[x][y] = new Box(Character.getNumericValue(line.charAt(i+1)));
+                            int bid = Character.getNumericValue(line.charAt(i+1));
+                            visitors[x][y] = new Box(bid);
                             boxes.add((Box)visitors[x][y]);
                             break;
                     }
