@@ -139,44 +139,44 @@ public class Game {
                 for(int i = 0; i < line.length(); i++) {
                     switch (line.charAt(i)) {
                         case '.':
-                            tiles[x][y] = new Tile(new TileView());
+                            tiles[x][y] = new Tile();
                             y++;
                             break;
                         case '+':
-                            tiles[x][y] = new Obstacle(new ObstacleView());
+                            tiles[x][y] = new Obstacle();
                             y++;
                             break;
                         case 'X':
-                            tiles[x][y] = new Target(new TargetView());
+                            tiles[x][y] = new Target();
                             y++;
                             break;
                         case 'H':
-                            tiles[x][y] = new Hole(new HoleView());
+                            tiles[x][y] = new Hole();
                             y++;
                             break;
                         case 'M':
-                            tiles[x][y] = new Honey(new HoneyView());
+                            tiles[x][y] = new Honey();
                             y++;
                             break;
                         case 'O':
-                            tiles[x][y] = new Oil(new OilView());
+                            tiles[x][y] = new Oil();
                             y++;
                             break;
                         case 'S':
                             int sid = Character.getNumericValue(line.charAt(i+1));
-                            tiles[x][y] = new Switch(sid, new SwitchView());
+                            tiles[x][y] = new Switch(sid, new InactiveSwitchView());
                             switches.add((Switch) tiles[x][y]);
                             y++;
                             break;
                         case 'T':
                             int tid = Character.getNumericValue(line.charAt(i+1));
-                            tiles[x][y] = new Trap(tid, new TrapView());
+                            tiles[x][y] = new Trap(tid);
                             traps.add((Trap)tiles[x][y]);
                             y++;
                             break;
                         case 'W':
                             int wid = Character.getNumericValue(line.charAt(i+1));
-                            visitors[x][y] = new Worker(wid, new WorkerView());
+                            visitors[x][y] = new Worker(wid);
                             controller.addWorker((Worker)visitors[x][y]);
                             break;
                         case 'B':
