@@ -1,6 +1,6 @@
 public class Oil extends ATile {
-    public Oil(ElementView view){
-        this.view = view;
+    public Oil(){
+        this.view = new OilView();
     }
     /**
      * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva

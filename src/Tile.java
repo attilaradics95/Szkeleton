@@ -1,6 +1,6 @@
 public class Tile extends ATile{
-    public Tile(ElementView view) {
-        this.view = view;
+    public Tile() {
+        this.view = new TileView();
     }
 
     /**

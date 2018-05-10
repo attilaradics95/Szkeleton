@@ -15,12 +15,12 @@ public class Worker extends Visitor{
         id = instanceCounter;
     }
 
-    public Worker(int id, ElementView view){
+    public Worker(int id){
         controller = Controller.getInstance();
         game = Game.getInstance();
         instanceCounter++;
         this.id = id;
-        this.view = view;
+        this.view = new WorkerView();
     }
 
     //egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját
@@ -221,12 +221,12 @@ public class Worker extends Visitor{
 
     //Kicseréli a munkás alatti mezőt a Honey osztály egy példányára. Átállítja az összes érintett szomszédot.
     public void putHoney() {
-        Honey honey = new Honey(new HoneyView());
+        Honey honey = new Honey();
         game.swap(this.currentTile,honey);
     }
 
     public void putOil() {
-        Oil oil = new Oil(new OilView());
+        Oil oil = new Oil();
         game.swap(this.currentTile,oil);
     }
     //endregion

@@ -1,6 +1,6 @@
 public class Obstacle extends ATile {
-    public Obstacle(ElementView view) {
-        this.view = view;
+    public Obstacle() {
+        this.view = new ObstacleView();
     }
 
     /**
