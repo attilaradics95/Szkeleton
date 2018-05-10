@@ -4,8 +4,12 @@ import java.awt.*;
 public class WorkerView extends ElementView{
     private String image;
 
-    public WorkerView(){
-        this.image = "worker.png";
+    //ha igaz, akkor ki van választva, ha nem, akkor nincs
+    public WorkerView(boolean selected){
+        if(selected)
+            this.image = "selectedworker.png";
+        else
+            this.image = "worker.png";
     }
 
     public String getImage(){

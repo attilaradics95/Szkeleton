@@ -78,6 +78,9 @@ public class Controller {
             for (Worker w :workers) {
                 if(w.id == i){
                     selectedworker = w;
+
+                    //selectedworker.png-t rajzoljuk ki, ha ki lett választva
+                    w.view = new WorkerView(true);
                 }
             }
             if (selectedworker == null){

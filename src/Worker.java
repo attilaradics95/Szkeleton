@@ -20,7 +20,8 @@ public class Worker extends Visitor{
         game = Game.getInstance();
         instanceCounter++;
         this.id = id;
-        this.view = new WorkerView();
+        //először egyik munkás sincs kiválasztva
+        this.view = new WorkerView(false);
     }
 
     //egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját
