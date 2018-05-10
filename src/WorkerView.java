@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WorkerView extends ElementView{
-    private String image;
-
     //ha igaz, akkor ki van választva, ha nem, akkor nincs
     public WorkerView(boolean selected){
         if(selected)
@@ -12,9 +10,6 @@ public class WorkerView extends ElementView{
             this.image = "worker.png";
     }
 
-    public String getImage(){
-        return this.image;
-    }
     public JPanel draw( ){
 
         JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
@@ -23,6 +18,7 @@ public class WorkerView extends ElementView{
         panel.add(label);
         return panel;
     }
+
     public JPanel draw(ElementView visitorView){
         return new JPanel();
         //ennek semmi értelme csak muszáj megvalósítani

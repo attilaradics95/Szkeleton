@@ -27,13 +27,13 @@ public class GameWindow extends JFrame {
         remove(mainpanel);
         this.mainpanel = panel;
         add(mainpanel);
+        this.pack();
         repaint();
         revalidate();
-        this.pack();
     }
 
     public void HandleClick(int x, int y) {
-        ATile[][] tiles = game.getTiles();
+        ATile[][] tiles = game.getMap();
         Controller controller = Controller.getInstance();
         if(tiles[x][y].getVisitor() != null) {
             controller.selectWorker(tiles[x][y].getVisitor().getId());

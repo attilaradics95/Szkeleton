@@ -19,7 +19,7 @@ public class TilePanel extends JPanel{
             e.printStackTrace();
             System.exit(-1);
         }
-
+        setMinimumSize(new Dimension(60,60));
     }
 
     public TilePanel(ElementView tileView, ElementView visitorView){
@@ -36,6 +36,7 @@ public class TilePanel extends JPanel{
         }
         JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + visitorViewImage),JLabel.CENTER);
         this.add(label);
+        setMinimumSize(new Dimension(60,60));
     }
 
         @Override

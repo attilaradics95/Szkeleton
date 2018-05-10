@@ -3,8 +3,11 @@ import java.awt.event.MouseEvent;
 
 public class MouseHandler {
 
-    private Game game = Game.getInstance();
-    private GameWindow gameWindow = new GameWindow(game);
+    private GameWindow gameWindow;
+
+    public MouseHandler(){
+        gameWindow = Game.getWindow();
+    }
 
 
     //megkapja a GamePanel-től a tiles tömböt
@@ -15,8 +18,10 @@ public class MouseHandler {
         int y = e.getY();
 
         //x, y koordinata atkonvertalasa a megfelelo mezore
-        int fieldX = x/60 + 1;
-        int fieldY = y/60 + 1;
+        int fieldX = x/60;
+        int fieldY = y/60;
+
+        System.out.println(fieldX + " " + fieldY);
 
         gameWindow.HandleClick(fieldX, fieldY);
     }

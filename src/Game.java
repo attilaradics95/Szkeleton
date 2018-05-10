@@ -23,7 +23,8 @@ public class Game {
 
     //region Attribútumok
     /**Attributumok*/
-    private Controller controller = null;
+    private Controller controller;
+    private static GameWindow window;
     private boolean roundover = false;
     private ArrayList<Trap> traps;
     public ArrayList<Switch> switches;
@@ -287,6 +288,10 @@ public class Game {
         return tiles;
     }
 
+    public static GameWindow getWindow(){
+        return window;
+    }
+
     //pálya mentése fájlba
     public void saveMap(String filename){
         File f = new File(path + "/Outputs/" + filename);
@@ -344,23 +349,9 @@ public class Game {
         }
     }
 
-
     public void endRound(){
         roundover = true;
     }
-
-
-    //Visszaadja a visitorokat
-    public Visitor[][] getVisitors(){
-        return visitors;
-    }
-
-    //Visszaadja a mezőket
-
-    public ATile[][] getTiles() {
-        return tiles;
-    }
-
 
     //endregion
 
@@ -378,8 +369,8 @@ public class Game {
             path = System.getProperty("user.dir");
         }
 
-        GameWindow gw = new GameWindow(game);
-        gw.setVisible(true);
+        window = new GameWindow(game);
+        window.setVisible(true);
     }
 
     //endregion

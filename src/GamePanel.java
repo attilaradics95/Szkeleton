@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener {
         int numberOfRows = tiles.length;
         int numberOfColumns = tiles[0].length;
 
-        this.setLayout(new GridLayout(numberOfRows,numberOfColumns,0,-5));
+        this.setLayout(new GridLayout(numberOfRows,numberOfColumns,0,0));
         for(int row = 0; row < numberOfRows; row++){
             for(int col = 0; col< numberOfColumns; col++){
                 ElementView tileView = tiles[row][col].getView();
@@ -47,6 +47,7 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         mouseHandler.Click(e);
+        drawAll();
     }
 
     @Override
