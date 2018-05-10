@@ -6,8 +6,14 @@ import java.io.*;
 
 public class GamePanel extends JPanel implements MouseListener {
 
+    MouseHandler mouseHandler;
+    private ATile[][] tiles;
+
     //region Konstruktor
     public GamePanel(ATile[][] tiles, Visitor[][] visitors){
+
+        this.tiles = tiles;
+        mouseHandler = new MouseHandler();
 
         //feliratkozunk a JPanel egér eseményfigyelőjére
         addMouseListener(this);
@@ -41,8 +47,7 @@ public class GamePanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        MouseHandler mouseHandler = new MouseHandler();
-        mouseHandler.Click(e);
+        mouseHandler.Click(e, tiles);
     }
 
     @Override

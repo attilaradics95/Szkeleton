@@ -55,7 +55,7 @@ public class MenuPanel extends JPanel {
         ioil = new JLabel(new ImageIcon("img/oil.jpg"));
         ibox = new JLabel(new ImageIcon("img/box.png"));
         iworker = new JLabel(new ImageIcon("img/worker.png"));
-        iselectedworker = new JLabel(new ImageIcon("img/worker_selected.jpg"));
+        iselectedworker = new JLabel(new ImageIcon("img/selectedworker.png"));
 
         JLabel ttile, tobstacle, ttarget, thole, tswitch, thoney, toil, tbox, tworker, tselectedworker;
 

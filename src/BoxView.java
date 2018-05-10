@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BoxView  extends ElementView {
-    private String image = "box.jpg";
+    private String image;
 
     public BoxView(){
         this.image = "box.png";
