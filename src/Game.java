@@ -185,7 +185,7 @@ public class Game {
                             y++;
                             break;
                         case 'S':
-                            tiles[x][y] = new Switch(Character.getNumericValue(line.charAt(i+1)), new SwitchView());
+                            tiles[x][y] = new Switch(Character.getNumericValue(line.charAt(i+1)), new InactiveSwitchView());
                             if(i > 1)
                                 if(line.charAt(i-2) != 'W' && line.charAt(i-2) != 'B')
                                     visitors[x][y] = null;

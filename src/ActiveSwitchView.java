@@ -1,8 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class SwitchView  extends ElementView{
-    private  String image = "switch.jpg";
+public class ActiveSwitchView  extends ElementView{
+    private  String image = "switch_on.jpg";
     public JPanel draw( ){
 /*
         JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
@@ -11,7 +11,7 @@ public class SwitchView  extends ElementView{
         panel.add(label);
         return panel;
         */
-return new TilePanel(this);
+        return new TilePanel(this);
     }
     public JPanel draw(ElementView visitorView){
         return new TilePanel(this, visitorView);
