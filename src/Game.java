@@ -283,6 +283,10 @@ public class Game {
 
     }
 
+    public ATile[][] getMap(){
+        return tiles;
+    }
+
     //pálya mentése fájlba
     public void saveMap(String filename){
         File f = new File(path + "/Outputs/" + filename);

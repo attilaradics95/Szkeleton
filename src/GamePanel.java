@@ -1,25 +1,31 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
 
-public class GamePanel extends JPanel implements MouseListener {
-
+public class GamePanel extends JPanel implements MouseListener, KeyListener {
+    Game game;
     MouseHandler mouseHandler;
 
     //region Konstruktor
-    public GamePanel(ATile[][] tiles, Visitor[][] visitors){
+    public GamePanel(){
         mouseHandler = new MouseHandler();
+        game = Game.getInstance();
 
         //feliratkozunk a JPanel egér eseményfigyelőjére
         addMouseListener(this);
+        drawAll();
+
+    }
+
+    public void drawAll(){
+        ATile[][] tiles = game.getMap();
 
         int numberOfRows = tiles.length;
         int numberOfColumns = tiles[0].length;
-
-
-        //region Ablak felépítése
 
         this.setLayout(new GridLayout(numberOfRows,numberOfColumns,0,-5));
         for(int row = 0; row < numberOfRows; row++){
@@ -27,8 +33,8 @@ public class GamePanel extends JPanel implements MouseListener {
                 ElementView tileView = tiles[row][col].getView();
                 //Ha üres a mező akkor csak a mezőt rajzoljuk ki
                 if(tiles[row][col].getVisitor() == null)
-                this.add(tileView.draw());
-                //Ha nem üres, akkor azt is kirajzoljuk, ami rajta van
+                    this.add(tileView.draw());
+                    //Ha nem üres, akkor azt is kirajzoljuk, ami rajta van
                 else{
                     ElementView visitorView = tiles[row][col].getVisitor().getView();
                     this.add(tileView.draw(visitorView));
@@ -36,10 +42,6 @@ public class GamePanel extends JPanel implements MouseListener {
                 }
             }
         }
-
-
-        //endregion
-
     }
 
     @Override
@@ -64,6 +66,21 @@ public class GamePanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
     //endregion

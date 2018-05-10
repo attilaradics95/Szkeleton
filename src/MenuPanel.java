@@ -130,12 +130,12 @@ public class MenuPanel extends JPanel {
                 if(map1.isSelected()){
 
                     game.loadMap("map1.txt");
-                    GamePanel gamePanel = new GamePanel(game.getTiles(), game.getVisitors());
+                    GamePanel gamePanel = new GamePanel();
                     window.setMainpanel(gamePanel);
                 }
                 if(map2.isSelected()){
                     game.loadMap("map2.txt");
-                    GamePanel gamePanel = new GamePanel(game.getTiles(), game.getVisitors());
+                    GamePanel gamePanel = new GamePanel();
                     window.setMainpanel(gamePanel);
                 }
             }
