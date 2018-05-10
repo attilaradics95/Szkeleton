@@ -48,7 +48,6 @@ public class Switch extends ATile {
     public void switchIt(Worker w){
         if (trap != null){
             trap.setOpened(false);
-            this.view = new ActiveSwitchView();
         } else {
             System.out.println("Nem tartozik csapda a kapcsolohoz.");
         }
