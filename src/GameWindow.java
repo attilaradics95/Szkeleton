@@ -31,4 +31,15 @@ public class GameWindow extends JFrame {
         revalidate();
         this.pack();
     }
+
+    public void HandleClick(int x, int y) {
+        ATile[][] tiles = game.getTiles();
+        Controller controller = Controller.getInstance();
+        if(tiles[x][y].getVisitor() != null) {
+            controller.selectWorker(tiles[x][y].getVisitor().getId());
+            JOptionPane.showMessageDialog(null, "munkás id: " + tiles[x][y].getVisitor().getId());
+        } else {
+            JOptionPane.showMessageDialog(null, "Ez nem munkás!");
+        }
+    }
 }
