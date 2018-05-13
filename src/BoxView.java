@@ -7,7 +7,7 @@ public class BoxView  extends ElementView {
     }
 
     public JPanel draw( ){
-
+        //a box képét hozzáadjuk a label-höz, majd ezt a panelhoz
         JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(60,60));
@@ -17,7 +17,9 @@ public class BoxView  extends ElementView {
 
     public JPanel draw(ElementView visitorView){
         return new JPanel();
-        //ennek semmi értelme csak muszáj megvalósítani
+        //semmi értelme csak muszáj megvalósítani
+        //erre a mezőknél van szükség,
+        // hogy lehessen rá visitort rakni a view-ban
     }
 
 

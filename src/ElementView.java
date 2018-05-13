@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 public abstract class ElementView {
+    //egyes elemek - mezők, visitorok - megjelenítéséért felelős osztályok őse
 
     //TAGVÁLTOZÓK
     protected String image;
