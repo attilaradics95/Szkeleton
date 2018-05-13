@@ -17,6 +17,8 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
     JPanel[][] tileViews;
     int numberOfRows;
     int numberOfColumns;
+    //A pálya állapota az utolsó lépés előtt
+    ATile[][] oldTiles;
     ATile[][] tiles;
     //endregion
 
@@ -67,46 +69,6 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
     }
     //endregion
 
-    //region A pálya frissítését végző függvény
-    public void update(){
-
-        //Ez tartalmazza a pálya régi állapotát, amiről frissíteni szeretnénk
-        JPanel[][] oldTileViews = new JPanel[numberOfRows][numberOfColumns];
-
-        //Megkonstruáljuk az oldTileViews-t
-        for(int row = 0; row < numberOfRows; row++){
-            for(int col = 0; col< numberOfColumns; col++){
-                ElementView tileView = tiles[row][col].getView();
-                if(tiles[row][col].getVisitor() == null) {
-                    oldTileViews[row][col] = tileView.draw();
-                }
-                else{
-                    ElementView visitorView = tiles[row][col].getVisitor().getView();
-                    oldTileViews[row][col] = tileView.draw(visitorView);
-
-                }
-            }
-        }
-
-        //Frissítjuk a tileViews attribútumot a tiles alapján
-        tiles = game.getMap();
-        for(int row = 0; row < numberOfRows; row++){
-            for(int col = 0; col< numberOfColumns; col++){
-                ElementView tileView = tiles[row][col].getView();
-                if(tiles[row][col].getVisitor() == null) {
-                    tileViews[row][col] = tileView.draw();
-                }
-                else{
-                    ElementView visitorView = tiles[row][col].getVisitor().getView();
-                    tileViews[row][col] = tileView.draw(visitorView);
-
-                }
-            }
-        }
-
-        //TODO: Meg kell keresni a különbséget az oldTileViews és a tileViews között, majd ki kell cserélni a megfelelő paneleket
-    }
-    //endregion
 
     //region Egér események kezelése
     @Override
@@ -148,12 +110,12 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("keyPressed lefutott");
+        //Elmentjük a pálya előző állapotát
+        oldTiles = this.tiles;
         keyHandler.Control(e);
         this.removeAll();
         this.updateUI();
         drawAll();
-        repaint();
         revalidate();
     }
 
