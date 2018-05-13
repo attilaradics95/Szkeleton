@@ -81,6 +81,9 @@ public class Controller {
 
                     //selectedworker.png-t rajzoljuk ki, ha ki lett választva
                     w.view = new WorkerView(true);
+                } else {
+                    //a többi munkás nem lesz kiválasztva
+                    w.view = new WorkerView(false);
                 }
             }
             if (selectedworker == null){
