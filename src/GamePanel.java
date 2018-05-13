@@ -24,6 +24,7 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
         //feliratkozunk a JPanel egér és billentyű eseményfigyelőjére
         addMouseListener(this);
         addKeyListener(this);
+        setFocusable(true);
         drawAll();
 
     }
