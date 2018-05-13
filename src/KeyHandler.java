@@ -39,6 +39,16 @@ public class KeyHandler {
                 controller.moveWorker(Directions.EAST);
                 break;
 
+            case KeyEvent.VK_M:
+                System.out.println("méz");
+                controller.getSelectedworker().putHoney();
+                break;
+
+            case KeyEvent.VK_O:
+                System.out.println("olaj");
+                controller.getSelectedworker().putOil();
+                break;
+
         }
     }
 }
