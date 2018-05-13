@@ -10,7 +10,7 @@ public class MouseHandler {
     }
 
 
-    //megkapja a GamePanel-től a tiles tömböt
+
     public void Click(MouseEvent e) {
         //kattintas x koordinataja
         int x = e.getX();

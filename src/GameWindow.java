@@ -35,9 +35,10 @@ public class GameWindow extends JFrame {
     public void HandleClick(int x, int y) {
         ATile[][] tiles = game.getMap();
         Controller controller = Controller.getInstance();
-        if(tiles[x][y].getVisitor() != null) {
-            controller.selectWorker(tiles[x][y].getVisitor().getId());
-            JOptionPane.showMessageDialog(null, "munkás id: " + tiles[x][y].getVisitor().getId());
+        //fordítva kell a két koordináta
+        if(tiles[y][x].getVisitor() != null) {
+            controller.selectWorker(tiles[y][x].getVisitor().getId());
+            JOptionPane.showMessageDialog(null, "munkás id: " + tiles[y][x].getVisitor().getId());
         } else {
             JOptionPane.showMessageDialog(null, "Ez nem munkás!");
         }
