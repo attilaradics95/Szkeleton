@@ -55,6 +55,6 @@ public class KeyHandler {
                 gameWindow.dispose();
                 break;
         }
-        
+
     }
 }

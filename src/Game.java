@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -358,6 +359,11 @@ public class Game {
 
     public void endRound(){
         roundover = true;
+        int player = this.getCurrentplayer();
+        int points = this.getPoints(player);
+        String message = "Vége a körnek!\nSzerzett pontok: " + points;
+        JOptionPane.showMessageDialog(null, message);
+        window.dispose();
     }
 
     //endregion
