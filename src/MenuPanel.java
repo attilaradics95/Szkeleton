@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
     Game game;
+
+    //menü megjelenítése
     public MenuPanel(Game game){
         this.game = game;
 
@@ -29,6 +31,7 @@ public class MenuPanel extends JPanel {
 
         images.add(images_center, BorderLayout.CENTER);
 
+        //pályaválasztós rész
         map_list.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Válassz pályát!"), BorderFactory.createEmptyBorder(10,200,10,200)));
 
         ButtonGroup mapgroup = new ButtonGroup();
@@ -44,6 +47,7 @@ public class MenuPanel extends JPanel {
         rb.add(map1);
         rb.add(map2);
 
+        //Jelmagyarázat - képek
         JLabel itile, iobstacle, itarget, ihole, iswitch, ihoney, ioil, ibox, iworker, iselectedworker;
 
         itile = new JLabel(new ImageIcon("img/tile.jpg"));
@@ -57,6 +61,7 @@ public class MenuPanel extends JPanel {
         iworker = new JLabel(new ImageIcon("img/worker.png"));
         iselectedworker = new JLabel(new ImageIcon("img/selectedworker.png"));
 
+        //Jelmagyarázat - mezők nevei
         JLabel ttile, tobstacle, ttarget, thole, tswitch, thoney, toil, tbox, tworker, tselectedworker;
 
         ttile = new JLabel("Sima mező");
@@ -72,6 +77,7 @@ public class MenuPanel extends JPanel {
 
         images_center.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
+        //hozzáadjuk páronként a képeket és a szövegeket
         images_center.setLayout(new GridLayout(0, 4, 1, 1));
         images_center.add(itile);
         images_center.add(ttile);
@@ -98,6 +104,8 @@ public class MenuPanel extends JPanel {
         images_center.add(iselectedworker);
         images_center.add(tselectedworker);
 
+
+        //gombok
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout(1, 0, 1, 50));
         this.add(buttons, BorderLayout.SOUTH);
@@ -108,6 +116,7 @@ public class MenuPanel extends JPanel {
         buttons.add(start);
         buttons.add(exit);
 
+        //kilépés gomb lekezelése
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,6 +124,7 @@ public class MenuPanel extends JPanel {
             }
         });
 
+        //játék indítása
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

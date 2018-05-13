@@ -121,7 +121,7 @@ public class Game {
         visitors = new Visitor[lines][columns];
 
         //minden tesztesetnél megkapja
-        // a teszthez tartozó pálya leírását
+        //a teszthez tartozó pálya leírását
         //tartalmazó fájl nevét
         FileInputStream fis = null;
         try {
@@ -136,7 +136,9 @@ public class Game {
         //mezők indexelésére
         int x = 0;
         int y = 0;
-        
+
+        //pályaelemek létrehozása a szövegfájlból
+        //a bemeneti nyelvnek megfelelően
         try{
             String line;
 
@@ -250,6 +252,7 @@ public class Game {
             }
         }
 
+        //switch-trap összerendelés
         for (Switch s :switches) {
             for (Trap t :traps) {
                 if(t.getId() == s.getId()){
@@ -292,10 +295,12 @@ public class Game {
 
     }
 
+    //pálya getter
     public ATile[][] getMap(){
         return tiles;
     }
 
+    //ablak getter
     public static GameWindow getWindow(){
         return window;
     }
@@ -339,10 +344,11 @@ public class Game {
         }
     }
 
+    //a listából kivesszük azokat a ládákat, amik targetre kerültek
+    //vagy meghaltak
     public void decreaseBoxes(Box box){
         boxes.remove(box);
         if (boxes.isEmpty()){
-            //mivel csak különálló tesztesetek vizsgálunk ezért nem hívunk endRoundot, ha elfogy az adott tesztben a láda
            this.endRound();
         }
     }
@@ -356,7 +362,10 @@ public class Game {
 
         }
     }
-
+    //ha elfogytak a dobozok - targetre került vagy meghalt
+    //vagy ha meghalt az összes munkás
+    //vagy feladta a játékos
+    //párbeszédablakban megjelenik a pontszám, majd végetér a program futása
     public void endRound(){
         roundover = true;
         int player = this.getCurrentplayer();
@@ -381,7 +390,7 @@ public class Game {
         }else{
             path = System.getProperty("user.dir");
         }
-
+        //ablak létrehozása és megjelenítése
         window = new GameWindow(game);
         window.setVisible(true);
     }

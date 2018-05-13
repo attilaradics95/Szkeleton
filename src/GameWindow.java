@@ -10,7 +10,7 @@ public class GameWindow extends JFrame {
     Game game;
 
     public GameWindow(Game game) {
-
+        //ablak beállításai
         super("Game");
         this.setSize(new Dimension(800, 500));
         this.setLocationRelativeTo(null);
@@ -18,11 +18,13 @@ public class GameWindow extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.game = game;
 
+        //először a menü jelenik meg
         mainpanel = new MenuPanel(game);
         this.add(mainpanel);
 
     }
 
+    //panel cseréje
     public void setMainpanel(JPanel panel){
         remove(mainpanel);
         this.mainpanel = panel;
@@ -32,6 +34,7 @@ public class GameWindow extends JFrame {
         revalidate();
     }
 
+    //pályára kattintás kezelése
     public void HandleClick(int x, int y) {
         ATile[][] tiles = game.getMap();
         Controller controller = Controller.getInstance();
