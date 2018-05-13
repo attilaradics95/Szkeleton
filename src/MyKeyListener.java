@@ -1,7 +1,7 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class MyListener implements KeyListener {
+public class MyKeyListener implements KeyListener {
     Controller controller = Controller.getInstance();
 
     @Override
@@ -12,7 +12,8 @@ public class MyListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        switch (e.getKeyCode()) {
+        switch(e.getKeyCode())
+        {
             case KeyEvent.VK_W:
             case KeyEvent.VK_UP:
                 System.out.println("fel");
@@ -36,7 +37,6 @@ public class MyListener implements KeyListener {
                 System.out.println("jobb");
                 controller.moveWorker(Directions.SOUTH);
                 break;
-
         }
     }
 
@@ -44,5 +44,4 @@ public class MyListener implements KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
-
 }

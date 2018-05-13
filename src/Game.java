@@ -34,7 +34,6 @@ public class Game {
 
     //projekt mappa elérési útvonala
     //ezen a mappán belül lesznek a bemeneti pályák
-    //és ide lesznek elmentve is
     private static String path;
 
     //ebben tároljuk el a fájlból beolvasott dolgokat
@@ -371,7 +370,7 @@ public class Game {
 
         window = new GameWindow(game);
         window.setVisible(true);
-        window.addKeyListener(new MyListener());
+        window.addKeyListener(new MyKeyListener());
     }
 
     //endregion
