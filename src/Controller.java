@@ -57,7 +57,7 @@ public class Controller {
         if (workers.size() > 1) {
             if (w == selectedworker) {
                 workers.remove(w);
-                selectedworker = workers.get(0);
+                selectWorker(workers.get(0).getId());
             } else {
                 workers.remove(w);
             }
@@ -73,6 +73,7 @@ public class Controller {
      * @param i worker id-ja
      */
     public void selectWorker(int i) {
+        System.out.println("selectworker lefutott");
         if(!(workers.isEmpty())){
             selectedworker = null;
             for (Worker w :workers) {
