@@ -370,7 +370,6 @@ public class Game {
 
         window = new GameWindow(game);
         window.setVisible(true);
-        window.addKeyListener(new MyKeyListener());
     }
 
     //endregion

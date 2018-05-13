@@ -27,7 +27,9 @@ public class Worker extends Visitor{
     //egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját
     //így ezzel indul el minden szekvenciában a visitorok mozgatása
     //meghívja a kapott irányban következő mező accept metódusát a workerrel
-    public void move(Directions d) {
+    public void
+
+    move(Directions d) {
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d, this.force);
         System.out.println("lefutott a worker.move");

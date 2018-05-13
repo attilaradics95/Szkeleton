@@ -1,19 +1,20 @@
+import javax.swing.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 
-public class MyKeyListener implements KeyListener {
+public class KeyHandler {
+
+    GameWindow gameWindow;
     Controller controller = Controller.getInstance();
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
+    public KeyHandler(){
+        gameWindow = Game.getWindow();
     }
 
-    @Override
-    public void keyPressed(KeyEvent e) {
 
-        switch(e.getKeyCode())
-        {
+
+    public void Control(KeyEvent e) {
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
             case KeyEvent.VK_UP:
                 System.out.println("fel");
@@ -37,11 +38,7 @@ public class MyKeyListener implements KeyListener {
                 System.out.println("jobb");
                 controller.moveWorker(Directions.SOUTH);
                 break;
+
         }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
     }
 }

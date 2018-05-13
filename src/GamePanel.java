@@ -6,22 +6,26 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
 
-public class GamePanel extends JPanel implements MouseListener {
+public class GamePanel extends JPanel implements MouseListener, KeyListener {
     Controller controller;
     Game game;
     MouseHandler mouseHandler;
+    KeyHandler keyHandler;
 
     //region Konstruktor
     public GamePanel(){
         mouseHandler = new MouseHandler();
         game = Game.getInstance();
 
-        //feliratkozunk a JPanel egér eseményfigyelőjére
+        //feliratkozunk a JPanel egér és billentyű eseményfigyelőjére
         addMouseListener(this);
+        addKeyListener(this);
         drawAll();
 
     }
+    //endregion
 
+    //region A pálya beolvasását végző függvény
     public void drawAll(){
         ATile[][] tiles = game.getMap();
 
@@ -44,6 +48,8 @@ public class GamePanel extends JPanel implements MouseListener {
             }
         }
     }
+    //endregion
+
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -75,5 +81,23 @@ public class GamePanel extends JPanel implements MouseListener {
 
     }
 
-    //endregion
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        keyHandler.Control(e);
+        this.removeAll();
+        this.updateUI();
+        drawAll();
+        repaint();
+        revalidate();
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
 }
