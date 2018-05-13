@@ -30,13 +30,13 @@ public class KeyHandler {
             case KeyEvent.VK_S:
             case KeyEvent.VK_DOWN:
                 System.out.println("le");
-                controller.moveWorker(Directions.EAST);
+                controller.moveWorker(Directions.SOUTH);
                 break;
 
             case KeyEvent.VK_D:
             case KeyEvent.VK_RIGHT:
                 System.out.println("jobb");
-                controller.moveWorker(Directions.SOUTH);
+                controller.moveWorker(Directions.EAST);
                 break;
 
         }
