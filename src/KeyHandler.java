@@ -49,6 +49,11 @@ public class KeyHandler {
                 controller.getSelectedworker().putOil();
                 break;
 
+            case KeyEvent.VK_ESCAPE:
+                System.out.println("kilepes");
+                gameWindow.dispose();
+                break;
+
         }
     }
 }
