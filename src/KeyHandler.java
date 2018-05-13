@@ -6,6 +6,7 @@ public class KeyHandler {
 
     GameWindow gameWindow;
     Controller controller = Controller.getInstance();
+    Game game = Game.getInstance();
 
     public KeyHandler(){
         gameWindow = Game.getWindow();
@@ -54,7 +55,13 @@ public class KeyHandler {
                 gameWindow.dispose();
                 break;
         }
-        if(controller.getNumberOfWorkers()==0)
+        if(controller.getNumberOfWorkers()==0 || game.boxes.size() == 0){
+            int player = game.getCurrentplayer();
+            int points = game.getPoints(player);
+            String message = "Vége a körnek!\nSzerzett pontok: " + points;
+            JOptionPane.showMessageDialog(null, message);
             gameWindow.dispose();
+        }
+
     }
 }
