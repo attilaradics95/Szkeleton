@@ -6,15 +6,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
 
-public class GamePanel extends JPanel implements MouseListener, KeyListener {
+public class GamePanel extends JPanel implements KeyListener, MouseListener {
+
+    //region Attribútumok
     Controller controller;
     Game game;
     MouseHandler mouseHandler;
     KeyHandler keyHandler;
+    //endregion
 
     //region Konstruktor
     public GamePanel(){
         mouseHandler = new MouseHandler();
+        keyHandler = new KeyHandler();
         game = Game.getInstance();
 
         //feliratkozunk a JPanel egér és billentyű eseményfigyelőjére
@@ -50,7 +54,7 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener {
     }
     //endregion
 
-
+    //region Egér események kezelése
     @Override
     public void mouseClicked(MouseEvent e) {
         mouseHandler.Click(e);
@@ -80,7 +84,9 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener {
     public void mouseExited(MouseEvent e) {
 
     }
+    //endregion
 
+    //region Billentyű események kezelése
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -89,6 +95,7 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         keyHandler.Control(e);
+        System.out.println("keyPressed");
         this.removeAll();
         this.updateUI();
         drawAll();
@@ -100,4 +107,5 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
+    //endregion
 }
