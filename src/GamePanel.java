@@ -13,6 +13,9 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
     Game game;
     MouseHandler mouseHandler;
     KeyHandler keyHandler;
+    JPanel[][] tileViews;
+    int numberOfRows;
+    int numberOfColumns;
     //endregion
 
     //region Konstruktor
@@ -36,24 +39,35 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
     public void drawAll(){
         ATile[][] tiles = game.getMap();
 
-        int numberOfRows = tiles.length;
-        int numberOfColumns = tiles[0].length;
+        numberOfRows = tiles.length;
+        numberOfColumns = tiles[0].length;
+
+        tileViews = new JPanel[numberOfRows][numberOfRows];
 
         this.setLayout(new GridLayout(numberOfRows,numberOfColumns,0,0));
         for(int row = 0; row < numberOfRows; row++){
             for(int col = 0; col< numberOfColumns; col++){
                 ElementView tileView = tiles[row][col].getView();
                 //Ha üres a mező akkor csak a mezőt rajzoljuk ki
-                if(tiles[row][col].getVisitor() == null)
+                if(tiles[row][col].getVisitor() == null) {
+                    tileViews[row][col] = tileView.draw();
                     this.add(tileView.draw());
+                }
                     //Ha nem üres, akkor azt is kirajzoljuk, ami rajta van
                 else{
                     ElementView visitorView = tiles[row][col].getVisitor().getView();
+                    tileViews[row][col] = tileView.draw(visitorView);
                     this.add(tileView.draw(visitorView));
 
                 }
             }
         }
+    }
+    //endregion
+
+    //region A pálya frissítését végző függvény
+    public void update(ATile[][] tiles){
+
     }
     //endregion
 
