@@ -13,9 +13,11 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
     Game game;
     MouseHandler mouseHandler;
     KeyHandler keyHandler;
+    //Ez tárolja azokat a paneleket, amelyekből felépül a GamePanel
     JPanel[][] tileViews;
     int numberOfRows;
     int numberOfColumns;
+    ATile[][] tiles;
     //endregion
 
     //region Konstruktor
@@ -37,7 +39,7 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
     //region A pálya kirajzolását végző függvény
     public void drawAll(){
-        ATile[][] tiles = game.getMap();
+        tiles = game.getMap();
 
         numberOfRows = tiles.length;
         numberOfColumns = tiles[0].length;
@@ -51,13 +53,13 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
                 //Ha üres a mező akkor csak a mezőt rajzoljuk ki
                 if(tiles[row][col].getVisitor() == null) {
                     tileViews[row][col] = tileView.draw();
-                    this.add(tileView.draw());
+                    this.add(tileViews[row][col]);
                 }
                     //Ha nem üres, akkor azt is kirajzoljuk, ami rajta van
                 else{
                     ElementView visitorView = tiles[row][col].getVisitor().getView();
                     tileViews[row][col] = tileView.draw(visitorView);
-                    this.add(tileView.draw(visitorView));
+                    this.add(tileViews[row][col]);
 
                 }
             }
@@ -66,8 +68,43 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
     //endregion
 
     //region A pálya frissítését végző függvény
-    public void update(ATile[][] tiles){
+    public void update(){
 
+        //Ez tartalmazza a pálya régi állapotát, amiről frissíteni szeretnénk
+        JPanel[][] oldTileViews = new JPanel[numberOfRows][numberOfColumns];
+
+        //Megkonstruáljuk az oldTileViews-t
+        for(int row = 0; row < numberOfRows; row++){
+            for(int col = 0; col< numberOfColumns; col++){
+                ElementView tileView = tiles[row][col].getView();
+                if(tiles[row][col].getVisitor() == null) {
+                    oldTileViews[row][col] = tileView.draw();
+                }
+                else{
+                    ElementView visitorView = tiles[row][col].getVisitor().getView();
+                    oldTileViews[row][col] = tileView.draw(visitorView);
+
+                }
+            }
+        }
+
+        //Frissítjuk a tileViews attribútumot a tiles alapján
+        tiles = game.getMap();
+        for(int row = 0; row < numberOfRows; row++){
+            for(int col = 0; col< numberOfColumns; col++){
+                ElementView tileView = tiles[row][col].getView();
+                if(tiles[row][col].getVisitor() == null) {
+                    tileViews[row][col] = tileView.draw();
+                }
+                else{
+                    ElementView visitorView = tiles[row][col].getVisitor().getView();
+                    tileViews[row][col] = tileView.draw(visitorView);
+
+                }
+            }
+        }
+
+        //TODO: Meg kell keresni a különbséget az oldTileViews és a tileViews között, majd ki kell cserélni a megfelelő paneleket
     }
     //endregion
 
