@@ -20,6 +20,8 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
         mouseHandler = new MouseHandler();
         keyHandler = new KeyHandler();
         game = Game.getInstance();
+        this.setFocusable(true);
+        this.requestFocusInWindow(true);
 
         //feliratkozunk a JPanel egér és billentyű eseményfigyelőjére
         addMouseListener(this);
@@ -30,7 +32,7 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
     }
     //endregion
 
-    //region A pálya beolvasását végző függvény
+    //region A pálya kirajzolását végző függvény
     public void drawAll(){
         ATile[][] tiles = game.getMap();
 

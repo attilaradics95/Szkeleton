@@ -263,6 +263,10 @@ public class Game {
                 }
             }
         }
+
+        //inizializáljuk a points tömböt. Minden munkás pontszáma 0 kezdetben
+        for(int i = 0; i < this.controller.getNumberOfWorkers(); i++)
+            points.add(0);
     }
 
     //pálya kiíratása konzolra
