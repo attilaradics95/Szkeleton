@@ -53,7 +53,8 @@ public class KeyHandler {
                 System.out.println("kilepes");
                 gameWindow.dispose();
                 break;
-
         }
+        if(controller.getNumberOfWorkers()==0)
+            gameWindow.dispose();
     }
 }
