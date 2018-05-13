@@ -6,7 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
 
-public class GamePanel extends JPanel implements MouseListener, KeyListener {
+public class GamePanel extends JPanel implements MouseListener {
+    Controller controller;
     Game game;
     MouseHandler mouseHandler;
 
@@ -70,37 +71,5 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener {
 
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        switch(e.getKeyCode())
-        {
-            case KeyEvent.VK_W:
-            case KeyEvent.VK_UP:
-                //fel
-                break;
-            case KeyEvent.VK_A:
-            case KeyEvent.VK_LEFT:
-                //bal
-                break;
-            case KeyEvent.VK_S:
-            case KeyEvent.VK_DOWN:
-                //le
-                break;
-            case KeyEvent.VK_D:
-            case KeyEvent.VK_RIGHT:
-                //jobb
-                break;
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
     //endregion
 }
