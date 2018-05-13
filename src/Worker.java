@@ -30,6 +30,7 @@ public class Worker extends Visitor{
     public void move(Directions d) {
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d, this.force);
+        System.out.println("lefutott a worker.move");
     }
 
     //Minden pushTo-nál megnézzük, hogy van-e a mezőn, amire lépne visitor
@@ -59,6 +60,7 @@ public class Worker extends Visitor{
                 this.die();
             }
         }
+        System.out.println("lefutott a worker.pushTo");
     }
 
     //Switch

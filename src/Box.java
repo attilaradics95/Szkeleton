@@ -75,7 +75,9 @@ public class Box extends Visitor {
                 next.setVisitor(this);
                 next.switchIt(this);
             }
+
         }
+        System.out.println("lefutott a box.pushTo");
     }
 
     @Override
