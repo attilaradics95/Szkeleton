@@ -94,8 +94,8 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        System.out.println("keyPressed lefutott");
         keyHandler.Control(e);
-        System.out.println("keyPressed");
         this.removeAll();
         this.updateUI();
         drawAll();
