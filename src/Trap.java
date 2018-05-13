@@ -37,6 +37,12 @@ public class Trap extends ATile {
      */
     public void setOpened(Boolean bool) {
         opened = bool;
+        if(bool){
+            view.setImage("hole.jpg");
+        }
+        else{
+            view.setImage("tile.jpg");
+        }
         if(bool && visitor != null){
             visitor.die();
         }
