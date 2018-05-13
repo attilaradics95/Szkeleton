@@ -48,7 +48,11 @@ public class GamePanel extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         mouseHandler.Click(e);
+        this.removeAll();
+        this.updateUI();
         drawAll();
+        repaint();
+        revalidate();
     }
 
     @Override
