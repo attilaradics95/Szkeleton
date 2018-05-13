@@ -52,7 +52,7 @@ public class KeyHandler {
 
             case KeyEvent.VK_ESCAPE:
                 System.out.println("kilepes");
-                gameWindow.dispose();
+                game.endRound();
                 break;
         }
 
