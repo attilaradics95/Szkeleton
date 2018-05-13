@@ -52,6 +52,10 @@ public class Game {
     }
     //endregion
 
+    public int getCurrentplayer(){
+        return currentplayer;
+    }
+
     //region Metódusok
     /**Metódusok*/
     //Kicserél egy mezőt

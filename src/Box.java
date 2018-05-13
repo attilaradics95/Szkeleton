@@ -214,6 +214,7 @@ public class Box extends Visitor {
     //mozgathatatlanná válik a box
     public void setUnmovable() {
         movable = false;
+        game.decreaseBoxes(this);
     }
 
     //ha meghal az aktuális mező visitorját nullra állítja
