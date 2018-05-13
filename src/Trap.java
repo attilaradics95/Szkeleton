@@ -37,6 +37,7 @@ public class Trap extends ATile {
      */
     public void setOpened(Boolean bool) {
         opened = bool;
+        //állapotától függően állítjuk be a megfelelő képet
         if(bool){
             view.setImage("hole.jpg");
         }

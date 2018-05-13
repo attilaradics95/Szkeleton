@@ -39,6 +39,7 @@ public class Switch extends ATile {
         } else {
             System.out.println("Nem tartozik csapda a kapcsolohoz.");
         }
+        //a rákerülő láda bekapcsolja, így ezt a képet állítjuk be
         view.setImage("switch_on.jpg");
     }
 
@@ -52,6 +53,8 @@ public class Switch extends ATile {
         } else {
             System.out.println("Nem tartozik csapda a kapcsolohoz.");
         }
+        //a rákerülő munkás nem kapcsolja be
+        //ennek megfelelően állítjuk a képet is
         view.setImage("switch_off.jpg");
     }
 
