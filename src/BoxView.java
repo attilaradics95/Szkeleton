@@ -23,7 +23,7 @@ public class BoxView  extends ElementView {
      * Nem használjuk semmire. Azért van megvalósítva, mert muszáj definiálni az ősosztály absztrakt függvényeit.
      *
      * @param visitorView
-     * @return
+     * @return egy üres panel
      */
     public JPanel draw(ElementView visitorView){
         return new JPanel();
