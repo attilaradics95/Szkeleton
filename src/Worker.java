@@ -8,6 +8,9 @@ public class Worker extends Visitor{
     //endregion
 
     //region Metódusok
+    /**
+     * A Worker konstruktora
+     */
     public Worker(){
         controller = Controller.getInstance();
         game = Game.getInstance();
@@ -15,6 +18,10 @@ public class Worker extends Visitor{
         id = instanceCounter;
     }
 
+    /**
+     * A worker paraméteres konstruktora
+     * @param id  a munkés azonosító száma
+     */
     public Worker(int id){
         controller = Controller.getInstance();
         game = Game.getInstance();
@@ -24,25 +31,32 @@ public class Worker extends Visitor{
         this.view = new WorkerView(false);
     }
 
-    //egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját
-    //így ezzel indul el minden szekvenciában a visitorok mozgatása
-    //meghívja a kapott irányban következő mező accept metódusát a workerrel
-    public void
-
-    move(Directions d) {
+    /**
+     * egy adott szekvenciában először a controller hívja meg a selectedWorker move-ját
+     * így ezzel indul el minden szekvenciában a visitorok mozgatása
+     * meghívja a kapott irányban következő mező accept metódusát a workerrel
+     * @param d a mozgatás iránya
+     */
+    public void move(Directions d) {
         ATile next = currentTile.getNeighbor(d);
         next.accept(this, d, this.force);
         System.out.println("lefutott a worker.move");
     }
 
-    //Minden pushTo-nál megnézzük, hogy van-e a mezőn, amire lépne visitor
-    //ha van visitor a mezőn, amire lépne, akkor meghívja az azután következő mező accept függvényét a szomszédos visitorral
-    //ha az accept visszatért és még mindig van visitor a mezőn, amire lépne, akkor ha nem ő a kiválasztott raktáros, akkor meghal, mert összenyomják
-    //ha ő a selected worker, akkor nem fog elmozdulni a kiindulási helyéről
-    // ha átkerül a következő mezőre beállítja magát a visitorának, annak a mezőnek, ahonnan ellépett nullra állítja
+    /**
+     * Minden pushTo-nál megnézzük, hogy van-e a mezőn, amire lépne visitor
+     * ha van visitor a mezőn, amire lépne, akkor meghívja az azután következő mező accept függvényét a szomszédos visitorral
+     * ha az accept visszatért és még mindig van visitor a mezőn, amire lépne, akkor ha nem ő a kiválasztott raktáros, akkor meghal, mert összenyomják
+     * ha ő a selected worker, akkor nem fog elmozdulni a kiindulási helyéről
+     * ha átkerül a következő mezőre beállítja magát a visitorának, annak a mezőnek, ahonnan ellépett nullra állítja
+    */
 
-    //Tile
-    // semmi extra nem történik
+    /**
+     * Sima Tile paraméterű pushTo, semmi különleges nem történik.
+     * @param next a következő mező
+     * @param d a tolás iránya
+     * @param force a toló visitor ereje
+     */
     public void pushTo(Tile next, Directions d, int force) {
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
@@ -65,8 +79,13 @@ public class Worker extends Visitor{
         System.out.println("lefutott a worker.pushTo");
     }
 
-    //Switch
-    // amikor átlép meghívja önmagát átadva paraméterként a switch switchIt metódusát
+    /**
+     * Switch paraméterű pushTo, amikor átlép meghívja önmagát átadva paraméterként a switch switchIt metódusát,
+     * ezzel box esetén kinyitja a csapdát.
+     * @param next a következő mező
+     * @param d a tolás iránya
+     * @param force a toló visitor ereje
+     */
     public void pushTo(Switch next, Directions d, int force) {
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
@@ -90,6 +109,12 @@ public class Worker extends Visitor{
 
     }
 
+    /**
+     * Mézes mező paraméterű pushTo.
+     * @param next a következő mező
+     * @param d a tolás iránya
+     * @param force a toló visitor ereje
+     */
     @Override
     public void pushTo(Honey next, Directions d, int force) {
         Visitor visitorOnNext = next.getVisitor();
@@ -112,12 +137,22 @@ public class Worker extends Visitor{
         }
     }
 
-    //Hole
-    //beleesik és meghal
+    /**
+     * Hole paramétrű pushTO, a visitor minden esetben beleesik és meghal/megszűnik.
+     * @param next a következő mező
+     * @param d a tolás iránya
+     * @param force a toló visitor ereje
+     */
+
     public void pushTo(Hole next, Directions d, int force) {
         this.die();
     }
-
+    /**
+     * Olajos mező paraméterű pushTo.
+     * @param next a következő mező
+     * @param d a tolás iránya
+     * @param force a toló visitor ereje
+     */
     @Override
     public void pushTo(Oil next, Directions d, int force) {
         Visitor visitorOnNext = next.getVisitor();
@@ -140,10 +175,13 @@ public class Worker extends Visitor{
         }
     }
 
-    //Trap
-    // megkérdezzük, hogy nyitva van-e
-    // ha igen beleesik és meghal
-    // ha nem, megpróbál odalépni - úgy viselkedik a Trap csukva, mint egy egyszerű Tile
+    /**
+     * Trap paramétrű pushTO. Megkérdezzük, hogy nyitva van-e,ha igen beleesik és meghal.
+     * Ha nem, megpróbál odalépni - úgy viselkedik a Trap csukva, mint egy egyszerű Tile
+     * @param next a következő mező
+     * @param d a tolás iránya
+     * @param force a toló visitor ereje
+     */
     public void pushTo(Trap next, Directions d, int force) {
         if (next.isOpened()) {
             this.die();
@@ -173,8 +211,13 @@ public class Worker extends Visitor{
         }
     }
 
-    //Target
-    //ugyanúgy viselkedik a raktárossal szemben, mint a sima Tile
+    /**
+     * Target paraméterű pushTo.
+     * Ugyanúgy viselkedik a raktárossal szemben, mint a sima Tile
+     * @param next a következő mező
+     * @param d a tolás iránya
+     * @param force a toló visitor ereje
+     */
     public void pushTo(Target next, Directions d, int force) {
         Visitor visitorOnNext = next.getVisitor();
         if(visitorOnNext != null){
@@ -196,9 +239,14 @@ public class Worker extends Visitor{
         }
     }
 
-    // Obstacle
-    //ha a kiválasztott raktárost léptetik ide, akkor nem tud elmozdulni ezekre a mezőkre
-    //ha nem a kiválasztott raktáros az, akkor összenyomódik és meghal
+    /**
+     * Obstacle paraméterű pushTo.
+     * Ha a kiválasztott raktárost léptetik ide, akkor nem tud elmozdulni ezekre a mezőkre.
+     * Ha nem a kiválasztott raktáros az, akkor összenyomódik és meghal
+     * @param next a következő mező
+     * @param d a tolás iránya
+     * @param force a toló visitor ereje
+     */
     @Override
     public void pushTo(Obstacle next, Directions d, int force) {
         Worker sw = controller.getSelectedworker();
@@ -224,12 +272,17 @@ public class Worker extends Visitor{
         return "W" + id;
     }
 
-    //Kicseréli a munkás alatti mezőt a Honey osztály egy példányára. Átállítja az összes érintett szomszédot.
+    /**
+     * Kicseréli a munkás alatti mezőt a Honey osztály egy példányára. Átállítja az összes érintett szomszédot.
+     */
+
     public void putHoney() {
         Honey honey = new Honey();
         game.swap(this.currentTile,honey);
     }
-
+    /**
+     * Kicseréli a munkás alatti mezőt az Oil osztály egy példányára. Átállítja az összes érintett szomszédot.
+     */
     public void putOil() {
         Oil oil = new Oil();
         game.swap(this.currentTile,oil);
