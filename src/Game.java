@@ -382,10 +382,12 @@ public class Game {
         }
     }
 
-    //ha elfogytak a dobozok - targetre került vagy meghalt
-    //vagy ha meghalt az összes munkás
-    //vagy feladta a játékos
-    //párbeszédablakban megjelenik a pontszám, majd végetér a program futása
+    /**
+     * ha elfogytak a dobozok - targetre került vagy meghalt
+     * vagy ha meghalt az összes munkás
+     * vagy feladta a játékos
+     * párbeszédablakban megjelenik a pontszám, majd végetér a program futása
+     */
 
     /**
      * Véget vet a körnek.
@@ -416,6 +418,7 @@ public class Game {
     public static void main(String[] args) {
         Game game = getInstance();
         game.controller = Controller.getInstance();
+        int numeberOfPlayers = 2;
 
         //parancssorból futtatás elején
         //bekérve a projekt mappa elérési útvonala
@@ -425,8 +428,15 @@ public class Game {
             path = System.getProperty("user.dir");
         }
         //ablak létrehozása és megjelenítése
-        window = new GameWindow(game);
-        window.setVisible(true);
+        for (int i=0; i<numeberOfPlayers; i++)
+        {
+            window = new GameWindow(game);
+            window.setVisible(true);
+        }
+
+
+
+
     }
 
     //endregion
