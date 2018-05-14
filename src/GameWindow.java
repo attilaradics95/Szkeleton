@@ -24,7 +24,11 @@ public class GameWindow extends JFrame {
 
     }
 
-    //panel cseréje
+    /**
+     * Kicseréli a panelt, amit tartalmaz az ablak
+     *
+     * @param panel A panel, amire ki szeretnénk cserélni a mostanit.
+     */
     public void setMainpanel(JPanel panel){
         remove(mainpanel);
         this.mainpanel = panel;
@@ -34,7 +38,12 @@ public class GameWindow extends JFrame {
         revalidate();
     }
 
-    //pályára kattintás kezelése
+    /**
+     * Kiválasztja azt a munkást, ami az adott koordinátájú mezőben található.
+     *
+     * @param x A kiválasztott mező x koordináátja
+     * @param y A kiválasztott mező y koordinátája
+     */
     public void HandleClick(int x, int y) {
         ATile[][] tiles = game.getMap();
         Controller controller = Controller.getInstance();

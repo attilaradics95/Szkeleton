@@ -3,7 +3,7 @@ public class Oil extends ATile {
         this.view = new OilView();
     }
     /**
-     * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
+     * Mint minden accept meghívja a visitor pushTo metódusát önmagát átadva.
      * ha áll rajta visitor nő a toló erő
      * @param v visitor
      * @param d irany
@@ -18,7 +18,7 @@ public class Oil extends ATile {
     }
 
     /**
-     * objektum kiíráshoz
+     * Kiírja az objektumot
      * @return a kimeneti nyelvvel egyező szimbólum
      */
     @Override

@@ -6,17 +6,22 @@ public class HoleView  extends ElementView{
         image = "hole.jpg";
     }
 
+    /**
+     * Visszaadja a lyuk képét tartalmazó panelt.
+     *
+     * @return A lyuk képét tartalmazó panel.
+     */
     public JPanel draw( ){
-    /*
-        JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(60,60));
-        panel.add(label);
-        return panel;
-        */
         return new TilePanel(this);
     }
 
+    /**
+     * Visszaadja a lyuk képét, és a tartalmazott visitor képét tartalmazó panelt.
+     * Nem használjuk, mert a lyuk nem tartalmazhat semmit.
+     * Muszáj deiniálni, mert az ősosztályban absztrakt függvényként van deklarálva.
+     *
+     * @return A lyuk képét és a tartalmazott visitor képét tartalmazó panel.
+     */
     public JPanel draw(ElementView visitorView){
         return new TilePanel(this, visitorView);
     }

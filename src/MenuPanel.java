@@ -6,7 +6,11 @@ import java.awt.event.ActionListener;
 public class MenuPanel extends JPanel {
     Game game;
 
-    //menü megjelenítése
+    /**
+     * Konstruktor
+     *
+     * @param game A játék, amihez tartozó menüpanelt meg akarjuk jeleníteni.
+     */
     public MenuPanel(Game game){
         this.game = game;
 

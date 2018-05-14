@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
 public class Controller {
-    /**
-     * Singleton metódusok és attributumok
-     */
+
+    //Singleton metódusok és attribútumok
     private static Controller instance = null;
 
     private Controller() {
@@ -18,24 +17,24 @@ public class Controller {
         return instance;
     }
 
-    /**
-     * Attribútumok
-     */
+
+     //Attribútumok
     private Game game = null;
     public ArrayList<Worker> workers;
     private Worker selectedworker = null;
 
+    //Metódusok
     /**
-     * Metódusok
+     * Munkások számának lekérdezésére szolgáló függvény
+     * @return a munkások száma
      */
-    // @author Attila
-    //Munkások számának lekérdezésére szolgáló függvény
     public int getNumberOfWorkers() {
         return workers.size();
     }
 
     /**
-     * hogy irányítanyi tudjuk, hozzá kell adni a listához a munkásokat
+     * Hozzáad egy munkást, a munkások listájához.
+     *
      * @param w hozzáadandó munkás
      */
     public void addWorker(Worker w) {
@@ -43,13 +42,19 @@ public class Controller {
         selectedworker = workers.get(0);
     }
 
+    /**
+     * Visszaadja a pillanatnyilag kiválasztott munkást
+     *
+     * @return AZ aktuálisan kiválasztott munkás
+     */
     public Worker getSelectedworker() {
         return selectedworker;
     }
 
     /**
-     * ha meghal egy munkés, kivesszük a listából
-     * @param w meghalt munkás
+     * Munkás eltávolítása a munkások listájából. Akkor használjuk, amikor meghal egy munkás.
+     *
+     * @param w Az eltávolítandó munkás.
      */
     public void eliminateWorker(Worker w) {
         //Ha több munkas van mint egy akkor kivesszük a Listabol és szukseg eseten csereljuk a kivalasztottat
@@ -69,8 +74,9 @@ public class Controller {
     }
 
     /**
-     * munkás kiválasztási, hogy utána mozgathassuk
-     * @param i worker id-ja
+     * Kiválaszt egy munkást. Mindig a kiválasztott munkáson végezzük el a mozgatással kapcsolatos műveleteket.
+     *
+     * @param i A kiválasztandó munkás azonosítója
      */
     public void selectWorker(int i) {
         System.out.println("selectworker lefutott");
@@ -98,8 +104,9 @@ public class Controller {
     }
 
     /**
-     * a selectedWorker mozgatása a game által megadott irányba
-     * ezzel kezdődik minden mozgatási szekvencia
+     * A kiválasztott munkást mozgatja a game által megadott irányban.
+     * Ezzel kezdődik minden mozgatási szekvencia.
+     *
      * @param direction mozgatás iránya
      */
     public void moveWorker(Directions direction) {

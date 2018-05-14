@@ -2,13 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 
 public class OilView extends ElementView {
+    /**
+     * Konstruktor
+     *
+     */
     public OilView(){
         image = "oil.jpg";
     }
 
     /**
-     * Az üres olajos mező kirajzolása
-     * @return az új nézet
+     * Visszaadja az olajos mező képét tartalmazó panelt
+     *
+     * @return Az olajos mező képét tartalmazó panel
      */
     public JPanel draw( ){
         /*
@@ -22,9 +27,10 @@ public class OilView extends ElementView {
     }
 
     /**
-     * látogatót tartalmazó olajos mező kirajzolása
-     * @param visitorView a látogató nézete
-     * @return a közös nézet
+     * Visszaadja az olajos mező és a tartalmazott visitorhoz tartozó képeket tartalmazó panelt
+     *
+     * @param visitorView A tartalmazott visitorhoz tartozó megjelenítésért felelős objektum
+     * @return Az olajos mezőhöz és a tartalmazott visitorhoz tartozó képeket tartalmazó panel
      */
     public JPanel draw(ElementView visitorView){
         return new TilePanel(this, visitorView);

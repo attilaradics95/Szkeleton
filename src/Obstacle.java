@@ -4,7 +4,7 @@ public class Obstacle extends ATile {
     }
 
     /**
-     * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
+     * Mint minden accept, meghívja a visitor pushTo metódusát önmagát átadva.
      * @param v visitor
      * @param d irany
      * @param force worker ereje
@@ -14,8 +14,9 @@ public class Obstacle extends ATile {
     }
 
     /**
-     * objektum kiíráshoz
-     * @return a kimeneti nyelvvel egyező szimbólum
+     * Kiírja az objektumot
+     *
+     * @return A kimeneti nyelvvel egyező szimbólum
      */
     public String toString() {
         return "+";
