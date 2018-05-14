@@ -8,6 +8,11 @@ import java.io.IOException;
 public class TilePanel extends JPanel{
 
     BufferedImage bufferedImage;
+
+    /**
+     * Üres Tile megjelenítéséért felelős.
+     * @param tileView a tile nézete
+     */
     public TilePanel(ElementView tileView) {
 
         String tileViewImage = tileView.getImage();
@@ -21,7 +26,10 @@ public class TilePanel extends JPanel{
         }
         setMinimumSize(new Dimension(60,60));
     }
-
+    /**
+     * Fogalalt Tile megjelenítéséért felelős.
+     * @param tileView a tile nézete
+     */
     public TilePanel(ElementView tileView, ElementView visitorView){
 
         String tileViewImage = tileView.getImage();
@@ -39,7 +47,10 @@ public class TilePanel extends JPanel{
         setMinimumSize(new Dimension(60,60));
     }
 
-        @Override
+    /**
+     *A komponens kirajzolása
+     */
+    @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             if (bufferedImage != null) {
@@ -47,7 +58,11 @@ public class TilePanel extends JPanel{
             }
         }
 
-        @Override
+    /**
+     * A megjelenítendő kép méreteit adja meg.
+     * @return a megfeleő dimenzióval tér vissza
+     */
+    @Override
         public Dimension getPreferredSize() {
             if (bufferedImage != null) {
                 int width = bufferedImage.getWidth();

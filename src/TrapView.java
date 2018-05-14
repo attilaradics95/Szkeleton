@@ -6,6 +6,10 @@ public class TrapView  extends ElementView{
         image = "tile.jpg";
     }
 
+    /**
+     * A Trap osztály megjelenítéséért felel.
+     * @return az új panelt adja visza
+     */
     public JPanel draw( ){
         /*
         JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);

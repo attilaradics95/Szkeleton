@@ -6,6 +6,10 @@ public class TargetView extends ElementView {
         image = "target.jpg";
     }
 
+    /**
+     * Üres Target kirajzolása
+     * @return az új nézet
+     */
     public JPanel draw( ){
         /*
         JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
@@ -17,6 +21,11 @@ public class TargetView extends ElementView {
         return new TilePanel(this);
     }
 
+    /**
+     * A látogatóval terhelt Target kirajzolása.
+     * @param visitorView a látogató nézete
+     * @return az új nézet
+     */
     public JPanel draw(ElementView visitorView){
         return new TilePanel(this, visitorView);
     }

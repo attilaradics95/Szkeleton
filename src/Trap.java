@@ -48,7 +48,9 @@ public class Trap extends ATile {
             visitor.die();
         }
     }
-
+/**
+ * @return a csapda állapotát adja vissza
+ */
     public boolean isOpened(){
         return opened;
     }

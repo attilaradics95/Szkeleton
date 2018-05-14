@@ -39,8 +39,6 @@ public abstract class Visitor {
         this.currentTile = currentTile;
     }
 
-    //
-
     /**
      * A függvények a leszármazottakban vannak implementálva
      */
