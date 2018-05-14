@@ -1,13 +1,24 @@
 public class Switch extends ATile {
     //Attribútumok
+    //A kapcsolóhoz tartozó csapda
     private Trap trap;
     private int id;
 
     //Függvények
+
+    /**
+     * Konstruktor
+     *
+     */
     public Switch() {
         id = 0;
     }
 
+    /**
+     * Konstruktor
+     *
+     * @param id  A kapcsoló azonosítója
+     */
     public Switch(int id) {
         this.id = id;
         this.view = new SwitchView();
@@ -25,6 +36,11 @@ public class Switch extends ATile {
         v.pushTo(this, d, force);
     }
 
+    /**
+     * Beállítja a csapdát
+     *
+     * @param t a csapda amit hozzárendelünk a kapcsolóhoz
+     */
     public void setTrap(Trap t){
         trap = t;
     }
@@ -59,13 +75,19 @@ public class Switch extends ATile {
     }
 
     /**
-     * objektum kiíráshoz
+     * Kiírja az objektumot
+     *
      * @return a kimeneti nyelvvel egyező szimbólum
      */
     public String toString() {
         return "S" + id;
     }
 
+    /**
+     * Visszaadja a kapcsoló azonosítóját
+     *
+     * @return a kapcsoló azonosítója
+     */
     public int getId() {
         return id;
     }

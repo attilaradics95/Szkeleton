@@ -3,6 +3,8 @@ import java.awt.*;
 
 public class WorkerView extends ElementView{
     /**
+     * Konstruktor
+     *
      * @param selected ha igaz, akkor ki van választva, ha nem, akkor nincs, ennek megfelelően állítjuk be a képet
      */
     public WorkerView(boolean selected){
@@ -13,8 +15,9 @@ public class WorkerView extends ElementView{
     }
 
     /**
-     * a képét hozzáadjuk a label-höz, majd ezt a panelhoz
-     * @return az új panellel tér vissza
+     * Visszaadja azt a panelt, amely a munkás képét tartalmazza
+     *
+     * @return A panel, ami tartalmazza munkás képét
      */
     public JPanel draw( ){
         JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
@@ -25,11 +28,10 @@ public class WorkerView extends ElementView{
     }
 
     /**
-     * semmi értelme csak muszáj megvalósítani
-     * erre a mezősknél van szükség,
-     * hogy lehessen rá visitort rakni a view-ban
+     * Nem használjuk semmire. Azért van definiálva, mert muszáj definiálni az ősosztály absztrakt függvényeit.
+     *
      * @param visitorView
-     * @return
+     * @return egy üres panel
      */
     public JPanel draw(ElementView visitorView){
         return new JPanel();

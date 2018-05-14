@@ -3,11 +3,20 @@ public class Trap extends ATile {
     private boolean opened;
     private int id;
 
+    /**
+     * Konstruktor
+     *
+     */
     public Trap() {
         opened = false;
         id = 0;
     }
 
+    /**
+     * Konstruktor
+     *
+     * @param id A csapda azonosítója
+     */
     public Trap(int id) {
         this.view = new TrapView();
         opened = false;
@@ -16,6 +25,11 @@ public class Trap extends ATile {
 
     //Függvények
 
+    /**
+     * Visszaadja a csapda azonosítóját
+     *
+     * @return A csapda azonosítója
+     */
     public int getId() {
         return id;
     }
