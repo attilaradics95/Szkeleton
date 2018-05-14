@@ -39,7 +39,11 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
     }
     //endregion
 
-    //region A pálya kirajzolását végző függvény
+
+    /**
+     * A pálya kirajzolását végző függvény
+     *
+     */
     public void drawAll(){
         tiles = game.getMap();
 
@@ -67,7 +71,6 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
             }
         }
     }
-    //endregion
 
 
     //region Egér események kezelése
@@ -108,6 +111,12 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
 
     }
 
+
+    /**
+     * A billentyűeseményeket feldolgozó függvény
+     *
+     * @param e A billentyűesemény
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         //Elmentjük a pálya előző állapotát

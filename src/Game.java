@@ -53,13 +53,21 @@ public class Game {
     }
     //endregion
 
+    //region Metódusok
+    /**
+     * Visszaadja a jelenlegi játkost
+     *
+     * @return A jelenlegi játékos.
+     */
     public int getCurrentplayer(){
         return currentplayer;
     }
 
-    //region Metódusok
-    /**Metódusok*/
-    //Kicserél egy mezőt
+    /**
+     * Kicserél egy mezőt
+     * @param  old A régi mező, amit kicserélünk
+     * @param  newtile Az új mező, amire kicseréljük
+    */
     public void swap(ATile old, ATile newtile) {
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
@@ -89,6 +97,10 @@ public class Game {
 
     }
 
+    /**
+     * Betölti az adott pályát
+     * @param  map A pálya neve
+     */
     public void loadMap(String map){
         //region tomb meret meghatarozasa
         int lines = 0, columns = 0;
@@ -277,7 +289,9 @@ public class Game {
             points.add(0);
     }
 
-    //pálya kiíratása konzolra
+    /**
+     * Kiírja a pályát a konzolra
+     */
     public void showMap(){
        for(int i = 0; i < tiles.length; i++){
            for(int j = 0; j < tiles[0].length; j++){
@@ -295,17 +309,29 @@ public class Game {
 
     }
 
-    //pálya getter
+    /**
+     * Visszaadja a mezőket
+     *
+     * @return a pályát alkotó mezők
+     */
     public ATile[][] getMap(){
         return tiles;
     }
 
-    //ablak getter
+    /**
+     * Visszaadja a pályához tartozó ablakot
+     *
+     * @return  A pályához tartozó ablak
+     */
     public static GameWindow getWindow(){
         return window;
     }
 
-    //pálya mentése fájlba
+    /**
+     * Elmenti a pályát
+     *
+     * @param  filename A fájlnév, amin elmentjük a fájlt
+     */
     public void saveMap(String filename){
         File f = new File(path + "/Outputs/" + filename);
         FileWriter fw = null;
@@ -344,8 +370,11 @@ public class Game {
         }
     }
 
-    //a listából kivesszük azokat a ládákat, amik targetre kerültek
-    //vagy meghaltak
+    /**
+     * Eltávolítja a listából egy dobozt. Ha nincs több doboz, akkor véget vet a körnek.
+     *
+     * @param box Az eltávolítandó doboz
+     */
     public void decreaseBoxes(Box box){
         boxes.remove(box);
         if (boxes.isEmpty()){
@@ -353,19 +382,19 @@ public class Game {
         }
     }
 
-    private void startRound(String map){
-        //MAP betöltese
-        loadMap(map);
-
-        //Loop az inputok kezelesere
-        while(!roundover){
-
-        }
-    }
     //ha elfogytak a dobozok - targetre került vagy meghalt
     //vagy ha meghalt az összes munkás
     //vagy feladta a játékos
     //párbeszédablakban megjelenik a pontszám, majd végetér a program futása
+
+    /**
+     * Véget vet a körnek.
+     * Akkor hívódik meg, ha nincs annyi doboz, hogy lehetséges lehessen befejezni a játékot, vagy,
+     * ha meghalt az összes munkás vagy,
+     * ha feladta a játékot.
+     * Párbeszédablakban megjelenik a pontszám, majd véget ér a program futása.
+     *
+     */
     public void endRound(){
         roundover = true;
         int player = this.getCurrentplayer();
@@ -378,7 +407,12 @@ public class Game {
     //endregion
 
     //region A program belépési pontja
-    //A PROGRAM BELÉPÉSI PONTJA
+
+    /**
+     * A program belépési pontja
+     *
+     * @param args Args
+     */
     public static void main(String[] args) {
         Game game = getInstance();
         game.controller = Controller.getInstance();
