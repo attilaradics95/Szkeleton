@@ -6,17 +6,21 @@ public class TrapView  extends ElementView{
         image = "tile.jpg";
     }
 
+    /**
+     * Visszaadja az csapda képét tartalmazó panelt
+     *
+     * @return Az csapda képét tartalmazó panel
+     */
     public JPanel draw( ){
-        /*
-        JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(60,60));
-        panel.add(label);
-        return panel;
-        */
         return new TilePanel(this);
     }
 
+    /**
+     * Visszaadja a csapda és a tartalmazott visitorhoz tartozó képeket tartalmazó panelt
+     *
+     * @param visitorView A tartalmazott visitorhoz tartozó megjelenítésért felelős objektum
+     * @return A csapdához és a tartalmazott visitorhoz tartozó képeket tartalmazó panel
+     */
     public JPanel draw(ElementView visitorView){
         return new TilePanel(this, visitorView);
     }

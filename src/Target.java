@@ -4,7 +4,8 @@ public class Target extends ATile {
     }
 
     /**
-     * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
+     * Minnt minden accept, meghívja a visitor pushTo metódusát önmagát átadva.
+     *
      * @param v visitor
      * @param d irany
      * @param force worker ereje
@@ -14,7 +15,8 @@ public class Target extends ATile {
     }
 
     /**
-     * objektum kiíráshoz
+     * Kiírja az objektumot
+     *
      * @return a kimeneti nyelvvel egyező szimbólum
      */
     public String toString() {

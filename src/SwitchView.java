@@ -6,17 +6,21 @@ public class SwitchView extends ElementView{
         image = "switch_off.jpg";
     }
 
+    /**
+     * Visszaadja a kapcsoló képét tartalmazó panelt
+     *
+     * @return A kapcsoló képét tartalmazó panel
+     */
     public JPanel draw( ){
-        /*
-        JLabel label = new JLabel("",new ImageIcon(System.getProperty("user.dir") + "/img/" + image),JLabel.CENTER);
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(60,60));
-        panel.add(label);
-        return panel;
-        */
         return new TilePanel(this);
     }
 
+    /**
+     * Visszaadja a kapcsoló és a tartalmazott visitorhoz tartozó képeket tartalmazó panelt
+     *
+     * @param visitorView A tartalmazott visitorhoz tartozó megjelenítésért felelős objektum
+     * @return A kapcsolóhoz és a tartalmazott visitorhoz tartozó képeket tartalmazó panel
+     */
     public JPanel draw(ElementView visitorView){
         return new TilePanel(this, visitorView);
     }
