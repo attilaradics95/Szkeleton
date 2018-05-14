@@ -15,7 +15,9 @@ public class KeyHandler {
 
 
     /**
-     * A billentyűeseményekre reagáló függvény. A w, a, s, d billentyűk ill. a nyilak a megfelelő irányba léptetik a munkást
+     * A billentyűeseményekre reagáló függvény.
+     *
+     * w, a, s, d billentyűk ill. a nyilak a megfelelő irányba léptetik a munkást
      * m, o - olaj és méz lerakása a tile-ra, amin a munkás áll
      * esc - meghívja az endRound fv-t - ez kiírja dialógusablakba a pontszámot,majd ennek leokézása után kilép
      *

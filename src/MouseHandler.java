@@ -10,7 +10,11 @@ public class MouseHandler {
     }
 
 
-
+    /**
+     * Feldolgozza a kattintást. Továbbhívja a kattintásra reagáló függvényt.
+     *
+     * @param e Egér esemény
+     */
     public void Click(MouseEvent e) {
         //kattintas x koordinataja
         int x = e.getX();

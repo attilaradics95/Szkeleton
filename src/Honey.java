@@ -1,9 +1,14 @@
 public class Honey extends ATile {
+    /**
+     * Konstruktor
+     *
+     */
     public Honey(){
         this.view = new HoneyView();
     }
+
     /**
-     * mint minden accept meghívja a visitor pushTo metódusát önmagát átadva
+     * Mint minden accept, meghívja a visitor pushTo metódusát önmagát átadva.
      * ha áll rajta visitor csökken a toló erő
      * @param v visitor
      * @param d irany
@@ -18,7 +23,7 @@ public class Honey extends ATile {
     }
 
     /**
-     * objektum kiíráshoz
+     * Kiírja az objektumot.
      * @return a kimeneti nyelvvel egyező szimbólum
      */
     @Override

@@ -32,11 +32,6 @@ public class Box extends Visitor {
         this.id = id;
     }
 
-    //Obstacle kivételével - mivel ide úgyse tud menni -  minden pushTo-nál megkérdezzük, hogy mozgatható-e a doboz
-    //Ha nem, akkor nem mozdul el. Egyébként a mezőtől függ, mi történik.
-    //Ha van visitor a mezőn, amire lépne, akkor meghívja az azután következő mező accept függvényét a szomszédos visitor.
-    //Ha átkerül a következő mezőre beállítja magát visitorként. Annak a mezőnek, ahonnan ellépett nullra állítja a visitor tagváltozóját.
-
 
     /**
      * A ládák mozgatását végző függvény. Megkérdezzük, hogy mozgatható-e a doboz. Ha nem, akkor nem mozdul el.
