@@ -17,9 +17,9 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
     JPanel[][] tileViews;
     int numberOfRows;
     int numberOfColumns;
-    //A pálya állapota az utolsó lépés előtt
-    ATile[][] oldTiles;
     ATile[][] tiles;
+
+
     //endregion
 
     //region Konstruktor
@@ -45,6 +45,7 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
      *
      */
     public void drawAll(){
+        GUICache proba = new GUICache();
         tiles = game.getMap();
 
         numberOfRows = tiles.length;
@@ -119,8 +120,6 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        //Elmentjük a pálya előző állapotát
-        oldTiles = this.tiles;
         keyHandler.Control(e);
         this.removeAll();
         this.updateUI();

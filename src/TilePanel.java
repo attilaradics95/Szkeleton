@@ -27,7 +27,7 @@ public class TilePanel extends JPanel{
         setMinimumSize(new Dimension(60,60));
     }
     /**
-     * Fogalalt Tile megjelenítéséért felelős.
+     * Foglalt Tile megjelenítéséért felelős.
      * @param tileView a tile nézete
      */
     public TilePanel(ElementView tileView, ElementView visitorView){
