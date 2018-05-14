@@ -258,8 +258,8 @@ public class Box extends Visitor {
                 currentTile.setVisitor(null);
                 currentTile = next;
                 next.setVisitor(this);
-                this.setUnmovable();
                 game.addPoint();
+                this.setUnmovable();
             }
         }
     }
