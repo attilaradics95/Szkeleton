@@ -118,4 +118,12 @@ public class GUICache {
         }
         elements.put(trapViewImage,trap);
     }
+
+    public BufferedImage getBufferedImage(String fileName){
+        return elements.get(fileName);
+    }
+
+    public ImageIcon getImageIcon(String fileName){
+        return visitors.get(fileName);
+    }
 }

@@ -45,7 +45,6 @@ public class GamePanel extends JPanel implements KeyListener, MouseListener {
      *
      */
     public void drawAll(){
-        GUICache proba = new GUICache();
         tiles = game.getMap();
 
         numberOfRows = tiles.length;
